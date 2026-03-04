@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ── Brand & semantic — shadcn color variables ──────────────────────── */
+  --color-primary: #2f3e3a;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #c1af95;
+  --color-secondary-foreground: #111111;
+
+  --color-background: #f5f4f2;
+  --color-foreground: #111111;
+
+  --color-card: #fafafa;
+  --color-card-foreground: #111111;
+
+  --color-muted: #f0efed;
+  --color-muted-foreground: #898989;
+
+  --color-accent: #f0efed;
+  --color-accent-foreground: #111111;
+
+  --color-destructive: #dc2626;
+
+  /* Matches Figma border color — used by shadcn border-border, border-input */
+  --color-border: #e4e4e4;
+  --color-input: #e4e4e4;
+  --color-ring: #2f3e3a;
+
+  /* ── Bourbon-specific aliases (keep for backward compat) ────────────── */
+  --color-background-center: #f5f4f2;
+  --color-background-side: #ededed;
+  --color-text-primary: #111111;
+  --color-text-secondary: #3b3b3b;
+  --color-text-muted: #898989;
+  --color-success: #4a7c59;
+
+  /* Filière palette */
+  --color-filiere-dentaire: #3d6b8f;
+  --color-filiere-veterinaire: #4a7c59;
+  --color-filiere-kine: #c07840;
+  --color-filiere-architecture: #5a5a6e;
+  --color-filiere-infirmier: #8f3d3d;
+
+  /* ── Typography ─────────────────────────────────────────────────────── */
+  --font-sans: "Geist", sans-serif;
+
+  /* ── Radius — aligned so shadcn utilities match Figma ───────────────── */
+  /* shadcn Button uses rounded-md → we override to match --radius-button */
+  --radius-md: 10px;
+  /* shadcn Card uses rounded-xl → we override to match --radius-card */
+  --radius-xl: 20px;
+  /* Bourbon named tokens */
+  --radius-card: 20px;
+  --radius-button: 10px;
+  --radius-pill: 39px;
+
+  /* ── Spacing ────────────────────────────────────────────────────────── */
+  --spacing-section: 80px;
+  --spacing-hero: 120px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to right, #ededed, #f5f4f2 50%, #ededed);
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
 }
