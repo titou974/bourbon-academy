@@ -1,0 +1,20 @@
+[
+  {
+    "value": 50,
+    "suffix": "+",
+    "label": "Écoles partenaires",
+    "duration": 1500
+  },
+  {
+    "value": 1000,
+    "suffix": "+",
+    "label": "Étudiants accompagnés",
+    "duration": 2000
+  },
+  {
+    "value": 24,
+    "suffix": "h",
+    "label": "Temps d'attente moyen pour traiter ton dossier",
+    "duration": 1000
+  }
+]

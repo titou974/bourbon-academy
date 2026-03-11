@@ -27,12 +27,12 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-start gap-10 md:gap-20"
+      className="min-h-screen flex flex-col justify-start gap-10 2xl:gap-20"
     >
       <NavBar />
 
       {/* Contenu hero centré */}
-      <div className="flex flex-col items-center gap-8 px-4 max-w-xl mx-auto">
+      <div className="flex flex-col items-center gap-8 md:gap-10 px-4 max-w-xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -54,24 +54,24 @@ export function HeroSection() {
               <span>Espagne</span>
             </div>
           </motion.div>
+          <div className="space-y-2">
+            <motion.h1
+              variants={itemVariants}
+              className="text-3xl md:text-[64px] font-medium md:tracking-[-2.56px] tracking-[-1.8px] bg-gradient-to-r from-[#111] to-[#1e1e1e] bg-clip-text text-transparent leading-tight"
+            >
+              {COPY.hero.title}
+            </motion.h1>
 
-          <motion.h1
-            variants={itemVariants}
-            className="text-3xl md:text-[64px] font-medium md:tracking-[-2.56px] tracking-[-1.8px] bg-gradient-to-r from-[#111] to-[#1e1e1e] bg-clip-text text-transparent leading-tight"
-          >
-            {COPY.hero.title}
-          </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-sm md:text-base text-[#3b3b3b] tracking-[-0.64px] text-balance"
-          >
-            {COPY.hero.subtitle}
-          </motion.p>
-
+            <motion.p
+              variants={itemVariants}
+              className="text-sm md:text-base text-[#3b3b3b] tracking-[-0.64px] text-balance"
+            >
+              {COPY.hero.subtitle}
+            </motion.p>
+          </div>
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-3 justify-center mt-4 md:mt-6"
+            className="flex flex-col sm:flex-row gap-3 justify-center mt-2 md:mt-6"
           >
             <Button
               asChild
@@ -97,8 +97,6 @@ export function HeroSection() {
         <HeroAnimation />
       </div>
 
-      {/* TODO Story 4.1 — StatsCounter ici */}
-      <div className="hidden md:block" />
     </section>
   );
 }

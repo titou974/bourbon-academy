@@ -21,8 +21,8 @@ export function NavBar() {
       }}
       className="top-0 left-0 right-0 z-50 flex flex-col items-center px-6 pt-5"
     >
-      {/* Pill nav container — matches Figma border-[#e4e4e4] rounded-[51px] h-[71px] */}
-      <nav className="w-full max-w-5xl border border-[#e4e4e4] border-[0.5px] rounded-[var(--radius-pill)] h-[51px] md:h-[71px] px-8 flex items-center justify-between backdrop-blur-sm">
+      {/* Pill nav container — matches Figma border-border rounded-[51px] h-[71px] */}
+      <nav className="w-full max-w-5xl border border-border border-1 rounded-[var(--radius-pill)] h-[51px] md:h-[71px] px-8 flex items-center justify-between backdrop-blur-sm">
         {/* Logo */}
         <div className="flex items-center gap-px">
           <span className="font-semibold text-text-primary text-base tracking-[-0.64px] hidden md:block">
@@ -66,25 +66,34 @@ export function NavBar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden relative w-5 h-4 p-0"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
         >
           <span
-            className={`block w-5 h-0.5 bg-primary transition-transform duration-200 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+            className={`absolute inset-x-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-in-out top-0 origin-center ${menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : ""}`}
           />
           <span
-            className={`block w-5 h-0.5 bg-primary transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`}
+            className={`absolute inset-x-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-in-out top-1/2 -translate-y-1/2 ${menuOpen ? "opacity-0 scale-x-0" : ""}`}
           />
           <span
-            className={`block w-5 h-0.5 bg-primary transition-transform duration-200 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            className={`absolute inset-x-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-in-out bottom-0 origin-center ${menuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : ""}`}
           />
         </button>
       </nav>
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="md:hidden w-full max-w-5xl mt-1 border border-[#e4e4e4] rounded-[var(--radius-pill)] bg-[#F5F4F2]/95 backdrop-blur-sm overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{
+            duration: 0.2,
+            ease: "easeOut",
+          }}
+          className="md:hidden w-full max-w-[90%] mt-1 border border-border rounded-[var(--radius-pill)] bg-[#F5F4F2]/95 backdrop-blur-sm overflow-hidden absolute top-20 left-1/2 -translate-x-1/2"
+        >
           <ul className="flex flex-col px-8 py-5 gap-4">
             {COPY.nav.links.map((link) => (
               <li key={link.href}>
@@ -110,7 +119,7 @@ export function NavBar() {
               </Button>
             </li>
           </ul>
-        </div>
+        </motion.div>
       )}
     </motion.header>
   );

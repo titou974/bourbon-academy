@@ -1,0 +1,484 @@
+[
+  {
+    "id": "kine",
+    "nom": "Kinésithérapie",
+    "couleur": "var(--color-filiere-kine)",
+    "description": "Formation en kinésithérapie reconnue dans les meilleures universités espagnoles.",
+    "conditions": [
+      "Baccalauréat S ou équivalent",
+      "Niveau B1 en espagnol recommandé",
+      "Dossier académique solide"
+    ],
+    "ctaLabel": "Candidater en Kinésithérapie",
+    "photo": "/images/filieres/kine.jpg",
+    "dureEtudesAnnees": 4,
+    "dureEtudesDetail": "240 crédits ECTS · Diplôme reconnu dans toute l'UE 🇪🇺",
+    "details": [
+      { "type": "diplome", "label": "Diplôme reconnu dans toute l'Europe" },
+      { "type": "credits", "value": 240 }
+    ],
+    "debouches": [
+      "Kinésithérapeute libéral",
+      "Kiné hospitalier",
+      "Kinésithérapie du sport",
+      "Rééducation pédiatrique",
+      "Rééducation neurologique",
+      "Enseignement & recherche"
+    ],
+    "programme": [
+      {
+        "phase": "Année 1-2",
+        "label": "Sciences fondamentales",
+        "matieres": [
+          "Anatomie & biomécanique",
+          "Physiologie humaine",
+          "Neurologie",
+          "Pathologies de l'appareil locomoteur",
+          "Biophysique & électrophysiologie",
+          "Psychologie du patient"
+        ]
+      },
+      {
+        "phase": "Année 3-4",
+        "label": "Clinique & stages",
+        "matieres": [
+          "Thérapies manuelles",
+          "Électrothérapie & ultrasons",
+          "Rééducation post-opératoire",
+          "Kinésithérapie respiratoire",
+          "Stages en centre de rééducation",
+          "Mémoire de fin d'études (TFG)"
+        ]
+      }
+    ],
+    "localisations": [
+      {
+        "city": "Madrid",
+        "ping-position-x": 46,
+        "ping-position-y": 55,
+        "surnom": "La Villa y Corte",
+        "photo": "/images/localisations/madrid.webp"
+      },
+      {
+        "city": "Valence",
+        "ping-position-x": 65,
+        "ping-position-y": 52,
+        "surnom": "La Ciudad del Turia",
+        "photo": "/images/localisations/valence.webp"
+      },
+      {
+        "city": "Malaga",
+        "ping-position-x": 55,
+        "ping-position-y": 65,
+        "surnom": "La Costa del Sol",
+        "photo": "/images/localisations/malaga.webp"
+      },
+      {
+        "city": "Alicante",
+        "ping-position-x": 68,
+        "ping-position-y": 60,
+        "surnom": "La Ciudad de las Palomas",
+        "photo": "/images/localisations/alicante.webp"
+      },
+      {
+        "city": "Iles Canaries",
+        "ping-position-x": 25,
+        "ping-position-y": 65,
+        "surnom": "Las Islas del Sol",
+        "photo": "/images/localisations/iles_canaries.webp"
+      }
+    ]
+  },
+  {
+    "id": "dentaire",
+    "nom": "Dentaire",
+    "couleur": "var(--color-filiere-dentaire)",
+    "description": "Intégrez les facultés de médecine dentaire espagnoles reconnues en Europe.",
+    "conditions": [
+      "Baccalauréat S",
+      "Résultats académiques solides",
+      "Lettre de motivation requise"
+    ],
+    "ctaLabel": "Candidater en Dentaire",
+    "photo": "/images/filieres/dentaire.jpg",
+    "dureEtudesAnnees": 5,
+    "dureEtudesDetail": "300 crédits ECTS · Diplôme reconnu dans toute l'UE 🇪🇺",
+    "details": [
+      { "type": "diplome", "label": "Diplôme reconnu dans toute l'Europe" },
+      { "type": "credits", "value": 300 }
+    ],
+    "debouches": [
+      "Chirurgien-dentiste libéral",
+      "Dentiste salarié",
+      "Orthodontiste",
+      "Chirurgie orale",
+      "Implantologie",
+      "Recherche & enseignement"
+    ],
+    "programme": [
+      {
+        "phase": "Année 1-2",
+        "label": "Sciences fondamentales",
+        "matieres": [
+          "Anatomie générale & dentaire",
+          "Biologie cellulaire & biochimie",
+          "Histologie & embryologie",
+          "Physiologie humaine",
+          "Microbiologie & immunologie",
+          "Matériaux dentaires"
+        ]
+      },
+      {
+        "phase": "Année 3-4",
+        "label": "Clinique",
+        "matieres": [
+          "Dentisterie conservatrice",
+          "Parodontologie",
+          "Endodontie",
+          "Prothèse fixe & amovible",
+          "Orthodontie",
+          "Pédodontie",
+          "Radiologie & imagerie",
+          "Premiers patients réels"
+        ]
+      },
+      {
+        "phase": "Année 5",
+        "label": "Clinique avancée",
+        "matieres": [
+          "Chirurgie buccale & implantologie",
+          "Médecine buccale",
+          "Stage en cabinet partenaire",
+          "Mémoire de fin d'études (TFG)"
+        ]
+      }
+    ],
+    "localisations": [
+      {
+        "city": "Madrid",
+        "ping-position-x": 46,
+        "ping-position-y": 55,
+        "surnom": "La Villa y Corte",
+        "photo": "/images/localisations/madrid.webp"
+      },
+      {
+        "city": "Valence",
+        "ping-position-x": 65,
+        "ping-position-y": 52,
+        "surnom": "La Ciudad del Turia",
+        "photo": "/images/localisations/valence.webp"
+      },
+      {
+        "city": "Malaga",
+        "ping-position-x": 55,
+        "ping-position-y": 65,
+        "surnom": "La Costa del Sol",
+        "photo": "/images/localisations/malaga.webp"
+      },
+      {
+        "city": "Alicante",
+        "ping-position-x": 68,
+        "ping-position-y": 60,
+        "surnom": "La Ciudad de las Palomas",
+        "photo": "/images/localisations/alicante.webp"
+      },
+      {
+        "city": "Iles Canaries",
+        "ping-position-x": 25,
+        "ping-position-y": 65,
+        "surnom": "Las Islas del Sol",
+        "photo": "/images/localisations/iles_canaries.webp"
+      }
+    ]
+  },
+  {
+    "id": "veterinaire",
+    "nom": "Vétérinaire",
+    "couleur": "var(--color-filiere-veterinaire)",
+    "description": "Les écoles vétérinaires espagnoles sont parmi les meilleures d'Europe.",
+    "conditions": [
+      "Baccalauréat S",
+      "Passion pour les animaux",
+      "Entretien de motivation"
+    ],
+    "ctaLabel": "Candidater en Vétérinaire",
+    "photo": "/images/filieres/veterinaire.jpg",
+    "dureEtudesAnnees": 5,
+    "dureEtudesDetail": "300 crédits ECTS · Diplôme reconnu dans toute l'UE 🇪🇺",
+    "details": [
+      { "type": "diplome", "label": "Diplôme reconnu dans toute l'Europe" },
+      { "type": "credits", "value": 300 }
+    ],
+    "debouches": [
+      "Vétérinaire praticien",
+      "Vétérinaire rural",
+      "Vétérinaire de zoo / faune sauvage",
+      "Industrie pharmaceutique",
+      "Santé publique & inspection",
+      "Recherche & enseignement"
+    ],
+    "programme": [
+      {
+        "phase": "Année 1-2",
+        "label": "Sciences fondamentales",
+        "matieres": [
+          "Anatomie animale comparée",
+          "Biologie & génétique",
+          "Biochimie & physiologie",
+          "Microbiologie & parasitologie",
+          "Éthologie animale",
+          "Zootechnie & productions animales"
+        ]
+      },
+      {
+        "phase": "An 3-4",
+        "label": "Clinique",
+        "matieres": [
+          "Médecine interne (carnivores, équins, bovins)",
+          "Chirurgie & anesthésie",
+          "Pharmacologie & toxicologie",
+          "Reproduction & obstétrique",
+          "Pathologie infectieuse",
+          "Imagerie médicale vétérinaire"
+        ]
+      },
+      {
+        "phase": "An 5",
+        "label": "Stages & spécialisation",
+        "matieres": [
+          "Clinique hospitalière vétérinaire",
+          "Santé publique & hygiène alimentaire",
+          "Stage en structure partenaire",
+          "Mémoire de fin d'études (TFG)"
+        ]
+      }
+    ],
+    "localisations": [
+      {
+        "city": "Madrid",
+        "ping-position-x": 46,
+        "ping-position-y": 55,
+        "surnom": "La Villa y Corte",
+        "photo": "/images/localisations/madrid.webp"
+      },
+      {
+        "city": "Valence",
+        "ping-position-x": 65,
+        "ping-position-y": 52,
+        "surnom": "La Ciudad del Turia",
+        "photo": "/images/localisations/valence.webp"
+      },
+      {
+        "city": "Malaga",
+        "ping-position-x": 55,
+        "ping-position-y": 65,
+        "surnom": "La Costa del Sol",
+        "photo": "/images/localisations/malaga.webp"
+      },
+      {
+        "city": "Alicante",
+        "ping-position-x": 68,
+        "ping-position-y": 60,
+        "surnom": "La Ciudad de las Palomas",
+        "photo": "/images/localisations/alicante.webp"
+      },
+      {
+        "city": "Iles Canaries",
+        "ping-position-x": 25,
+        "ping-position-y": 65,
+        "surnom": "Las Islas del Sol",
+        "photo": "/images/localisations/iles_canaries.webp"
+      }
+    ]
+  },
+  {
+    "id": "architecture",
+    "nom": "Architecte",
+    "couleur": "var(--color-filiere-architecture)",
+    "description": "Architecture et design dans des villes espagnoles au patrimoine unique.",
+    "conditions": [
+      "Baccalauréat général",
+      "Portfolio créatif requis",
+      "Concours d'entrée"
+    ],
+    "ctaLabel": "Candidater en Architecture",
+    "photo": "/images/filieres/architecture.jpg",
+    "dureEtudesAnnees": 5,
+    "dureEtudesDetail": "300 crédits ECTS + 1 an Master · Habilitation européenne",
+    "details": [
+      { "type": "diplome", "label": "Habilitation européenne" },
+      { "type": "credits", "value": 300 }
+    ],
+    "debouches": [
+      "Architecte indépendant",
+      "Cabinet d'architecture",
+      "Urbaniste & aménagement",
+      "Design intérieur",
+      "BIM Manager",
+      "Patrimoine & restauration"
+    ],
+    "programme": [
+      {
+        "phase": "Année 1-2",
+        "label": "Fondamentaux",
+        "matieres": [
+          "Dessin & représentation architecturale",
+          "Mathématiques & géométrie descriptive",
+          "Histoire de l'architecture",
+          "Structures & résistance des matériaux",
+          "Physique du bâtiment",
+          "Initiation au projet architectural"
+        ]
+      },
+      {
+        "phase": "An 3-4",
+        "label": "Projet & technique",
+        "matieres": [
+          "Projet architectural avancé",
+          "Urbanisme & planification territoriale",
+          "Construction & techniques du bâtiment",
+          "BIM & outils numériques",
+          "Architecture durable & bioclimatique",
+          "Droit de l'urbanisme & économie"
+        ]
+      },
+      {
+        "phase": "An 5",
+        "label": "Projet final & stage",
+        "matieres": [
+          "Projet de fin d'études (TFG)",
+          "Stage en cabinet professionnel",
+          "Réglementations & déontologie",
+          "Préparation au Master EQA (habilitation EU)"
+        ]
+      }
+    ],
+    "localisations": [
+      {
+        "city": "Madrid",
+        "ping-position-x": 46,
+        "ping-position-y": 55,
+        "surnom": "La Villa y Corte",
+        "photo": "/images/localisations/madrid.webp"
+      },
+      {
+        "city": "Valence",
+        "ping-position-x": 65,
+        "ping-position-y": 52,
+        "surnom": "La Ciudad del Turia",
+        "photo": "/images/localisations/valence.webp"
+      },
+      {
+        "city": "Malaga",
+        "ping-position-x": 55,
+        "ping-position-y": 65,
+        "surnom": "La Costa del Sol",
+        "photo": "/images/localisations/malaga.webp"
+      },
+      {
+        "city": "Alicante",
+        "ping-position-x": 68,
+        "ping-position-y": 60,
+        "surnom": "La Ciudad de las Palomas",
+        "photo": "/images/localisations/alicante.webp"
+      },
+      {
+        "city": "Iles Canaries",
+        "ping-position-x": 25,
+        "ping-position-y": 65,
+        "surnom": "Las Islas del Sol",
+        "photo": "/images/localisations/iles_canaries.webp"
+      }
+    ]
+  },
+  {
+    "id": "infirmier",
+    "nom": "Infirmier",
+    "couleur": "var(--color-filiere-infirmier)",
+    "description": "Formation infirmière espagnole reconnue dans toute l'Union Européenne.",
+    "conditions": [
+      "Baccalauréat S ou ST2S",
+      "Casier judiciaire vierge",
+      "Lettre de motivation"
+    ],
+    "ctaLabel": "Candidater en Infirmier",
+    "photo": "/images/filieres/infirmier.jpg",
+    "dureEtudesAnnees": 4,
+    "dureEtudesDetail": "240 crédits ECTS · Diplôme reconnu dans toute l'UE 🇪🇺",
+    "details": [
+      { "type": "diplome", "label": "Diplôme reconnu dans toute l'Europe" },
+      { "type": "credits", "value": 240 }
+    ],
+    "debouches": [
+      "Infirmier hospitalier",
+      "Infirmier libéral",
+      "IBODE (bloc opératoire)",
+      "IADE (anesthésie)",
+      "Puériculteur",
+      "Cadre de santé"
+    ],
+    "programme": [
+      {
+        "phase": "Année 1-2",
+        "label": "Sciences & soins fondamentaux",
+        "matieres": [
+          "Anatomie & physiologie",
+          "Biologie & microbiologie",
+          "Pharmacologie de base",
+          "Soins infirmiers fondamentaux",
+          "Éthique & déontologie",
+          "Communication & relation d'aide"
+        ]
+      },
+      {
+        "phase": "An 3-4",
+        "label": "Clinique & stages",
+        "matieres": [
+          "Soins en médecine & chirurgie",
+          "Urgences & soins intensifs",
+          "Pédiatrie & maternité",
+          "Santé mentale & psychiatrie",
+          "Gérontologie",
+          "Stages hospitaliers (2 100 h minimum)"
+        ]
+      }
+    ],
+    "localisations": [
+      {
+        "city": "Madrid",
+        "ping-position-x": 46,
+        "ping-position-y": 55,
+        "surnom": "La Villa y Corte",
+        "photo": "/images/localisations/madrid.webp"
+      },
+      {
+        "city": "Valence",
+        "ping-position-x": 65,
+        "ping-position-y": 52,
+        "surnom": "La Ciudad del Turia",
+        "photo": "/images/localisations/valence.webp"
+      },
+      {
+        "city": "Malaga",
+        "ping-position-x": 55,
+        "ping-position-y": 65,
+        "surnom": "La Costa del Sol",
+        "photo": "/images/localisations/malaga.webp"
+      },
+      {
+        "city": "Alicante",
+        "ping-position-x": 68,
+        "ping-position-y": 60,
+        "surnom": "La Ciudad de las Palomas",
+        "photo": "/images/localisations/alicante.webp"
+      },
+      {
+        "city": "Iles Canaries",
+        "ping-position-x": 25,
+        "ping-position-y": 65,
+        "surnom": "Las Islas del Sol",
+        "photo": "/images/localisations/iles_canaries.webp"
+      }
+    ]
+  }
+]

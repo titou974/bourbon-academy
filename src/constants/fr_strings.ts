@@ -33,7 +33,11 @@ export const COPY = {
 
   stats: [
     { value: 50, suffix: "+", label: "Écoles partenaires" },
-    { value: 24, suffix: "h", label: "Temps d'attente moyen pour traiter votre dossier" },
+    {
+      value: 24,
+      suffix: "h",
+      label: "Temps d'attente moyen pour traiter votre dossier",
+    },
     { value: 1000, suffix: "+", label: "Étudiants accompagnés" },
   ] as const,
 
@@ -60,14 +64,15 @@ export const COPY = {
   steps: [
     {
       step: "Etape 1",
-      title: "Remplis tes coordonnées et fournis nous ton bulletin",
+      title: "Remplis tes coordonnées et choisi ta filière",
       description:
-        "Munissez vous de vos bulletins de notes des première et terminale",
+        "Choisi bien la filière qui te plaît et transmet nous tes coordoonées pour qu'on te re-contact.",
     },
     {
       step: "Etape 2",
-      title: "Choisis ta filière et la/les écoles où tu veux candidater",
-      description: "Choisis une parmi les 5 filières et sélectionne tes vœux",
+      title: "Transmet ton bulletin de première",
+      description:
+        "Télécharge ton bulletin de première (et de terminale si tu l'as déjà.)",
     },
     {
       step: "Etape 3",
@@ -81,4 +86,4 @@ export const COPY = {
     steps: ["Cursus", "Bulletins", "Coordonnées"] as const,
     submit: "Suivant",
   },
-} as const
+} as const;

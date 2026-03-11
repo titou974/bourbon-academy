@@ -31,7 +31,7 @@ export function HeroAnimation() {
     };
   }, []);
   return (
-    <div className="w-full mx-auto flex flex-col md:flex-row items-center justify-center md:gap-36 gap-20 relative mt-10">
+    <div className="w-full mx-auto flex flex-col md:flex-row items-center justify-center md:gap-36 gap-10 relative">
       <motion.img
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

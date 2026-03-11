@@ -66,6 +66,7 @@ html {
 
 body {
   background: linear-gradient(to right, #ededed, #f5f4f2 50%, #ededed);
+  min-height: 100vh;
   font-family: var(--font-sans);
   color: var(--color-text-primary);
 }
