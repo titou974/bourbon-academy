@@ -30,11 +30,15 @@ export default function MapContainer({
         {localisations.map((loc, i) => (
           <motion.div
             key={loc.city}
-            className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-            style={{
-              left: `${loc["ping-position-x"]}%`,
-              top: `${loc["ping-position-y"]}%`,
-            }}
+            className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer left-[var(--pin-x-m)] top-[var(--pin-y-m)] md:left-[var(--pin-x)] md:top-[var(--pin-y)]"
+            style={
+              {
+                "--pin-x": `${loc["ping-position-x"]}%`,
+                "--pin-y": `${loc["ping-position-y"]}%`,
+                "--pin-x-m": `${loc["mobile-ping-position-x"]}%`,
+                "--pin-y-m": `${loc["mobile-ping-position-y"]}%`,
+              } as React.CSSProperties
+            }
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: i * 0.2 }}
@@ -47,7 +51,7 @@ export default function MapContainer({
             <AnimatePresence>
               {activeCity === loc.city && (
                 <motion.div
-                  className="absolute bottom-full left-1/2 mb-5 pointer-events-none z-10"
+                  className="absolute bottom-full left-1/2 md:mb-5 mb-2 pointer-events-none z-10"
                   style={{ x: "-50%" }}
                   initial={{
                     opacity: 0,
@@ -78,15 +82,14 @@ export default function MapContainer({
                 <Image
                   src={loc.photo}
                   alt={loc.city}
-                  width={32}
-                  height={32}
+                  width={64}
+                  height={64}
                   className="object-cover w-full h-full"
                 />
               ) : (
                 <div className="w-full h-full bg-primary" />
               )}
             </div>
-            <div className="rounded-full bg-border w-2 h-2 absolute bottom-[-8px] left-1/2 -translate-x-1/2 group-hover:bg-secondary group-hover:translate-y-[-4px] shadow-md transitions-colors ease-in-out duration-300 z-10" />
           </motion.div>
         ))}
       </div>

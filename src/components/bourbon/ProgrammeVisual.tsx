@@ -10,7 +10,7 @@ export default function ProgrammeVisual({ phases }: { phases: Phase[] }) {
       {phases.map((p, i) => (
         <div key={i} className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-semibold text-secondary bg-secondary/10 px-2 py-0.5 rounded-full tracking-[-0.3px]">
+            <span className="text-[10px] font-semibold text-secondary bg-secondary/5 px-2 py-0.5 rounded-full tracking-[-0.3px]">
               {p.phase}
             </span>
             <span className="text-xs font-medium text-foreground tracking-[-0.4px]">

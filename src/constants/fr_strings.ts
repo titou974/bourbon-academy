@@ -43,13 +43,14 @@ export const COPY = {
 
   sections: {
     filieres: {
-      title: "Découvrez nos 5 Filières",
-      subtitle: "Nous proposons 5 filières dans le médical",
+      title: "Découvrez nos 4 Filières d'Exception",
+      subtitle:
+        "Nous proposons l'accès aux meilleurs écoles d'Espagne dans le médical",
     },
     carte: {
       title: "Où sont les universités",
       subtitle:
-        "Nous avons des partenariats avec +50 universités à travers l'Espagne",
+        "Nous accompagnons les étudiants dans 5 villes étudiantes majeures d'Espagne",
     },
     process: {
       title: "Comment m'inscrire en 3 étapes ?",

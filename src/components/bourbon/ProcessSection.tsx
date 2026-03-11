@@ -5,17 +5,17 @@ const stepsData = [
   {
     imageSrc: "/images/steps/step-1.png",
     imageClassName:
-      "translate-y-10 group-hover:translate-y-0 group-hover:scale-105 max-w-[60%] mx-auto",
+      "md:translate-y-10 group-hover:translate-y-0 md:group-hover:scale-105 max-w-[60%] mx-auto",
   },
   {
     imageSrc: "/images/steps/step-2.png",
     imageClassName:
-      "max-w-[60%] mx-auto translate-y-20 group-hover:translate-y-[-5px] group-hover:rotate-10",
+      "max-w-[60%] mx-auto md:translate-y-20 md:group-hover:translate-y-[-5px] md:group-hover:rotate-10",
   },
   {
     imageSrc: "/images/steps/step-3.png",
     imageClassName:
-      "max-w-[60%] mx-auto translate-y-16 group-hover:translate-y-[-2px] group-hover:-rotate-6",
+      "max-w-[60%] mx-auto md:translate-y-16 md:group-hover:translate-y-[-2px] md:group-hover:-rotate-6",
   },
 ];
 

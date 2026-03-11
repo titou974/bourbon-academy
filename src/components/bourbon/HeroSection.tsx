@@ -5,7 +5,7 @@ import { HeroAnimation } from "./HeroAnimation";
 import { NavBar } from "./NavBar";
 import { Button } from "@/components/ui/button";
 import { COPY } from "@/constants/fr_strings";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, PlusIcon } from "lucide-react";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -49,7 +49,7 @@ export function HeroSection() {
               <span className="relative size-2 rounded-full bg-primary" />
             </span>
             <div className="flex items-center gap-1">
-              <span>France et Drom-Tom</span>
+              <span>France et Drom-Com</span>
               <ArrowRight className="w-3" />
               <span>Espagne</span>
             </div>
@@ -77,9 +77,12 @@ export function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="min-h-[44px] border-primary text-foreground rounded-[var(--radius-button)] hover:bg-primary/5"
+              className="min-h-[44px] text-foreground rounded-[var(--radius-button)] hover:bg-primary/5"
             >
-              <a href="#filieres">{COPY.hero.ctaSecondary}</a>
+              <a href="#filieres">
+                {COPY.hero.ctaSecondary}
+                <PlusIcon className="size-4" />
+              </a>
             </Button>
             <Button
               asChild
@@ -96,7 +99,6 @@ export function HeroSection() {
 
         <HeroAnimation />
       </div>
-
     </section>
   );
 }

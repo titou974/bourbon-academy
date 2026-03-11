@@ -54,36 +54,46 @@
     "localisations": [
       {
         "city": "Madrid",
-        "ping-position-x": 46,
-        "ping-position-y": 55,
+        "ping-position-x": 49,
+        "ping-position-y": 43,
+        "mobile-ping-position-x": 49,
+        "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
         "photo": "/images/localisations/madrid.webp"
       },
       {
         "city": "Valence",
-        "ping-position-x": 65,
+        "ping-position-x": 68,
         "ping-position-y": 52,
+        "mobile-ping-position-x": 75,
+        "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
         "photo": "/images/localisations/valence.webp"
       },
       {
         "city": "Malaga",
-        "ping-position-x": 55,
-        "ping-position-y": 65,
+        "ping-position-x": 45,
+        "ping-position-y": 71,
+        "mobile-ping-position-x": 43,
+        "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
         "photo": "/images/localisations/malaga.webp"
       },
       {
         "city": "Alicante",
-        "ping-position-x": 68,
-        "ping-position-y": 60,
+        "ping-position-x": 59,
+        "ping-position-y": 64,
+        "mobile-ping-position-x": 63,
+        "mobile-ping-position-y": 60,
         "surnom": "La Ciudad de las Palomas",
         "photo": "/images/localisations/alicante.webp"
       },
       {
         "city": "Iles Canaries",
-        "ping-position-x": 25,
-        "ping-position-y": 65,
+        "ping-position-x": 18,
+        "ping-position-y": 92,
+        "mobile-ping-position-x": 16,
+        "mobile-ping-position-y": 90,
         "surnom": "Las Islas del Sol",
         "photo": "/images/localisations/iles_canaries.webp"
       }
@@ -156,36 +166,46 @@
     "localisations": [
       {
         "city": "Madrid",
-        "ping-position-x": 46,
-        "ping-position-y": 55,
+        "ping-position-x": 49,
+        "ping-position-y": 43,
+        "mobile-ping-position-x": 49,
+        "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
         "photo": "/images/localisations/madrid.webp"
       },
       {
         "city": "Valence",
-        "ping-position-x": 65,
+        "ping-position-x": 68,
         "ping-position-y": 52,
+        "mobile-ping-position-x": 75,
+        "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
         "photo": "/images/localisations/valence.webp"
       },
       {
         "city": "Malaga",
-        "ping-position-x": 55,
-        "ping-position-y": 65,
+        "ping-position-x": 45,
+        "ping-position-y": 71,
+        "mobile-ping-position-x": 43,
+        "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
         "photo": "/images/localisations/malaga.webp"
       },
       {
         "city": "Alicante",
-        "ping-position-x": 68,
-        "ping-position-y": 60,
+        "ping-position-x": 59,
+        "ping-position-y": 64,
+        "mobile-ping-position-x": 63,
+        "mobile-ping-position-y": 60,
         "surnom": "La Ciudad de las Palomas",
         "photo": "/images/localisations/alicante.webp"
       },
       {
         "city": "Iles Canaries",
-        "ping-position-x": 25,
-        "ping-position-y": 65,
+        "ping-position-x": 18,
+        "ping-position-y": 92,
+        "mobile-ping-position-x": 16,
+        "mobile-ping-position-y": 90,
         "surnom": "Las Islas del Sol",
         "photo": "/images/localisations/iles_canaries.webp"
       }
@@ -256,136 +276,46 @@
     "localisations": [
       {
         "city": "Madrid",
-        "ping-position-x": 46,
-        "ping-position-y": 55,
+        "ping-position-x": 49,
+        "ping-position-y": 43,
+        "mobile-ping-position-x": 49,
+        "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
         "photo": "/images/localisations/madrid.webp"
       },
       {
         "city": "Valence",
-        "ping-position-x": 65,
+        "ping-position-x": 68,
         "ping-position-y": 52,
+        "mobile-ping-position-x": 75,
+        "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
         "photo": "/images/localisations/valence.webp"
       },
       {
         "city": "Malaga",
-        "ping-position-x": 55,
-        "ping-position-y": 65,
+        "ping-position-x": 45,
+        "ping-position-y": 71,
+        "mobile-ping-position-x": 43,
+        "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
         "photo": "/images/localisations/malaga.webp"
       },
       {
         "city": "Alicante",
-        "ping-position-x": 68,
-        "ping-position-y": 60,
+        "ping-position-x": 59,
+        "ping-position-y": 64,
+        "mobile-ping-position-x": 63,
+        "mobile-ping-position-y": 60,
         "surnom": "La Ciudad de las Palomas",
         "photo": "/images/localisations/alicante.webp"
       },
       {
         "city": "Iles Canaries",
-        "ping-position-x": 25,
-        "ping-position-y": 65,
-        "surnom": "Las Islas del Sol",
-        "photo": "/images/localisations/iles_canaries.webp"
-      }
-    ]
-  },
-  {
-    "id": "architecture",
-    "nom": "Architecte",
-    "couleur": "var(--color-filiere-architecture)",
-    "description": "Architecture et design dans des villes espagnoles au patrimoine unique.",
-    "conditions": [
-      "Baccalauréat général",
-      "Portfolio créatif requis",
-      "Concours d'entrée"
-    ],
-    "ctaLabel": "Candidater en Architecture",
-    "photo": "/images/filieres/architecture.jpg",
-    "dureEtudesAnnees": 5,
-    "dureEtudesDetail": "300 crédits ECTS + 1 an Master · Habilitation européenne",
-    "details": [
-      { "type": "diplome", "label": "Habilitation européenne" },
-      { "type": "credits", "value": 300 }
-    ],
-    "debouches": [
-      "Architecte indépendant",
-      "Cabinet d'architecture",
-      "Urbaniste & aménagement",
-      "Design intérieur",
-      "BIM Manager",
-      "Patrimoine & restauration"
-    ],
-    "programme": [
-      {
-        "phase": "Année 1-2",
-        "label": "Fondamentaux",
-        "matieres": [
-          "Dessin & représentation architecturale",
-          "Mathématiques & géométrie descriptive",
-          "Histoire de l'architecture",
-          "Structures & résistance des matériaux",
-          "Physique du bâtiment",
-          "Initiation au projet architectural"
-        ]
-      },
-      {
-        "phase": "An 3-4",
-        "label": "Projet & technique",
-        "matieres": [
-          "Projet architectural avancé",
-          "Urbanisme & planification territoriale",
-          "Construction & techniques du bâtiment",
-          "BIM & outils numériques",
-          "Architecture durable & bioclimatique",
-          "Droit de l'urbanisme & économie"
-        ]
-      },
-      {
-        "phase": "An 5",
-        "label": "Projet final & stage",
-        "matieres": [
-          "Projet de fin d'études (TFG)",
-          "Stage en cabinet professionnel",
-          "Réglementations & déontologie",
-          "Préparation au Master EQA (habilitation EU)"
-        ]
-      }
-    ],
-    "localisations": [
-      {
-        "city": "Madrid",
-        "ping-position-x": 46,
-        "ping-position-y": 55,
-        "surnom": "La Villa y Corte",
-        "photo": "/images/localisations/madrid.webp"
-      },
-      {
-        "city": "Valence",
-        "ping-position-x": 65,
-        "ping-position-y": 52,
-        "surnom": "La Ciudad del Turia",
-        "photo": "/images/localisations/valence.webp"
-      },
-      {
-        "city": "Malaga",
-        "ping-position-x": 55,
-        "ping-position-y": 65,
-        "surnom": "La Costa del Sol",
-        "photo": "/images/localisations/malaga.webp"
-      },
-      {
-        "city": "Alicante",
-        "ping-position-x": 68,
-        "ping-position-y": 60,
-        "surnom": "La Ciudad de las Palomas",
-        "photo": "/images/localisations/alicante.webp"
-      },
-      {
-        "city": "Iles Canaries",
-        "ping-position-x": 25,
-        "ping-position-y": 65,
+        "ping-position-x": 18,
+        "ping-position-y": 92,
+        "mobile-ping-position-x": 16,
+        "mobile-ping-position-y": 90,
         "surnom": "Las Islas del Sol",
         "photo": "/images/localisations/iles_canaries.webp"
       }
@@ -446,36 +376,46 @@
     "localisations": [
       {
         "city": "Madrid",
-        "ping-position-x": 46,
-        "ping-position-y": 55,
+        "ping-position-x": 49,
+        "ping-position-y": 43,
+        "mobile-ping-position-x": 49,
+        "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
         "photo": "/images/localisations/madrid.webp"
       },
       {
         "city": "Valence",
-        "ping-position-x": 65,
+        "ping-position-x": 68,
         "ping-position-y": 52,
+        "mobile-ping-position-x": 75,
+        "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
         "photo": "/images/localisations/valence.webp"
       },
       {
         "city": "Malaga",
-        "ping-position-x": 55,
-        "ping-position-y": 65,
+        "ping-position-x": 45,
+        "ping-position-y": 71,
+        "mobile-ping-position-x": 43,
+        "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
         "photo": "/images/localisations/malaga.webp"
       },
       {
         "city": "Alicante",
-        "ping-position-x": 68,
-        "ping-position-y": 60,
+        "ping-position-x": 59,
+        "ping-position-y": 64,
+        "mobile-ping-position-x": 63,
+        "mobile-ping-position-y": 60,
         "surnom": "La Ciudad de las Palomas",
         "photo": "/images/localisations/alicante.webp"
       },
       {
         "city": "Iles Canaries",
-        "ping-position-x": 25,
-        "ping-position-y": 65,
+        "ping-position-x": 18,
+        "ping-position-y": 92,
+        "mobile-ping-position-x": 16,
+        "mobile-ping-position-y": 90,
         "surnom": "Las Islas del Sol",
         "photo": "/images/localisations/iles_canaries.webp"
       }

@@ -3,8 +3,9 @@
     "ville": "Madrid",
     "surnom": "La Villa y Corte",
     "region": "Communauté de Madrid",
-    "coordinates": { "x": 46, "y": 55 },
-    "filieres": ["kine", "dentaire", "veterinaire", "architecture", "infirmier"],
+    "coordinates": { "x": 49, "y": 43 },
+    "mobileCoordinates": { "x": 49, "y": 45 },
+    "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
     "photo": "/images/localisations/madrid.webp",
     "etudiantsPlaces": 150
   },
@@ -12,8 +13,9 @@
     "ville": "Valence",
     "surnom": "La Ciudad del Turia",
     "region": "Communauté valencienne",
-    "coordinates": { "x": 65, "y": 52 },
-    "filieres": ["kine", "dentaire", "veterinaire", "architecture", "infirmier"],
+    "coordinates": { "x": 60, "y": 47 },
+    "mobileCoordinates": { "x": 75, "y": 52 },
+    "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
     "photo": "/images/localisations/valence.webp",
     "etudiantsPlaces": 120
   },
@@ -21,7 +23,8 @@
     "ville": "Malaga",
     "surnom": "La Costa del Sol",
     "region": "Andalousie",
-    "coordinates": { "x": 55, "y": 65 },
+    "coordinates": { "x": 45, "y": 72 },
+    "mobileCoordinates": { "x": 43, "y": 72 },
     "filieres": ["kine", "dentaire", "veterinaire"],
     "photo": "/images/localisations/malaga.webp",
     "etudiantsPlaces": 80
@@ -30,7 +33,8 @@
     "ville": "Alicante",
     "surnom": "La Ciudad de las Palomas",
     "region": "Communauté valencienne",
-    "coordinates": { "x": 68, "y": 60 },
+    "coordinates": { "x": 59, "y": 60 },
+    "mobileCoordinates": { "x": 63, "y": 60 },
     "filieres": ["kine", "dentaire", "infirmier"],
     "photo": "/images/localisations/alicante.webp",
     "etudiantsPlaces": 60
@@ -39,8 +43,9 @@
     "ville": "Iles Canaries",
     "surnom": "Las Islas del Sol",
     "region": "Iles Canaries",
-    "coordinates": { "x": 25, "y": 65 },
-    "filieres": ["kine", "dentaire", "veterinaire", "architecture", "infirmier"],
+    "coordinates": { "x": 30, "y": 90 },
+    "mobileCoordinates": { "x": 16, "y": 90 },
+    "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
     "photo": "/images/localisations/iles_canaries.webp",
     "etudiantsPlaces": 40
   }

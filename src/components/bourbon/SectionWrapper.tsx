@@ -5,7 +5,7 @@ export default function SectionWrapper({
   id,
   title,
   subtitle,
-  centered = false,
+  centered = true,
 }: {
   children: React.ReactNode;
   id: string;
@@ -33,7 +33,9 @@ export default function SectionWrapper({
           height={50}
           className="absolute top-[-50px] right-8"
         />
-        <div className={`px-6 md:px-10 py-2 md:py-4 ${centered ? "text-center" : ""}`}>
+        <div
+          className={`px-6 md:px-10 py-2 md:py-4 ${centered ? "text-center" : ""}`}
+        >
           <h2 className="font-medium text-xl md:text-[32px] text-text-primary tracking-[-1.5px]">
             {title}
           </h2>

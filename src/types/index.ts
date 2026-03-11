@@ -3,6 +3,8 @@ export interface Localisation {
   surnom: string;
   "ping-position-x": number;
   "ping-position-y": number;
+  "mobile-ping-position-x": number;
+  "mobile-ping-position-y": number;
   photo: string;
 }
 
@@ -43,6 +45,7 @@ export interface City {
   surnom: string;
   region: string;
   coordinates: { x: number; y: number };
+  mobileCoordinates: { x: number; y: number };
   filieres: string[];
   photo: string;
   etudiantsPlaces: number;

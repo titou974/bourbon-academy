@@ -8,7 +8,7 @@ export default function DebounchesVisual({
       {debouches.map((d) => (
         <span
           key={d}
-          className="text-xs px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-medium tracking-[-0.4px]"
+          className="text-xs px-2.5 py-1 rounded-full bg-secondary/5 text-secondary font-medium tracking-[-0.4px]"
         >
           {d}
         </span>

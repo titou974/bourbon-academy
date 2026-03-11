@@ -12,7 +12,6 @@ import Image from "next/image";
 import MapContainer from "./MapContainer";
 import { ArrowRight } from "lucide-react";
 import CardTextImage from "./CardTextImage";
-import DureeEtudesVisual from "./DureeEtudesVisual";
 import DebounchesVisual from "./DebounchesVisual";
 import ProgrammeVisual from "./ProgrammeVisual";
 import CardIconTitle from "./CardIconTitle";
@@ -52,7 +51,7 @@ export function FiliereModal({
                 className="object-cover h-full w-full"
               />
             </div>
-            <div className="space-y-4 px-4 md:px-6 pt-2">
+            <div className="space-y-4 px-4 md:px-6">
               <div className="space-y-1 px-2">
                 <DialogHeader>
                   <DialogTitle className="text-lg font-semibold tracking-[-0.64px] text-left text-[#181818]">
@@ -82,7 +81,35 @@ export function FiliereModal({
                   filierePhoto={filiere.photo}
                 />
               </CardTextImage>
-              {/* Programme de formation */}
+              <CardTextImage
+                title="Conditions d'entrée"
+                description={
+                  <span className="flex flex-col gap-1">
+                    {filiere.conditions.map((c) => (
+                      <span key={c} className="flex items-start gap-1.5">
+                        <span className="text-text-secondary">—</span>
+                        <span>{c}</span>
+                      </span>
+                    ))}
+                  </span>
+                }
+              />
+              <CardTextImage title="Durée des études">
+                <CardIconTitle
+                  src="/images/icons/time.png"
+                  alt="Temps"
+                  width={50}
+                  height={50}
+                >
+                  {filiere.dureEtudesAnnees} ans de formation
+                </CardIconTitle>
+              </CardTextImage>
+              <CardTextImage
+                title="Débouchés professionnels"
+                description="Les métiers accessibles après l'obtention de votre diplôme."
+              >
+                <DebounchesVisual debouches={filiere.debouches} />
+              </CardTextImage>
               <CardTextImage
                 title="Contenu de la formation"
                 description="Les grandes matières enseignées tout au long du cursus."
@@ -109,54 +136,12 @@ export function FiliereModal({
                     >
                       {detail.value} crédits ECTS
                     </CardIconTitle>
-                  )
+                  ),
                 )}
               </CardTextImage>
-              {/* Durée des études */}
-              <CardTextImage
-                title="Durée des études"
-                description={
-                  <DureeEtudesVisual
-                    annees={filiere.dureEtudesAnnees}
-                    detail={filiere.dureEtudesDetail}
-                  />
-                }
-              >
-                <CardIconTitle
-                  src="/images/icons/time.png"
-                  alt="Temps"
-                  width={50}
-                  height={50}
-                >
-                  {filiere.dureEtudesAnnees} ans de formation
-                </CardIconTitle>
-              </CardTextImage>
-              {/* Débouchés */}
-              <CardTextImage
-                title="Débouchés professionnels"
-                description="Les métiers accessibles après l'obtention de votre diplôme."
-              >
-                <DebounchesVisual debouches={filiere.debouches} />
-              </CardTextImage>
-              {/* Conditions d'entrée */}
-              <CardTextImage
-                title="Conditions d'entrée"
-                description={
-                  <span className="flex flex-col gap-1">
-                    {filiere.conditions.map((c) => (
-                      <span key={c} className="flex items-start gap-1.5">
-                        <span className="text-text-secondary">—</span>
-                        <span>{c}</span>
-                      </span>
-                    ))}
-                  </span>
-                }
-              />
             </div>
           </div>
         </div>
-
-        {/* CTA fixe en bas */}
         <div className="border-t border-border p-4">
           <Button
             onClick={handleCTA}

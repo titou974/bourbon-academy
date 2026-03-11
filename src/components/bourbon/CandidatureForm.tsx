@@ -17,6 +17,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { FileUpload } from "./FileUpload";
 import { ArrowRight } from "lucide-react";
 
@@ -32,7 +39,6 @@ const FILIERE_OPTIONS = [
   { value: "kine", label: "Kinésithérapie" },
   { value: "dentaire", label: "Dentaire" },
   { value: "veterinaire", label: "Vétérinaire" },
-  { value: "architecture", label: "Architecture" },
   { value: "infirmier", label: "Infirmier" },
 ] as const;
 
@@ -53,16 +59,31 @@ const stepVariants = {
 
 function Stepper({ currentStep }: { currentStep: number }) {
   return (
-    <div className="flex items-center justify-between mb-10">
-      {STEPS.map((s, i) => {
-        const isActive = currentStep === s.number;
-        const isCompleted = currentStep > s.number;
-        return (
+    <div className="relative mb-10">
+      {/* Connector lines — positioned behind the circles */}
+      <div className="absolute top-5 left-0 right-0 flex px-[calc(100%/6)]">
+        {STEPS.slice(0, -1).map((s) => (
           <div
             key={s.number}
-            className="flex items-center flex-1 last:flex-none"
+            className="flex-1 h-[2px] bg-muted rounded-full overflow-hidden"
           >
-            <div className="flex flex-col items-center gap-2">
+            <motion.div
+              className="h-full bg-success"
+              initial={{ width: "0%" }}
+              animate={{ width: currentStep > s.number ? "100%" : "0%" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Step circles + labels — equal columns */}
+      <div className="relative grid grid-cols-3">
+        {STEPS.map((s) => {
+          const isActive = currentStep === s.number;
+          const isCompleted = currentStep > s.number;
+          return (
+            <div key={s.number} className="flex flex-col items-center gap-2">
               <motion.div
                 className={`
                   relative flex items-center justify-center w-10 h-10 rounded-full
@@ -116,21 +137,9 @@ function Stepper({ currentStep }: { currentStep: number }) {
                 {s.label}
               </span>
             </div>
-            {i < STEPS.length - 1 && (
-              <div className="flex-1 mx-3 mt-[-24px]">
-                <div className="h-[2px] bg-muted rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-success"
-                    initial={{ width: "0%" }}
-                    animate={{ width: isCompleted ? "100%" : "0%" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -359,19 +368,23 @@ export function CandidatureForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Filière souhaitée</FormLabel>
-                      <FormControl>
-                        <select
-                          {...field}
-                          className="w-full min-h-[44px] border border-input rounded-[var(--radius-button)] px-3 bg-transparent text-sm"
-                        >
-                          <option value="">Choisir une filière...</option>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="w-full min-h-[44px]">
+                            <SelectValue placeholder="Choisir une filière..." />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent position="popper" sideOffset={4}>
                           {FILIERE_OPTIONS.map((opt) => (
-                            <option key={opt.value} value={opt.value}>
+                            <SelectItem key={opt.value} value={opt.value}>
                               {opt.label}
-                            </option>
+                            </SelectItem>
                           ))}
-                        </select>
-                      </FormControl>
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}

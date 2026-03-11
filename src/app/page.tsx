@@ -12,8 +12,6 @@ export default function Home() {
   return (
     <main className="bg-[var(--background-center)]">
       <HeroSection />
-
-      {/* ── Filières — Figma node 17:58 ─────────────────────────────────── */}
       <SectionWrapper
         id="filieres"
         title={COPY.sections.filieres.title}
@@ -21,8 +19,6 @@ export default function Home() {
       >
         <FiliereSection />
       </SectionWrapper>
-
-      {/* ── Carte Espagne — Figma node 17:180 ───────────────────────────── */}
       <SectionWrapper
         id="carte"
         title={COPY.sections.carte.title}
@@ -30,8 +26,6 @@ export default function Home() {
       >
         <SpainMap />
       </SectionWrapper>
-
-      {/* ── Comment ça marche — Figma node 22:63 ────────────────────────── */}
       <SectionWrapper
         id="process"
         title={COPY.sections.process.title}
@@ -39,8 +33,6 @@ export default function Home() {
       >
         <ProcessSection />
       </SectionWrapper>
-
-      {/* ── Formulaire — Figma node 27:412 ──────────────────────────────── */}
       <SectionWrapper
         id="candidature"
         title={COPY.sections.candidature.title}
@@ -51,11 +43,8 @@ export default function Home() {
           <CandidatureForm />
         </div>
       </SectionWrapper>
-
-      {/* ── Footer — Figma node 33:496 ───────────────────────────────────── */}
       <footer className="bg-black mt-6 px-6 py-10">
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-6">
-          {/* Support */}
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <p className="text-white/60 text-sm">{COPY.brand.contact}</p>
             <Button variant="default" size="sm" asChild className="text-sm">
@@ -65,8 +54,6 @@ export default function Home() {
               </a>
             </Button>
           </div>
-
-          {/* Réseaux sociaux */}
           <div className="flex items-center gap-4">
             <a
               href="https://www.instagram.com/bourbon.academy"
@@ -75,7 +62,15 @@ export default function Home() {
               className="text-white/40 hover:text-white transition-colors"
               aria-label="Instagram"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
@@ -104,10 +99,7 @@ export default function Home() {
               </svg>
             </a>
           </div>
-
           <div className="w-12 h-px bg-white/10" />
-
-          {/* Crédit */}
           <p className="text-white/40 text-xs flex items-center gap-1.5">
             Créé par des Réunionnais 🇷🇪 —{" "}
             <a
@@ -119,8 +111,6 @@ export default function Home() {
               @bobodigital_
             </a>
           </p>
-
-          {/* Copyright */}
           <p className="text-white/30 text-[11px]">
             © {new Date().getFullYear()} Bourbon Academy. Tous droits réservés.
           </p>

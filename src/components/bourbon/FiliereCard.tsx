@@ -25,12 +25,12 @@ export function FiliereCard({ filiere }: FiliereCardProps) {
         aria-label={`En savoir plus sur ${filiere.nom}`}
       >
         {/* Zone image avec couleur filière + overlay */}
-        <div className="relative mx-[14px] mt-[14px] h-[12em] rounded-2xl overflow-hidden border-1 border-border">
+        <div className="relative mx-[14px] mt-[14px] h-[11em] rounded-2xl overflow-hidden border-1 border-border">
           <Image
             src={filiere.photo}
             alt={filiere.nom}
-            width={146}
-            height={146}
+            width={300}
+            height={300}
             className="w-full h-full object-cover object-center-right group-hover:scale-105 transition-transform ease-in-out duration-600"
           />
 
