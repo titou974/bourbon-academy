@@ -52,7 +52,9 @@ export function SpainMap() {
                 top: `${city.coordinates.y}%`,
               }}
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+              animate={
+                inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }
+              }
               transition={{ duration: 0.3, delay: i * 0.15 }}
               onPointerEnter={(e) => {
                 if (e.pointerType === "mouse") {
@@ -85,33 +87,56 @@ export function SpainMap() {
             </motion.div>
           ))}
 
-          {/* Tooltip — sibling to pins, positioned at active city coords */}
+          {/* Tooltip — desktop: positioned at pin coords / mobile: centered */}
           <AnimatePresence mode="wait">
             {activeCity && (
-              <motion.div
-                key={activeCity.ville}
-                className="absolute z-30 pointer-events-auto"
-                style={{
-                  left: `${activeCity.coordinates.x}%`,
-                  top: `${activeCity.coordinates.y}%`,
-                  transform: "translate(-50%, calc(-100% - 36px))",
-                }}
-                initial={{ opacity: 0, y: 6, scale: 0.94, filter: "blur(4px)" }}
-                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: 4, scale: 0.96, filter: "blur(3px)" }}
-                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                onPointerEnter={(e) =>
-                  e.pointerType === "mouse" && cancelClose()
-                }
-                onPointerLeave={(e) =>
-                  e.pointerType === "mouse" && scheduleClose()
-                }
-              >
-                <CityTooltip
-                  city={activeCity}
-                  onClose={() => setActiveCity(null)}
-                />
-              </motion.div>
+              <>
+                {/* Desktop tooltip — au-dessus du pin */}
+                <motion.div
+                  key={`desktop-${activeCity.ville}`}
+                  className="absolute z-30 pointer-events-auto hidden md:block"
+                  style={{
+                    left: `${activeCity.coordinates.x}%`,
+                    top: `${activeCity.coordinates.y}%`,
+                    transform: "translate(-50%, calc(-100% - 36px))",
+                  }}
+                  initial={{
+                    opacity: 0,
+                    y: 6,
+                    scale: 0.94,
+                    filter: "blur(4px)",
+                  }}
+                  animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: 4, scale: 0.96, filter: "blur(3px)" }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  onPointerEnter={(e) =>
+                    e.pointerType === "mouse" && cancelClose()
+                  }
+                  onPointerLeave={(e) =>
+                    e.pointerType === "mouse" && scheduleClose()
+                  }
+                >
+                  <CityTooltip
+                    city={activeCity}
+                    onClose={() => setActiveCity(null)}
+                  />
+                </motion.div>
+
+                {/* Mobile tooltip — centré dans la carte */}
+                <motion.div
+                  key={`mobile-${activeCity.ville}`}
+                  className="absolute z-30 pointer-events-auto md:hidden left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  initial={{ opacity: 0, scale: 0.9, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, scale: 0.9, filter: "blur(3px)" }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <CityTooltip
+                    city={activeCity}
+                    onClose={() => setActiveCity(null)}
+                  />
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
         </div>

@@ -22,7 +22,7 @@ export const COPY = {
   },
 
   hero: {
-    title: "Étudier en Espagne",
+    title: "Bourbon Academy",
     subtitle:
       "La plateforme qui connecte les étudiants avec les meilleures écoles d'Espagne",
     ctaPrimary: "Commencer mon projet d'étude",
@@ -56,7 +56,7 @@ export const COPY = {
       subtitle: "Vous pouvez candidater en 3 étapes",
     },
     candidature: {
-      title: "Inscrivez-vous",
+      title: "Envoyer votre candidature",
       subtitle: "Munissez vous de votre bulletin de notes au lycée",
     },
   },

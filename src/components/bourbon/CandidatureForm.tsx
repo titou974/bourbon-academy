@@ -24,7 +24,7 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const STEPS = [
   { number: 1, label: "Coordonnées" },
-  { number: 2, label: "Documents" },
+  { number: 2, label: "Bulletins" },
   { number: 3, label: "Confirmation" },
 ] as const;
 

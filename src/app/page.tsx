@@ -5,7 +5,7 @@ import { FiliereSection } from "@/components/bourbon/FiliereSection";
 import { SpainMap } from "@/components/bourbon/SpainMap";
 import { ProcessSection } from "@/components/bourbon/ProcessSection";
 import { CandidatureForm } from "@/components/bourbon/CandidatureForm";
-import { ArrowRight, Instagram, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -45,6 +45,7 @@ export default function Home() {
         id="candidature"
         title={COPY.sections.candidature.title}
         subtitle={COPY.sections.candidature.subtitle}
+        centered
       >
         <div className="px-4 py-8 md:px-10 md:py-12">
           <CandidatureForm />
@@ -74,7 +75,11 @@ export default function Home() {
               className="text-white/40 hover:text-white transition-colors"
               aria-label="Instagram"
             >
-              <Instagram className="w-5 h-5" />
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
             </a>
             <a
               href="https://www.tiktok.com/@bourbon.academy"
