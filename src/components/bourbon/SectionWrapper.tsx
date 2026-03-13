@@ -18,7 +18,7 @@ export default function SectionWrapper({
       id={id}
       className="px-4 pb-4 md:px-6 md:pb-6 relative mt-8 md:mt-10"
     >
-      <div className="max-w-5xl mx-auto rounded-[var(--radius-pill)]  border-border border-1 relative z-20">
+      <div className="max-w-5xl mx-auto rounded-[var(--radius-pill)] border-border border-1 relative z-20">
         <Image
           src="/volcano.png"
           alt="Rocks left top"
@@ -40,13 +40,13 @@ export default function SectionWrapper({
             {title}
           </h2>
         </div>
-        <div className="border-t border-border border-1" />
+        <div className="border-t-1 border-border" />
         <div className={`px-6 md:px-10 py-1 ${centered ? "text-center" : ""}`}>
           <p className="text-text-muted text-sm md:text-base tracking-[-0.64px]">
             {subtitle}
           </p>
         </div>
-        <div className="border-t border-border border-1" />
+        <div className="border-border border-t-1" />
         {children}
       </div>
     </section>
