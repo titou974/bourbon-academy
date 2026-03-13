@@ -3,10 +3,10 @@
 
 export const IMAGES = {
   logo: {
-    src: "/bourbon-academy-logo.svg",
+    src: "/bourbon-academy-logo.png",
     alt: "Logo Bourbon Academy",
-    width: 46,
-    height: 46,
+    width: 40,
+    height: 40,
   },
 
   hero: {
@@ -63,4 +63,4 @@ export const IMAGES = {
       alt: "Attendre la réponse",
     },
   },
-} as const
+} as const;

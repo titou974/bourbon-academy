@@ -1,46 +1,102 @@
 "use server";
 
-import { candidatureSchema } from "@/lib/validations";
+import { step1Schema, step2Schema } from "@/lib/validations";
 import { prisma } from "@/lib/prisma";
 import { supabase } from "@/lib/supabase";
 import { sendStudentConfirmation, sendTeamNotification } from "@/lib/resend";
 
-export type SubmitResult = {
+export type ActionResult = {
   success: boolean;
+  id?: string;
   error?: string;
 };
 
-export async function submitCandidature(
+// Step 1 — Create candidature with coordonnées
+export async function createCandidature(
   formData: FormData,
-): Promise<SubmitResult> {
-  // Extract fields
+): Promise<ActionResult> {
   const raw = {
     prenom: formData.get("prenom") as string,
     nom: formData.get("nom") as string,
     email: formData.get("email") as string,
     telephone: formData.get("telephone") as string,
-    filiere: formData.get("filiere") as string,
-    message: (formData.get("message") as string) || undefined,
   };
 
-  // Server-side Zod validation
-  const parsed = candidatureSchema.safeParse(raw);
+  const parsed = step1Schema.safeParse(raw);
   if (!parsed.success) {
-    const firstIssue = parsed.error.issues[0];
     return {
       success: false,
-      error: firstIssue?.message ?? "Données invalides",
+      error: parsed.error.issues[0]?.message ?? "Données invalides",
     };
   }
 
-  const data = parsed.data;
+  try {
+    const candidature = await prisma.candidature.create({
+      data: parsed.data,
+    });
+    return { success: true, id: candidature.id };
+  } catch (error) {
+    console.log("error", error);
+    return {
+      success: false,
+      error: "Erreur lors de l'enregistrement. Réessayez.",
+    };
+  }
+}
+
+// Step 2 — Update with filière, langue, message
+export async function updateCandidature(
+  id: string,
+  formData: FormData,
+): Promise<ActionResult> {
+  const raw = {
+    filiere: formData.get("filiere") as string,
+    langue: formData.get("langue") as string,
+    message: (formData.get("message") as string) || undefined,
+  };
+
+  const parsed = step2Schema.safeParse(raw);
+  if (!parsed.success) {
+    return {
+      success: false,
+      error: parsed.error.issues[0]?.message ?? "Données invalides",
+    };
+  }
+
+  try {
+    await prisma.candidature.update({
+      where: { id },
+      data: {
+        ...parsed.data,
+        message: parsed.data.message ?? null,
+      },
+    });
+    return { success: true, id };
+  } catch (error) {
+    console.log("error", error);
+    return {
+      success: false,
+      error: "Erreur lors de la mise à jour. Réessayez.",
+    };
+  }
+}
+
+// Step 3 — Upload bulletin + send emails
+export async function finalizeCandidature(
+  id: string,
+  formData: FormData,
+): Promise<ActionResult> {
+  const candidature = await prisma.candidature.findUnique({ where: { id } });
+  if (!candidature) {
+    return { success: false, error: "Candidature introuvable." };
+  }
 
   // Handle optional bulletin upload
   let bulletinUrl: string | undefined;
   const bulletin = formData.get("bulletin") as File | null;
   if (bulletin && bulletin.size > 0) {
     const ext = bulletin.name.split(".").pop();
-    const path = `${Date.now()}-${data.prenom}-${data.nom}.${ext}`;
+    const path = `${Date.now()}-${candidature.prenom}-${candidature.nom}.${ext}`;
 
     const { error: uploadError } = await supabase.storage
       .from("bulletins")
@@ -59,32 +115,41 @@ export async function submitCandidature(
     bulletinUrl = path;
   }
 
-  // Create candidature in database
   try {
-    await prisma.candidature.create({
+    await prisma.candidature.update({
+      where: { id },
       data: {
-        ...data,
-        message: data.message ?? null,
         bulletinUrl: bulletinUrl ?? null,
+        status: "submitted",
       },
     });
-  } catch {
+  } catch (error) {
+    console.log("error", error);
     return {
       success: false,
-      error: "Erreur lors de l'enregistrement. Réessayez.",
+      error: "Erreur lors de la finalisation. Réessayez.",
     };
   }
 
-  // Send confirmation emails (non-blocking — don't fail the submission if emails fail)
+  // Send confirmation emails (non-blocking)
   try {
-    await Promise.all([
-      sendStudentConfirmation(data.email, data.prenom, data.filiere),
-      sendTeamNotification({ ...data, bulletinUrl }),
-    ]);
+    if (candidature.filiere) {
+      await Promise.all([
+        sendStudentConfirmation(candidature.email, candidature.prenom, candidature.filiere),
+        sendTeamNotification({
+          prenom: candidature.prenom,
+          nom: candidature.nom,
+          email: candidature.email,
+          telephone: candidature.telephone,
+          filiere: candidature.filiere,
+          message: candidature.message,
+          bulletinUrl,
+        }),
+      ]);
+    }
   } catch {
-    // Log but don't fail — candidature is already saved
     console.error("Email sending failed, candidature saved successfully");
   }
 
-  return { success: true };
+  return { success: true, id };
 }

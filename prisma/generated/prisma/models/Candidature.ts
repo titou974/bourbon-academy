@@ -32,6 +32,7 @@ export type CandidatureMinAggregateOutputType = {
   email: string | null
   telephone: string | null
   filiere: string | null
+  langue: string | null
   message: string | null
   bulletinUrl: string | null
   status: string | null
@@ -45,6 +46,7 @@ export type CandidatureMaxAggregateOutputType = {
   email: string | null
   telephone: string | null
   filiere: string | null
+  langue: string | null
   message: string | null
   bulletinUrl: string | null
   status: string | null
@@ -58,6 +60,7 @@ export type CandidatureCountAggregateOutputType = {
   email: number
   telephone: number
   filiere: number
+  langue: number
   message: number
   bulletinUrl: number
   status: number
@@ -73,6 +76,7 @@ export type CandidatureMinAggregateInputType = {
   email?: true
   telephone?: true
   filiere?: true
+  langue?: true
   message?: true
   bulletinUrl?: true
   status?: true
@@ -86,6 +90,7 @@ export type CandidatureMaxAggregateInputType = {
   email?: true
   telephone?: true
   filiere?: true
+  langue?: true
   message?: true
   bulletinUrl?: true
   status?: true
@@ -99,6 +104,7 @@ export type CandidatureCountAggregateInputType = {
   email?: true
   telephone?: true
   filiere?: true
+  langue?: true
   message?: true
   bulletinUrl?: true
   status?: true
@@ -184,7 +190,8 @@ export type CandidatureGroupByOutputType = {
   nom: string
   email: string
   telephone: string
-  filiere: string
+  filiere: string | null
+  langue: string | null
   message: string | null
   bulletinUrl: string | null
   status: string
@@ -218,7 +225,8 @@ export type CandidatureWhereInput = {
   nom?: Prisma.StringFilter<"Candidature"> | string
   email?: Prisma.StringFilter<"Candidature"> | string
   telephone?: Prisma.StringFilter<"Candidature"> | string
-  filiere?: Prisma.StringFilter<"Candidature"> | string
+  filiere?: Prisma.StringNullableFilter<"Candidature"> | string | null
+  langue?: Prisma.StringNullableFilter<"Candidature"> | string | null
   message?: Prisma.StringNullableFilter<"Candidature"> | string | null
   bulletinUrl?: Prisma.StringNullableFilter<"Candidature"> | string | null
   status?: Prisma.StringFilter<"Candidature"> | string
@@ -231,7 +239,8 @@ export type CandidatureOrderByWithRelationInput = {
   nom?: Prisma.SortOrder
   email?: Prisma.SortOrder
   telephone?: Prisma.SortOrder
-  filiere?: Prisma.SortOrder
+  filiere?: Prisma.SortOrderInput | Prisma.SortOrder
+  langue?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
   bulletinUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -247,7 +256,8 @@ export type CandidatureWhereUniqueInput = Prisma.AtLeast<{
   nom?: Prisma.StringFilter<"Candidature"> | string
   email?: Prisma.StringFilter<"Candidature"> | string
   telephone?: Prisma.StringFilter<"Candidature"> | string
-  filiere?: Prisma.StringFilter<"Candidature"> | string
+  filiere?: Prisma.StringNullableFilter<"Candidature"> | string | null
+  langue?: Prisma.StringNullableFilter<"Candidature"> | string | null
   message?: Prisma.StringNullableFilter<"Candidature"> | string | null
   bulletinUrl?: Prisma.StringNullableFilter<"Candidature"> | string | null
   status?: Prisma.StringFilter<"Candidature"> | string
@@ -260,7 +270,8 @@ export type CandidatureOrderByWithAggregationInput = {
   nom?: Prisma.SortOrder
   email?: Prisma.SortOrder
   telephone?: Prisma.SortOrder
-  filiere?: Prisma.SortOrder
+  filiere?: Prisma.SortOrderInput | Prisma.SortOrder
+  langue?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
   bulletinUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -279,7 +290,8 @@ export type CandidatureScalarWhereWithAggregatesInput = {
   nom?: Prisma.StringWithAggregatesFilter<"Candidature"> | string
   email?: Prisma.StringWithAggregatesFilter<"Candidature"> | string
   telephone?: Prisma.StringWithAggregatesFilter<"Candidature"> | string
-  filiere?: Prisma.StringWithAggregatesFilter<"Candidature"> | string
+  filiere?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
+  langue?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
   message?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
   bulletinUrl?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
   status?: Prisma.StringWithAggregatesFilter<"Candidature"> | string
@@ -292,7 +304,8 @@ export type CandidatureCreateInput = {
   nom: string
   email: string
   telephone: string
-  filiere: string
+  filiere?: string | null
+  langue?: string | null
   message?: string | null
   bulletinUrl?: string | null
   status?: string
@@ -305,7 +318,8 @@ export type CandidatureUncheckedCreateInput = {
   nom: string
   email: string
   telephone: string
-  filiere: string
+  filiere?: string | null
+  langue?: string | null
   message?: string | null
   bulletinUrl?: string | null
   status?: string
@@ -318,7 +332,8 @@ export type CandidatureUpdateInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   telephone?: Prisma.StringFieldUpdateOperationsInput | string
-  filiere?: Prisma.StringFieldUpdateOperationsInput | string
+  filiere?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -331,7 +346,8 @@ export type CandidatureUncheckedUpdateInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   telephone?: Prisma.StringFieldUpdateOperationsInput | string
-  filiere?: Prisma.StringFieldUpdateOperationsInput | string
+  filiere?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -344,7 +360,8 @@ export type CandidatureCreateManyInput = {
   nom: string
   email: string
   telephone: string
-  filiere: string
+  filiere?: string | null
+  langue?: string | null
   message?: string | null
   bulletinUrl?: string | null
   status?: string
@@ -357,7 +374,8 @@ export type CandidatureUpdateManyMutationInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   telephone?: Prisma.StringFieldUpdateOperationsInput | string
-  filiere?: Prisma.StringFieldUpdateOperationsInput | string
+  filiere?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -370,7 +388,8 @@ export type CandidatureUncheckedUpdateManyInput = {
   nom?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   telephone?: Prisma.StringFieldUpdateOperationsInput | string
-  filiere?: Prisma.StringFieldUpdateOperationsInput | string
+  filiere?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -384,6 +403,7 @@ export type CandidatureCountOrderByAggregateInput = {
   email?: Prisma.SortOrder
   telephone?: Prisma.SortOrder
   filiere?: Prisma.SortOrder
+  langue?: Prisma.SortOrder
   message?: Prisma.SortOrder
   bulletinUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -397,6 +417,7 @@ export type CandidatureMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   telephone?: Prisma.SortOrder
   filiere?: Prisma.SortOrder
+  langue?: Prisma.SortOrder
   message?: Prisma.SortOrder
   bulletinUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -410,6 +431,7 @@ export type CandidatureMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   telephone?: Prisma.SortOrder
   filiere?: Prisma.SortOrder
+  langue?: Prisma.SortOrder
   message?: Prisma.SortOrder
   bulletinUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -437,6 +459,7 @@ export type CandidatureSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   email?: boolean
   telephone?: boolean
   filiere?: boolean
+  langue?: boolean
   message?: boolean
   bulletinUrl?: boolean
   status?: boolean
@@ -450,6 +473,7 @@ export type CandidatureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   email?: boolean
   telephone?: boolean
   filiere?: boolean
+  langue?: boolean
   message?: boolean
   bulletinUrl?: boolean
   status?: boolean
@@ -463,6 +487,7 @@ export type CandidatureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   email?: boolean
   telephone?: boolean
   filiere?: boolean
+  langue?: boolean
   message?: boolean
   bulletinUrl?: boolean
   status?: boolean
@@ -476,12 +501,13 @@ export type CandidatureSelectScalar = {
   email?: boolean
   telephone?: boolean
   filiere?: boolean
+  langue?: boolean
   message?: boolean
   bulletinUrl?: boolean
   status?: boolean
 }
 
-export type CandidatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "prenom" | "nom" | "email" | "telephone" | "filiere" | "message" | "bulletinUrl" | "status", ExtArgs["result"]["candidature"]>
+export type CandidatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "prenom" | "nom" | "email" | "telephone" | "filiere" | "langue" | "message" | "bulletinUrl" | "status", ExtArgs["result"]["candidature"]>
 
 export type $CandidaturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Candidature"
@@ -493,7 +519,8 @@ export type $CandidaturePayload<ExtArgs extends runtime.Types.Extensions.Interna
     nom: string
     email: string
     telephone: string
-    filiere: string
+    filiere: string | null
+    langue: string | null
     message: string | null
     bulletinUrl: string | null
     status: string
@@ -927,6 +954,7 @@ export interface CandidatureFieldRefs {
   readonly email: Prisma.FieldRef<"Candidature", 'String'>
   readonly telephone: Prisma.FieldRef<"Candidature", 'String'>
   readonly filiere: Prisma.FieldRef<"Candidature", 'String'>
+  readonly langue: Prisma.FieldRef<"Candidature", 'String'>
   readonly message: Prisma.FieldRef<"Candidature", 'String'>
   readonly bulletinUrl: Prisma.FieldRef<"Candidature", 'String'>
   readonly status: Prisma.FieldRef<"Candidature", 'String'>

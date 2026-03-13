@@ -7,10 +7,12 @@ import { ProcessSection } from "@/components/bourbon/ProcessSection";
 import { CandidatureForm } from "@/components/bourbon/CandidatureForm";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MobileBottomBar } from "@/components/bourbon/MobileBottomBar";
 
 export default function Home() {
   return (
     <main className="bg-[var(--background-center)]">
+      <MobileBottomBar />
       <HeroSection />
       <SectionWrapper
         id="filieres"
@@ -48,7 +50,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <p className="text-white/60 text-sm">{COPY.brand.contact}</p>
             <Button variant="default" size="sm" asChild className="text-sm">
-              <a href="mailto:contact@bourbon-academy.fr">
+              <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
                 Nous écrire
                 <ArrowRight className="size-2" />
               </a>

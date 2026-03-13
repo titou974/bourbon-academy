@@ -525,6 +525,7 @@ export const CandidatureScalarFieldEnum = {
   email: 'email',
   telephone: 'telephone',
   filiere: 'filiere',
+  langue: 'langue',
   message: 'message',
   bulletinUrl: 'bulletinUrl',
   status: 'status'

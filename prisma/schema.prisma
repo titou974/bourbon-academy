@@ -17,7 +17,8 @@ model Candidature {
   nom         String
   email       String
   telephone   String
-  filiere     String
+  filiere     String?
+  langue      String?
   message     String?
   bulletinUrl String?
   status      String   @default("pending")

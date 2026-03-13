@@ -65,26 +65,26 @@ export const COPY = {
   steps: [
     {
       step: "Etape 1",
-      title: "Remplis tes coordonnées et choisi ta filière",
+      title: "Remplis tes coordonnées",
       description:
-        "Choisi bien la filière qui te plaît et transmet nous tes coordoonées pour qu'on te re-contact.",
+        "Transmets-nous tes informations personnelles pour qu'on puisse te recontacter rapidement.",
     },
     {
       step: "Etape 2",
-      title: "Transmet ton bulletin de première",
+      title: "Choisis ta filière et ta langue",
       description:
-        "Télécharge ton bulletin de première (et de terminale si tu l'as déjà.)",
+        "Sélectionne la filière qui te plaît et la langue dans laquelle tu souhaites étudier.",
     },
     {
       step: "Etape 3",
-      title: "Attend ta réponse sous 48h",
+      title: "Envoie ton bulletin scolaire",
       description:
-        "Nous traitons les dossiers le plus rapidement possible pour que tu puisses intégrer ton école rapidement",
+        "Télécharge ton bulletin de première (et de terminale si tu l'as déjà) puis envoie ta candidature.",
     },
   ] as const,
 
   form: {
-    steps: ["Cursus", "Bulletins", "Coordonnées"] as const,
+    steps: ["Coordonnées", "Filière", "Bulletin"] as const,
     submit: "Suivant",
   },
 } as const;

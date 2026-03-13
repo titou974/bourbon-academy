@@ -32,7 +32,7 @@ export function HeroSection() {
       <NavBar />
 
       {/* Contenu hero centré */}
-      <div className="flex flex-col items-center gap-8 md:gap-10 px-4 max-w-xl mx-auto">
+      <div className="flex flex-col items-center gap-8 md:gap-16 px-4 max-w-xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"

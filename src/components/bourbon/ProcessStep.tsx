@@ -29,8 +29,6 @@ export function ProcessStep({
           {description}
         </p>
       </div>
-
-      {/* Image with gradient fade */}
       <div className="relative mt-auto mx-5 mb-4 h-[220px] rounded-[15px] border border-secondary overflow-hidden">
         <Image
           src={imageSrc}
@@ -38,7 +36,6 @@ export function ProcessStep({
           fill
           className={`transition-transform duration-300 ease-in-out object-contain ${imageClassName}`}
         />
-        {/* Bottom gradient fade to card bg */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

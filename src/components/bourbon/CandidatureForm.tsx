@@ -6,7 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import { candidatureSchema, type CandidatureInput } from "@/lib/validations";
-import { submitCandidature, type SubmitResult } from "@/app/actions";
+import {
+  createCandidature,
+  updateCandidature,
+  finalizeCandidature,
+} from "@/app/actions";
 import {
   Form,
   FormControl,
@@ -31,8 +35,8 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const STEPS = [
   { number: 1, label: "Coordonnées" },
-  { number: 2, label: "Bulletins" },
-  { number: 3, label: "Confirmation" },
+  { number: 2, label: "Filière" },
+  { number: 3, label: "Bulletin" },
 ] as const;
 
 const FILIERE_OPTIONS = [
@@ -41,6 +45,46 @@ const FILIERE_OPTIONS = [
   { value: "veterinaire", label: "Vétérinaire" },
   { value: "infirmier", label: "Infirmier" },
 ] as const;
+
+const LANGUE_OPTIONS = [
+  { value: "francais", label: "Français" },
+  { value: "espagnol", label: "Espagnol" },
+  { value: "anglais", label: "Anglais" },
+] as const;
+
+const MAX_DIMENSION = 1600;
+const JPEG_QUALITY = 0.7;
+
+function compressImage(file: File): Promise<File> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      let { width, height } = img;
+      if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+        const ratio = Math.min(MAX_DIMENSION / width, MAX_DIMENSION / height);
+        width = Math.round(width * ratio);
+        height = Math.round(height * ratio);
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext("2d")!.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        (blob) => {
+          if (blob && blob.size < file.size) {
+            resolve(new File([blob], file.name, { type: "image/jpeg" }));
+          } else {
+            resolve(file);
+          }
+        },
+        "image/jpeg",
+        JPEG_QUALITY,
+      );
+    };
+    img.onerror = () => resolve(file);
+    img.src = URL.createObjectURL(file);
+  });
+}
 
 const stepVariants = {
   enter: (direction: number) => ({
@@ -152,6 +196,7 @@ export function CandidatureForm() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
   const [successLottie, setSuccessLottie] = useState<object | null>(null);
+  const [candidatureId, setCandidatureId] = useState<string | null>(null);
 
   const form = useForm<CandidatureInput>({
     resolver: zodResolver(candidatureSchema),
@@ -161,43 +206,82 @@ export function CandidatureForm() {
       email: "",
       telephone: "",
       filiere: "",
+      langue: "",
       message: "",
     },
   });
 
   const goTo = (next: number) => {
+    setServerError(null);
     setDirection(next > step ? 1 : -1);
     setStep(next);
   };
 
   const handleNextStep1 = async () => {
-    const valid = await form.trigger([
-      "prenom",
-      "nom",
-      "email",
-      "telephone",
-      "filiere",
-    ]);
-    if (valid) goTo(2);
-  };
+    const valid = await form.trigger(["prenom", "nom", "email", "telephone"]);
+    if (!valid) return;
 
-  const handleSubmit = async (data: CandidatureInput) => {
     setIsSubmitting(true);
     setServerError(null);
-
     try {
-      const formData = new FormData();
-      formData.append("prenom", data.prenom);
-      formData.append("nom", data.nom);
-      formData.append("email", data.email);
-      formData.append("telephone", data.telephone);
-      formData.append("filiere", data.filiere);
-      if (data.message) formData.append("message", data.message);
-      if (uploadedFile) formData.append("bulletin", uploadedFile);
+      const fd = new FormData();
+      fd.append("prenom", form.getValues("prenom"));
+      fd.append("nom", form.getValues("nom"));
+      fd.append("email", form.getValues("email"));
+      fd.append("telephone", form.getValues("telephone"));
 
-      // Preload lottie in parallel with submission
+      const result = await createCandidature(fd);
+      if (result.success && result.id) {
+        setCandidatureId(result.id);
+        goTo(2);
+      } else {
+        setServerError(result.error ?? "Une erreur est survenue");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleNextStep2 = async () => {
+    const valid = await form.trigger(["filiere", "langue"]);
+    if (!valid || !candidatureId) return;
+
+    setIsSubmitting(true);
+    setServerError(null);
+    try {
+      const fd = new FormData();
+      fd.append("filiere", form.getValues("filiere"));
+      fd.append("langue", form.getValues("langue"));
+      const message = form.getValues("message");
+      if (message) fd.append("message", message);
+
+      const result = await updateCandidature(candidatureId, fd);
+      if (result.success) {
+        goTo(3);
+      } else {
+        setServerError(result.error ?? "Une erreur est survenue");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!candidatureId) return;
+
+    setIsSubmitting(true);
+    setServerError(null);
+    try {
+      const fd = new FormData();
+      if (uploadedFile) {
+        const file = uploadedFile.type.startsWith("image/")
+          ? await compressImage(uploadedFile)
+          : uploadedFile;
+        fd.append("bulletin", file);
+      }
+
       const [result] = await Promise.all([
-        submitCandidature(formData),
+        finalizeCandidature(candidatureId, fd),
         fetch("/lottie/success.json")
           .then((r) => (r.ok ? r.json() : null))
           .catch(() => null)
@@ -218,68 +302,71 @@ export function CandidatureForm() {
 
   if (submitted) {
     return (
-      <motion.div
-        className="text-center py-12 flex flex-col items-center"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        {successLottie ? (
-          <Lottie
-            animationData={successLottie}
-            loop={false}
-            className="w-40 h-40 mb-4"
-          />
-        ) : (
-          <motion.div
-            className="w-20 h-20 rounded-full bg-success flex items-center justify-center mb-6"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 200,
-              damping: 15,
-              delay: 0.2,
-            }}
-          >
-            <motion.svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+      <div className="max-w-lg mx-auto">
+        <Stepper currentStep={4} />
+        <motion.div
+          className="text-center py-12 flex flex-col items-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          {successLottie ? (
+            <Lottie
+              animationData={successLottie}
+              loop={false}
+              className="w-40 h-40 mb-4"
+            />
+          ) : (
+            <motion.div
+              className="w-20 h-20 rounded-full bg-success flex items-center justify-center mb-6"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                delay: 0.2,
+              }}
             >
-              <motion.path
-                d="M5 13l4 4L19 7"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-              />
-            </motion.svg>
-          </motion.div>
-        )}
-        <motion.h3
-          className="text-2xl font-bold text-success mb-4"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          Candidature envoyée !
-        </motion.h3>
-        <motion.p
-          className="text-text-secondary"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-        >
-          Nous vous répondons sous 24h à l&apos;adresse{" "}
-          <strong>{form.getValues("email")}</strong>.
-        </motion.p>
-      </motion.div>
+              <motion.svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <motion.path
+                  d="M5 13l4 4L19 7"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                />
+              </motion.svg>
+            </motion.div>
+          )}
+          <motion.h3
+            className="text-2xl font-bold text-success mb-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            Candidature envoyée !
+          </motion.h3>
+          <motion.p
+            className="text-text-secondary"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            Nous vous répondons sous 24h à l&apos;adresse{" "}
+            <strong>{form.getValues("email")}</strong>.
+          </motion.p>
+        </motion.div>
+      </div>
     );
   }
 
@@ -288,7 +375,13 @@ export function CandidatureForm() {
       <Stepper currentStep={step} />
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="relative">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+          className="relative"
+        >
           <AnimatePresence mode="wait" custom={direction}>
             {/* STEP 1 — Coordonnées */}
             {step === 1 && (
@@ -362,6 +455,34 @@ export function CandidatureForm() {
                   )}
                 />
 
+                {serverError && (
+                  <p className="text-sm text-destructive">{serverError}</p>
+                )}
+
+                <Button
+                  type="button"
+                  onClick={handleNextStep1}
+                  disabled={isSubmitting}
+                  className="w-full min-h-[44px]"
+                >
+                  {isSubmitting ? "Enregistrement..." : "Suivant"}
+                  <ArrowRight className="size-4" />
+                </Button>
+              </motion.div>
+            )}
+
+            {/* STEP 2 — Filière & Langue */}
+            {step === 2 && (
+              <motion.div
+                key="step-2"
+                custom={direction}
+                variants={stepVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="space-y-4"
+              >
                 <FormField
                   control={form.control}
                   name="filiere"
@@ -392,6 +513,34 @@ export function CandidatureForm() {
 
                 <FormField
                   control={form.control}
+                  name="langue"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Langue d&apos;enseignement</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger className="w-full min-h-[44px]">
+                            <SelectValue placeholder="Choisir une langue..." />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent position="popper" sideOffset={4}>
+                          {LANGUE_OPTIONS.map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
                   name="message"
                   render={({ field }) => (
                     <FormItem>
@@ -409,53 +558,31 @@ export function CandidatureForm() {
                   )}
                 />
 
+                {serverError && (
+                  <p className="text-sm text-destructive">{serverError}</p>
+                )}
+
                 <Button
                   type="button"
-                  onClick={handleNextStep1}
+                  onClick={handleNextStep2}
+                  disabled={isSubmitting}
                   className="w-full min-h-[44px]"
                 >
-                  Suivant
+                  {isSubmitting ? "Enregistrement..." : "Suivant"}
                   <ArrowRight className="size-4" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => goTo(1)}
+                  className="w-full min-h-[44px]"
+                >
+                  Retour
                 </Button>
               </motion.div>
             )}
 
-            {/* STEP 2 — Upload bulletin */}
-            {step === 2 && (
-              <motion.div
-                key="step-2"
-                custom={direction}
-                variants={stepVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="space-y-4"
-              >
-                <FileUpload onFileSelect={setUploadedFile} />
-
-                <div className="flex flex-col gap-3">
-                  <Button
-                    type="button"
-                    onClick={() => goTo(3)}
-                    className="w-full min-h-[44px]"
-                  >
-                    {uploadedFile ? "Continuer" : "Passer cette étape"}
-                    <ArrowRight className="size-4" />
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={() => goTo(1)}
-                    className="min-h-[44px]"
-                  >
-                    Retour
-                  </Button>
-                </div>
-              </motion.div>
-            )}
-
-            {/* STEP 3 — Recap + Submit */}
+            {/* STEP 3 — Bulletin + Submit */}
             {step === 3 && (
               <motion.div
                 key="step-3"
@@ -467,41 +594,7 @@ export function CandidatureForm() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="space-y-4"
               >
-                <div className="bg-muted rounded-[var(--radius-card)] p-4 space-y-2">
-                  <h3 className="font-semibold text-foreground">
-                    Récapitulatif
-                  </h3>
-                  <p className="text-sm">
-                    <span className="text-muted-foreground">Nom : </span>
-                    {form.getValues("prenom")} {form.getValues("nom")}
-                  </p>
-                  <p className="text-sm">
-                    <span className="text-muted-foreground">Email : </span>
-                    {form.getValues("email")}
-                  </p>
-                  <p className="text-sm">
-                    <span className="text-muted-foreground">Téléphone : </span>
-                    {form.getValues("telephone")}
-                  </p>
-                  <p className="text-sm">
-                    <span className="text-muted-foreground">Filière : </span>
-                    {FILIERE_OPTIONS.find(
-                      (o) => o.value === form.getValues("filiere"),
-                    )?.label ?? form.getValues("filiere")}
-                  </p>
-                  {form.getValues("message") && (
-                    <p className="text-sm">
-                      <span className="text-muted-foreground">Message : </span>
-                      {form.getValues("message")}
-                    </p>
-                  )}
-                  {uploadedFile && (
-                    <p className="text-sm">
-                      <span className="text-muted-foreground">Bulletin : </span>
-                      {uploadedFile.name}
-                    </p>
-                  )}
-                </div>
+                <FileUpload onFileSelect={setUploadedFile} />
 
                 {serverError && (
                   <motion.p
