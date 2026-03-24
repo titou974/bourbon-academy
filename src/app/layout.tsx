@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NavBar } from "@/components/bourbon/NavBar";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { COPY } from "@/constants/fr_strings";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -21,28 +22,15 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Bourbon Academy — Étudier en Espagne",
-    template: "%s | Bourbon Academy",
+    default: COPY.metadata.title,
+    template: COPY.metadata.titleTemplate,
   },
-  description:
-    "Bourbon Academy accompagne les étudiants français et des DROM-TOM dans leurs études en Espagne : médecine, kinésithérapie, dentaire, vétérinaire et plus. +50 écoles partenaires, +1000 étudiants accompagnés.",
-  keywords: [
-    "études en Espagne",
-    "étudier en Espagne",
-    "médecine Espagne",
-    "kinésithérapie Espagne",
-    "dentaire Espagne",
-    "vétérinaire Espagne",
-    "université Espagne",
-    "école Espagne",
-    "Bourbon Academy",
-    "accompagnement études",
-    "inscription université Espagne",
-  ],
-  authors: [{ name: "Bourbon Academy" }],
-  creator: "Bourbon Academy",
-  publisher: "Bourbon Academy",
-  applicationName: "Bourbon Academy",
+  description: COPY.metadata.description,
+  keywords: [...COPY.metadata.keywords],
+  authors: [{ name: COPY.brand.name }],
+  creator: COPY.brand.name,
+  publisher: COPY.brand.name,
+  applicationName: COPY.brand.name,
   category: "education",
   referrer: "origin-when-cross-origin",
   formatDetection: {
@@ -57,24 +45,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: "/",
-    siteName: "Bourbon Academy",
-    title: "Bourbon Academy — Étudier en Espagne",
-    description:
-      "La plateforme qui connecte les étudiants avec les meilleures écoles d'Espagne. +50 universités partenaires, accompagnement personnalisé.",
+    siteName: COPY.brand.name,
+    title: COPY.metadata.title,
+    description: COPY.metadata.ogDescription,
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Bourbon Academy — Étudier en Espagne",
+        alt: COPY.metadata.ogImageAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bourbon Academy — Étudier en Espagne",
-    description:
-      "La plateforme qui connecte les étudiants avec les meilleures écoles d'Espagne. +50 universités partenaires.",
+    title: COPY.metadata.title,
+    description: COPY.metadata.twitterDescription,
     images: ["/images/og-image.png"],
   },
   robots: {

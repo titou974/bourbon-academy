@@ -6,6 +6,7 @@ import { FiliereModal } from "./FiliereModal";
 import type { Filiere } from "@/types";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { COPY } from "@/constants/fr_strings";
 
 interface FiliereCardProps {
   filiere: Filiere;
@@ -22,7 +23,7 @@ export function FiliereCard({ filiere }: FiliereCardProps) {
         role="button"
         tabIndex={0}
         onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
-        aria-label={`En savoir plus sur ${filiere.nom}`}
+        aria-label={COPY.filiereCard.ariaLabel(filiere.nom)}
       >
         {/* Zone image avec couleur filière + overlay */}
         <div className="relative mx-[14px] mt-[14px] h-[11em] rounded-2xl overflow-hidden border-1 border-border">
@@ -39,7 +40,7 @@ export function FiliereCard({ filiere }: FiliereCardProps) {
           {/* Bouton découvrir — centré, mobile uniquement */}
           <span className="md:hidden absolute inset-0 z-20 flex items-center justify-center">
             <span className="inline-flex items-center gap-1 rounded-full bg-white/90 px-4 py-1.5 text-xs font-medium text-primary shadow-sm backdrop-blur-sm">
-              Découvrir <ArrowUpRight className="size-3.5" />
+              {COPY.filiereCard.discover} <ArrowUpRight className="size-3.5" />
             </span>
           </span>
           {/* Icône expand — coin haut-droite, desktop */}

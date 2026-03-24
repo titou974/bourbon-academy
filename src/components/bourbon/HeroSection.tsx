@@ -49,9 +49,9 @@ export function HeroSection() {
               <span className="relative size-2 rounded-full bg-primary" />
             </span>
             <div className="flex items-center gap-1">
-              <span>France et Drom-Com</span>
+              <span>{COPY.hero.badgeFrance}</span>
               <ArrowRight className="w-3" />
-              <span>Espagne</span>
+              <span>{COPY.hero.badgeSpain}</span>
             </div>
           </motion.div>
           <div className="space-y-2">

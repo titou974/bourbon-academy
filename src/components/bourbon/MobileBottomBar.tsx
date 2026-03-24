@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { COPY } from "@/constants/fr_strings";
 
 export function MobileBottomBar() {
   const [visible, setVisible] = useState(false);
@@ -55,12 +56,12 @@ export function MobileBottomBar() {
         >
           <Button asChild variant="outline" className="flex-1 min-h-[44px]">
             <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
-              Contactez-nous
+              {COPY.mobileBottomBar.contact}
             </a>
           </Button>
           <Button asChild className="flex-1 min-h-[44px]">
             <a href="#candidature">
-              Envoyer ma candidature
+              {COPY.mobileBottomBar.candidature}
               <ArrowRight className="size-4" />
             </a>
           </Button>

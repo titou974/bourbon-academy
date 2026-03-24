@@ -68,7 +68,7 @@ export function NavBar() {
         <button
           className="md:hidden relative w-5 h-4 p-0"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-label={menuOpen ? COPY.nav.menuClose : COPY.nav.menuOpen}
         >
           <span
             className={`absolute inset-x-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-in-out top-0 origin-center ${menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : ""}`}

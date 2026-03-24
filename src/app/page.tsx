@@ -51,7 +51,7 @@ export default function Home() {
             <p className="text-white/60 text-sm">{COPY.brand.contact}</p>
             <Button variant="default" size="sm" asChild className="text-sm">
               <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
-                Nous écrire
+                {COPY.footer.writeToUs}
                 <ArrowRight className="size-2" />
               </a>
             </Button>
@@ -103,7 +103,7 @@ export default function Home() {
           </div>
           <div className="w-12 h-px bg-white/10" />
           <p className="text-white/40 text-xs flex items-center gap-1.5">
-            Créé par des Réunionnais 🇷🇪 —{" "}
+            {COPY.footer.madeBy}{" "}
             <a
               href="https://titouanhirsch.com"
               target="_blank"
@@ -114,7 +114,7 @@ export default function Home() {
             </a>
           </p>
           <p className="text-white/30 text-[11px]">
-            © {new Date().getFullYear()} Bourbon Academy. Tous droits réservés.
+            {COPY.footer.copyright(new Date().getFullYear())}
           </p>
         </div>
       </footer>

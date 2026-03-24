@@ -19,6 +19,7 @@ model Candidature {
   telephone   String
   filiere     String?
   langue      String?
+  statut      String?
   message     String?
   bulletinUrl String?
   status      String   @default("pending")

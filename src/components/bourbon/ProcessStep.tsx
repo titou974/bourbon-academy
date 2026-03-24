@@ -19,7 +19,7 @@ export function ProcessStep({
     <div className="bg-card border-[0.5px] border-secondary rounded-[var(--radius-card)] w-full flex flex-col overflow-hidden group">
       {/* Text content */}
       <div className="px-5 pt-4 pb-3 flex flex-col gap-1.5">
-        <span className="text-secondary text-xs font-medium tracking-[-0.48px]">
+        <span className="text-secondary text-xs font-semibold tracking-[-0.48px]">
           {stepLabel}
         </span>
         <h3 className="text-foreground text-base font-semibold tracking-[-0.48px] leading-snug">

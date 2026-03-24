@@ -15,6 +15,7 @@ import CardTextImage from "./CardTextImage";
 import DebounchesVisual from "./DebounchesVisual";
 import ProgrammeVisual from "./ProgrammeVisual";
 import CardIconTitle from "./CardIconTitle";
+import { COPY } from "@/constants/fr_strings";
 
 interface FiliereModalProps {
   filiere: Filiere;
@@ -64,10 +65,10 @@ export function FiliereModal({
                 </p>
               </div>
               <CardTextImage
-                title="Localisation"
+                title={COPY.filiereModal.localisation}
                 description={
                   <>
-                    Nous avons des écoles présente sur{" "}
+                    {COPY.filiereModal.localisationDesc}{" "}
                     <span className="font-medium">
                       {filiere.localisations
                         ?.map((localisation) => localisation.city)
@@ -82,7 +83,7 @@ export function FiliereModal({
                 />
               </CardTextImage>
               <CardTextImage
-                title="Conditions d'entrée"
+                title={COPY.filiereModal.conditions}
                 description={
                   <span className="flex flex-col gap-1">
                     {filiere.conditions.map((c) => (
@@ -94,25 +95,25 @@ export function FiliereModal({
                   </span>
                 }
               />
-              <CardTextImage title="Durée des études">
+              <CardTextImage title={COPY.filiereModal.duree}>
                 <CardIconTitle
                   src="/images/icons/time.png"
                   alt="Temps"
                   width={50}
                   height={50}
                 >
-                  {filiere.dureEtudesAnnees} ans de formation
+                  {filiere.dureEtudesAnnees} {COPY.filiereModal.anneesFormation}
                 </CardIconTitle>
               </CardTextImage>
               <CardTextImage
-                title="Débouchés professionnels"
-                description="Les métiers accessibles après l'obtention de votre diplôme."
+                title={COPY.filiereModal.debouches}
+                description={COPY.filiereModal.debouchesDesc}
               >
                 <DebounchesVisual debouches={filiere.debouches} />
               </CardTextImage>
               <CardTextImage
-                title="Contenu de la formation"
-                description="Les grandes matières enseignées tout au long du cursus."
+                title={COPY.filiereModal.contenu}
+                description={COPY.filiereModal.contenuDesc}
               >
                 <ProgrammeVisual phases={filiere.programme} />
                 {filiere.details?.map((detail: FiliereDetail, i) =>
@@ -120,7 +121,7 @@ export function FiliereModal({
                     <CardIconTitle
                       key={i}
                       src="/images/icons/europe-flag.png"
-                      alt="Drapeau européen"
+                      alt={COPY.filiereModal.europeFlagAlt}
                       width={50}
                       height={50}
                     >
@@ -130,11 +131,11 @@ export function FiliereModal({
                     <CardIconTitle
                       key={i}
                       src="/images/icons/student.webp"
-                      alt="crédits ects"
+                      alt={COPY.filiereModal.creditsEcts}
                       width={50}
                       height={50}
                     >
-                      {detail.value} crédits ECTS
+                      {detail.value} {COPY.filiereModal.creditsEcts}
                     </CardIconTitle>
                   ),
                 )}

@@ -6,16 +6,9 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import citiesData from "@/data/schools.json";
 import { StatsCounter } from "./StatsCounter";
 import type { City } from "@/types";
+import { COPY } from "@/constants/fr_strings";
 
 const cities = citiesData as City[];
-
-const FILIERE_LABELS: Record<string, string> = {
-  kine: "Kiné",
-  dentaire: "Dentaire",
-  veterinaire: "Vétérinaire",
-  architecture: "Architecture",
-  infirmier: "Infirmier",
-};
 
 const tooltipTransition = { duration: 0.2, ease: [0.16, 1, 0.3, 1] } as const;
 
@@ -39,7 +32,7 @@ export function SpainMap() {
         <div ref={mapRef} className="relative w-full max-w-3xl mx-auto">
           <Image
             src="/spain-map.png"
-            alt="Carte de l'Espagne avec les villes partenaires"
+            alt={COPY.spainMap.alt}
             width={800}
             height={500}
             className="w-full md:w-[60%] h-auto rounded-xl border border-border mx-auto"
@@ -80,7 +73,7 @@ export function SpainMap() {
                     prev?.ville === city.ville ? null : city,
                   )
                 }
-                aria-label={`Voir les écoles à ${city.ville}`}
+                aria-label={COPY.spainMap.ariaLabel(city.ville)}
                 aria-expanded={activeCity?.ville === city.ville}
               >
                 {/* Mobile tooltip — simple, juste le nom */}
@@ -168,7 +161,7 @@ export function SpainMap() {
                             key={f}
                             className="text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-text-secondary"
                           >
-                            {FILIERE_LABELS[f] ?? f}
+                            {COPY.filiereLabelsShort[f] ?? f}
                           </span>
                         ))}
                       </div>
@@ -177,7 +170,7 @@ export function SpainMap() {
                         <span className="font-semibold text-secondary">
                           {activeCity.etudiantsPlaces}+
                         </span>{" "}
-                        étudiants accompagnés
+                        {COPY.spainMap.studentsLabel}
                       </p>
                     </div>
                   </div>

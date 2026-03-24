@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { COPY } from "@/constants/fr_strings"
 
 export const VALID_FILIERES = [
   "kine",
@@ -8,30 +9,46 @@ export const VALID_FILIERES = [
   "infirmier",
 ] as const
 
+export const VALID_DOMAINES = [
+  "pharmacie",
+  "psychologie",
+  "architecture",
+  "nutrition",
+  "podologie",
+  "ergotherapie",
+  "biologie",
+  "sciences_infirmieres",
+  "sport",
+  "ingenierie_biomedicale",
+] as const
+
 export const VALID_LANGUES = ["francais", "espagnol", "anglais"] as const
+
+export const VALID_STATUTS = ["lyceen", "etudiant", "travailleur", "autre"] as const
 
 // Step 1 — Coordonnées
 export const step1Schema = z.object({
-  prenom: z.string().min(2, "Le prénom doit contenir au moins 2 caractères"),
-  nom: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
-  email: z.string().email("Email invalide"),
-  telephone: z.string().min(10, "Numéro de téléphone invalide"),
+  prenom: z.string().min(2, COPY.validation.prenomMin),
+  nom: z.string().min(2, COPY.validation.nomMin),
+  email: z.string().email(COPY.validation.emailInvalid),
+  telephone: z.string().min(10, COPY.validation.telephoneInvalid),
 })
 
-// Step 2 — Filière & Langue
+// Step 2 — Filières, Statut & Langues
 export const step2Schema = z.object({
-  filiere: z
+  filieres: z
+    .array(z.string())
+    .min(1, COPY.validation.filiereInvalid)
+    .max(3, COPY.validation.filiereTooMany),
+  statut: z
     .string()
     .refine(
-      (val) => (VALID_FILIERES as readonly string[]).includes(val),
-      { message: "Filière invalide" }
+      (val) => (VALID_STATUTS as readonly string[]).includes(val),
+      { message: COPY.validation.statutInvalid }
     ),
-  langue: z
-    .string()
-    .refine(
-      (val) => (VALID_LANGUES as readonly string[]).includes(val),
-      { message: "Langue invalide" }
-    ),
+  langues: z
+    .array(z.string())
+    .min(1, COPY.validation.langueInvalid),
   message: z.string().optional(),
 })
 

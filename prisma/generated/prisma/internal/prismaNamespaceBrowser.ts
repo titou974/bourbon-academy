@@ -79,6 +79,7 @@ export const CandidatureScalarFieldEnum = {
   telephone: 'telephone',
   filiere: 'filiere',
   langue: 'langue',
+  statut: 'statut',
   message: 'message',
   bulletinUrl: 'bulletinUrl',
   status: 'status'

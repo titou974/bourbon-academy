@@ -1,13 +1,6 @@
 import Image from "next/image";
 import type { City } from "@/types";
-
-const FILIERE_LABELS: Record<string, string> = {
-  kine: "Kiné",
-  dentaire: "Dentaire",
-  veterinaire: "Vétérinaire",
-  architecture: "Architecture",
-  infirmier: "Infirmier",
-};
+import { COPY } from "@/constants/fr_strings";
 
 interface CityTooltipProps {
   city: City;
@@ -50,7 +43,7 @@ export function CityTooltip({ city, onClose }: CityTooltipProps) {
                 key={f}
                 className="text-[10px] px-1.5 py-0.5 rounded-full bg-muted text-text-secondary"
               >
-                {FILIERE_LABELS[f] ?? f}
+                {COPY.filiereLabelsShort[f] ?? f}
               </span>
             ))}
           </div>
@@ -60,7 +53,7 @@ export function CityTooltip({ city, onClose }: CityTooltipProps) {
             <span className="font-semibold text-secondary">
               {city.etudiantsPlaces}+
             </span>{" "}
-            étudiants accompagnés
+            {COPY.spainMap.studentsLabel}
           </p>
         </div>
       </div>

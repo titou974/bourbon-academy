@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useState } from "react"
+import { COPY } from "@/constants/fr_strings"
 
 const ACCEPTED_TYPES = ["application/pdf", "image/jpeg", "image/png"]
 const ACCEPTED_EXTENSIONS = ".pdf,.jpg,.jpeg,.png"
@@ -17,7 +18,7 @@ export function FileUpload({ onFileSelect }: FileUploadProps) {
 
   const handleFile = (file: File) => {
     if (!ACCEPTED_TYPES.includes(file.type)) {
-      setError("Format non accepté. Utilisez PDF, JPG ou PNG.")
+      setError(COPY.fileUpload.invalidFormat)
       setSelectedFile(null)
       onFileSelect(null)
       return
@@ -30,7 +31,7 @@ export function FileUpload({ onFileSelect }: FileUploadProps) {
   return (
     <div className="space-y-3">
       <p className="text-sm text-text-secondary">
-        Ajoutez vos bulletins scolaires (optionnel — PDF, JPG ou PNG)
+        {COPY.fileUpload.description}
       </p>
 
       <div
@@ -56,7 +57,7 @@ export function FileUpload({ onFileSelect }: FileUploadProps) {
         }}
         role="button"
         tabIndex={0}
-        aria-label="Zone d'upload de fichier"
+        aria-label={COPY.fileUpload.ariaLabel}
       >
         {selectedFile ? (
           <p className="text-sm text-success font-medium">
@@ -65,11 +66,11 @@ export function FileUpload({ onFileSelect }: FileUploadProps) {
         ) : (
           <>
             <p className="text-text-secondary text-sm">
-              Glissez votre fichier ici ou{" "}
-              <span className="text-primary underline">parcourir</span>
+              {COPY.fileUpload.dragText}{" "}
+              <span className="text-primary underline">{COPY.fileUpload.browse}</span>
             </p>
             <p className="text-text-muted text-xs mt-1">
-              PDF, JPG, PNG acceptés
+              {COPY.fileUpload.acceptedFormats}
             </p>
           </>
         )}
@@ -98,7 +99,7 @@ export function FileUpload({ onFileSelect }: FileUploadProps) {
           }}
           className="text-xs text-muted-foreground hover:text-destructive underline"
         >
-          Supprimer le fichier
+          {COPY.fileUpload.removeFile}
         </button>
       )}
     </div>

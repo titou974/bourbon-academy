@@ -323,7 +323,7 @@
   },
   {
     "id": "infirmier",
-    "nom": "Infirmier",
+    "nom": "Médecine",
     "couleur": "var(--color-filiere-infirmier)",
     "description": "Formation infirmière espagnole reconnue dans toute l'Union Européenne.",
     "conditions": [
@@ -331,7 +331,7 @@
       "Casier judiciaire vierge",
       "Lettre de motivation"
     ],
-    "ctaLabel": "Candidater en Infirmier",
+    "ctaLabel": "Candidater en Médecine",
     "photo": "/images/filieres/infirmier.jpg",
     "dureEtudesAnnees": 4,
     "dureEtudesDetail": "240 crédits ECTS · Diplôme reconnu dans toute l'UE 🇪🇺",
