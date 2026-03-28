@@ -291,6 +291,152 @@ function SimpleCheckbox({
   );
 }
 
+/* ─── Phone input with country code selector ─── */
+const PHONE_PRESETS = [
+  { code: "+262", label: "🇷🇪 Réunion (+262)" },
+  { code: "+33", label: "🇫🇷 France (+33)" },
+  { code: "+34", label: "🇪🇸 Espagne (+34)" },
+] as const;
+
+function PhoneInput({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (full: string) => void;
+}) {
+  // Parse existing value to split prefix / number
+  const parseValue = (val: string) => {
+    for (const p of PHONE_PRESETS) {
+      if (val.startsWith(p.code)) {
+        return { prefix: p.code, number: val.slice(p.code.length) };
+      }
+    }
+    // Check for custom prefix like +XXX
+    const match = val.match(/^(\+\d{1,4})(.*)/);
+    if (match) return { prefix: match[1], number: match[2] };
+    return { prefix: "+262", number: val };
+  };
+
+  const { prefix: initPrefix, number: initNumber } = parseValue(value);
+  const [prefix, setPrefix] = useState(initPrefix);
+  const [number, setNumber] = useState(initNumber);
+  const [customMode, setCustomMode] = useState(
+    !PHONE_PRESETS.some((p) => p.code === initPrefix) && initPrefix !== "+262",
+  );
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const sync = (p: string, n: string) => {
+    onChange(p + n);
+  };
+
+  const selectPreset = (code: string) => {
+    setPrefix(code);
+    setCustomMode(false);
+    setDropdownOpen(false);
+    sync(code, number);
+  };
+
+  const enableCustom = () => {
+    setCustomMode(true);
+    setPrefix("+");
+    setDropdownOpen(false);
+    sync("+", number);
+  };
+
+  return (
+    <div ref={wrapperRef} className="flex gap-0 relative">
+      {/* Prefix selector */}
+      <div className="relative flex-shrink-0">
+        {customMode ? (
+          <input
+            type="text"
+            value={prefix}
+            onChange={(e) => {
+              let val = e.target.value;
+              if (!val.startsWith("+")) val = "+" + val;
+              setPrefix(val);
+              sync(val, number);
+            }}
+            className="min-h-[44px] w-[80px] border border-r-0 border-input rounded-l-[var(--radius-button)] px-2 text-sm text-center bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
+            placeholder="+XXX"
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+            className="min-h-[44px] w-[80px] border border-r-0 border-input rounded-l-[var(--radius-button)] px-2 text-sm flex items-center justify-center gap-1 bg-muted/50 hover:bg-muted transition-colors"
+          >
+            <span>{prefix}</span>
+            <ChevronDown
+              className={`size-3 text-muted-foreground transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+        )}
+
+        <AnimatePresence>
+          {dropdownOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.15 }}
+              className="absolute z-50 mt-1 left-0 w-52 bg-background border border-border rounded-[var(--radius-button)] shadow-lg overflow-hidden"
+            >
+              {PHONE_PRESETS.map((p) => (
+                <button
+                  key={p.code}
+                  type="button"
+                  onClick={() => selectPreset(p.code)}
+                  className={`w-full flex items-center gap-2 px-3 py-2.5 text-sm text-left transition-colors cursor-pointer ${
+                    prefix === p.code && !customMode
+                      ? "bg-primary/5 text-primary"
+                      : "hover:bg-muted/50"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+              <div className="border-t border-border" />
+              <button
+                type="button"
+                onClick={enableCustom}
+                className="w-full flex items-center gap-2 px-3 py-2.5 text-sm text-left hover:bg-muted/50 cursor-pointer text-muted-foreground"
+              >
+                Autre indicatif...
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Number input */}
+      <input
+        type="tel"
+        value={number}
+        onChange={(e) => {
+          setNumber(e.target.value);
+          sync(prefix, e.target.value);
+        }}
+        required
+        className="min-h-[44px] flex-1 border border-input rounded-r-[var(--radius-button)] px-3 text-sm bg-transparent focus:outline-none focus:ring-2 focus:ring-primary/20"
+        placeholder="6 92 00 00 00"
+      />
+    </div>
+  );
+}
+
 /* ─── Multi-select dropdown for domaines ─── */
 function DomaineMultiSelect({
   selected,
@@ -435,7 +581,7 @@ export function CandidatureForm() {
       prenom: "",
       nom: "",
       email: "",
-      telephone: "",
+      telephone: "+262",
       filieres: [],
       statut: "",
       langues: [],
@@ -693,11 +839,9 @@ export function CandidatureForm() {
                     <FormItem>
                       <FormLabel>{COPY.form.labels.telephone}</FormLabel>
                       <FormControl>
-                        <Input
-                          type="tel"
-                          required
-                          {...field}
-                          className="min-h-[44px]"
+                        <PhoneInput
+                          value={field.value}
+                          onChange={field.onChange}
                         />
                       </FormControl>
                       <FormMessage />
