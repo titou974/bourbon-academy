@@ -3,8 +3,7 @@
 
 export const COPY = {
   brand: {
-    namePartOne: "Bourbon",
-    namePartTwo: "Academy",
+    name: "Bourbon Academy",
     tagline: "Étudier en Espagne",
     description: "Accédez aux meilleurs écoles d'Espagne",
     contact: "Des questions ou un problème ?",
