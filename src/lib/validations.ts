@@ -28,10 +28,15 @@ export const VALID_STATUTS = ["lyceen", "etudiant", "travailleur", "autre"] as c
 
 // Step 1 — Coordonnées
 export const step1Schema = z.object({
-  prenom: z.string().min(2, COPY.validation.prenomMin),
-  nom: z.string().min(2, COPY.validation.nomMin),
-  email: z.string().email(COPY.validation.emailInvalid),
-  telephone: z.string().min(10, COPY.validation.telephoneInvalid),
+  prenom: z.string().trim().min(2, COPY.validation.prenomMin),
+  nom: z.string().trim().min(2, COPY.validation.nomMin),
+  email: z.string().trim().email(COPY.validation.emailInvalid),
+  telephone: z
+    .string()
+    .refine(
+      (v) => /^\+\d{1,4}\d{6,14}$/.test(v.replace(/\s/g, "")),
+      { message: COPY.validation.telephoneInvalid },
+    ),
 })
 
 // Step 2 — Filières, Statut & Langues
@@ -42,12 +47,13 @@ export const step2Schema = z.object({
     .max(3, COPY.validation.filiereTooMany),
   statut: z
     .string()
+    .min(1, COPY.validation.statutInvalid)
     .refine(
       (val) => (VALID_STATUTS as readonly string[]).includes(val),
       { message: COPY.validation.statutInvalid }
     ),
   langues: z
-    .array(z.string())
+    .array(z.string().min(1))
     .min(1, COPY.validation.langueInvalid),
   message: z.string().optional(),
 })

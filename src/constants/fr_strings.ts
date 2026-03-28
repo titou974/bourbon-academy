@@ -211,13 +211,14 @@ export const COPY = {
   fileUpload: {
     invalidFormat: "Format non accepté. Utilisez PDF, JPG ou PNG.",
     description:
-      "Ajoutez vos bulletins scolaires (optionnel — PDF, JPG ou PNG, 6 max)",
+      "Ajoutez vos bulletins scolaires de première (PDF, JPG ou PNG — 2 minimum, 6 max)",
     ariaLabel: "Zone d'upload de fichiers",
     dragText: "Glissez vos fichiers ici ou",
     browse: "parcourir",
-    acceptedFormats: "PDF, JPG, PNG acceptés — 6 fichiers max",
+    acceptedFormats: "PDF, JPG, PNG acceptés — 2 min, 6 max",
     removeFile: "Supprimer",
     maxReached: "Nombre maximum de fichiers atteint (6)",
+    minRequired: "Veuillez fournir au moins 2 bulletins de première",
   },
 
   filiereModal: {

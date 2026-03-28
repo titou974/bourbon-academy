@@ -603,10 +603,10 @@ export function CandidatureForm() {
     setServerError(null);
     try {
       const fd = new FormData();
-      fd.append("prenom", form.getValues("prenom"));
-      fd.append("nom", form.getValues("nom"));
-      fd.append("email", form.getValues("email"));
-      fd.append("telephone", form.getValues("telephone"));
+      fd.append("prenom", form.getValues("prenom").trim());
+      fd.append("nom", form.getValues("nom").trim());
+      fd.append("email", form.getValues("email").trim());
+      fd.append("telephone", form.getValues("telephone").replace(/\s/g, ""));
 
       const result = await createCandidature(fd);
       if (result.success && result.id) {
@@ -647,6 +647,10 @@ export function CandidatureForm() {
 
   const handleSubmit = async () => {
     if (!candidatureId) return;
+    if (uploadedFiles.length < 2) {
+      setServerError(COPY.fileUpload.minRequired);
+      return;
+    }
 
     setIsSubmitting(true);
     setServerError(null);
@@ -1076,7 +1080,7 @@ export function CandidatureForm() {
                 <div className="space-y-2">
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || uploadedFiles.length < 2}
                     className="w-full min-h-[44px]"
                   >
                     {isSubmitting ? COPY.form.sending : COPY.form.submitStep3}
