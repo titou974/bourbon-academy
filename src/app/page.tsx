@@ -3,6 +3,7 @@ import { COPY } from "@/constants/fr_strings";
 import { HeroSection } from "@/components/bourbon/HeroSection";
 import { FiliereSection } from "@/components/bourbon/FiliereSection";
 import { SpainMap } from "@/components/bourbon/SpainMap";
+import { AboutSection } from "@/components/bourbon/AboutSection";
 import { ProcessSection } from "@/components/bourbon/ProcessSection";
 import { CandidatureForm } from "@/components/bourbon/CandidatureForm";
 import { ArrowRight } from "lucide-react";
@@ -14,6 +15,13 @@ export default function Home() {
     <main className="bg-[var(--background-center)]">
       <MobileBottomBar />
       <HeroSection />
+      <SectionWrapper
+        id="about"
+        title={COPY.sections.about.title}
+        subtitle={COPY.sections.about.subtitle}
+      >
+        <AboutSection />
+      </SectionWrapper>
       <SectionWrapper
         id="filieres"
         title={COPY.sections.filieres.title}

@@ -36,7 +36,7 @@ export function FiliereCard({ filiere }: FiliereCardProps) {
           />
 
           <div className="absolute inset-0 bg-foreground/10" />
-          <div className="user-select-none pointer-events-none absolute inset-0 z-10 bg-gradient-to-bl from-foreground/40 group-hover:from-[#20D2A2]/20 via-transparent to-transparent transition-colors duration-300 ease-in-out opacity-100"></div>
+          <div className="user-select-none pointer-events-none absolute inset-0 z-10 bg-gradient-to-bl from-foreground/40 group-hover:from-primary/40 via-transparent to-transparent transition-colors duration-300 ease-in-out opacity-100"></div>
           {/* Bouton découvrir — centré, mobile uniquement */}
           <span className="md:hidden absolute inset-0 z-20 flex items-center justify-center">
             <span className="inline-flex items-center gap-1 rounded-full bg-white/90 px-4 py-1.5 text-xs font-medium text-primary shadow-sm backdrop-blur-sm">

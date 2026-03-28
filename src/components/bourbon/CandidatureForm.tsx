@@ -424,7 +424,7 @@ export function CandidatureForm() {
   const [direction, setDirection] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [serverError, setServerError] = useState<string | null>(null);
   const [successLottie, setSuccessLottie] = useState<object | null>(null);
   const [candidatureId, setCandidatureId] = useState<string | null>(null);
@@ -506,11 +506,11 @@ export function CandidatureForm() {
     setServerError(null);
     try {
       const fd = new FormData();
-      if (uploadedFile) {
-        const file = uploadedFile.type.startsWith("image/")
-          ? await compressImage(uploadedFile)
-          : uploadedFile;
-        fd.append("bulletin", file);
+      for (const rawFile of uploadedFiles) {
+        const file = rawFile.type.startsWith("image/")
+          ? await compressImage(rawFile)
+          : rawFile;
+        fd.append("bulletins", file);
       }
 
       const [result] = await Promise.all([
@@ -646,7 +646,7 @@ export function CandidatureForm() {
                     <FormItem>
                       <FormLabel>{COPY.form.labels.prenom}</FormLabel>
                       <FormControl>
-                        <Input {...field} className="min-h-[44px]" />
+                        <Input {...field} required className="min-h-[44px]" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -660,7 +660,7 @@ export function CandidatureForm() {
                     <FormItem>
                       <FormLabel>{COPY.form.labels.nom}</FormLabel>
                       <FormControl>
-                        <Input {...field} className="min-h-[44px]" />
+                        <Input required {...field} className="min-h-[44px]" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -676,6 +676,7 @@ export function CandidatureForm() {
                       <FormControl>
                         <Input
                           type="email"
+                          required
                           {...field}
                           className="min-h-[44px]"
                         />
@@ -692,7 +693,12 @@ export function CandidatureForm() {
                     <FormItem>
                       <FormLabel>{COPY.form.labels.telephone}</FormLabel>
                       <FormControl>
-                        <Input type="tel" {...field} className="min-h-[44px]" />
+                        <Input
+                          type="tel"
+                          required
+                          {...field}
+                          className="min-h-[44px]"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -707,7 +713,7 @@ export function CandidatureForm() {
                   type="button"
                   onClick={handleNextStep1}
                   disabled={isSubmitting}
-                  className="w-full min-h-[44px]"
+                  className="w-full min-h-[44px] mt-6"
                 >
                   {isSubmitting ? COPY.form.saving : COPY.form.submitStep1}
                   <ArrowRight className="size-4" />
@@ -715,7 +721,6 @@ export function CandidatureForm() {
               </motion.div>
             )}
 
-            {/* STEP 2 — Filières, Statut & Langues */}
             {step === 2 && (
               <motion.div
                 key="step-2"
@@ -760,8 +765,6 @@ export function CandidatureForm() {
                         <p className="text-xs text-muted-foreground -mt-1">
                           {COPY.form.labels.filiereHint}
                         </p>
-
-                        {/* Image checkbox grid */}
                         <div className="grid grid-cols-2 gap-3 mt-2">
                           {FILIERE_OPTIONS.map((opt) => (
                             <FiliereCheckbox
@@ -780,8 +783,6 @@ export function CandidatureForm() {
                             />
                           ))}
                         </div>
-
-                        {/* Domaines multi-select */}
                         <div className="mt-3">
                           <label className="text-sm font-medium text-foreground mb-1.5 block">
                             {COPY.form.labels.domaines}
@@ -792,7 +793,6 @@ export function CandidatureForm() {
                             maxReached={maxReached}
                           />
                         </div>
-
                         <FormMessage />
                       </FormItem>
                     );
@@ -842,6 +842,9 @@ export function CandidatureForm() {
                     return (
                       <FormItem>
                         <FormLabel>{COPY.form.labels.langue}</FormLabel>
+                        <p className="text-xs text-muted-foreground -mt-1">
+                          {COPY.form.labels.langueHint}
+                        </p>
                         <div className="flex flex-col gap-2 mt-1">
                           {LANGUE_OPTIONS.map((opt) => (
                             <SimpleCheckbox
@@ -868,7 +871,7 @@ export function CandidatureForm() {
                       <FormControl>
                         <textarea
                           {...field}
-                          rows={3}
+                          rows={6}
                           className="w-full border border-input rounded-[var(--radius-button)] px-3 py-2 resize-none text-sm bg-transparent"
                           placeholder={COPY.form.placeholders.message}
                         />
@@ -914,7 +917,7 @@ export function CandidatureForm() {
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="space-y-4"
               >
-                <FileUpload onFileSelect={setUploadedFile} />
+                <FileUpload onFilesChange={setUploadedFiles} />
 
                 {serverError && (
                   <motion.p

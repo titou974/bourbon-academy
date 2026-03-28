@@ -59,7 +59,10 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-3xl md:text-[64px] font-medium md:tracking-[-2.56px] tracking-[-1.8px] bg-gradient-to-r from-[#111] to-[#1e1e1e] bg-clip-text text-transparent leading-tight"
             >
-              {COPY.hero.title}
+              {COPY.hero.titlePartOne}{" "}
+              <span className="text-transparent min-w-fit bg-clip-text bg-gradient-to-r from-primary to-secondary font-serif italic pe-1 -mb-2 inline-block">
+                {COPY.hero.titlePartTwo}
+              </span>
             </motion.h1>
 
             <motion.p
@@ -79,7 +82,7 @@ export function HeroSection() {
               size="lg"
               className="min-h-[44px] text-foreground rounded-[var(--radius-button)] hover:bg-primary/5"
             >
-              <a href="#filieres">
+              <a href="#about">
                 {COPY.hero.ctaSecondary}
                 <PlusIcon className="size-4" />
               </a>

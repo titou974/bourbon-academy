@@ -21,6 +21,6 @@ model Candidature {
   langue      String?
   statut      String?
   message     String?
-  bulletinUrl String?
-  status      String   @default("pending")
+  bulletinUrls String[]
+  status       String   @default("pending")
 }

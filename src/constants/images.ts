@@ -7,8 +7,8 @@ export const IMAGES = {
   logo: {
     src: "/bourbon-academy-logo.png",
     alt: COPY.images.logo,
-    width: 40,
-    height: 40,
+    width: 36,
+    height: 36,
   },
 
   hero: {

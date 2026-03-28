@@ -16,7 +16,6 @@ export function HeroAnimation() {
   const DELAY_MAP_TWO = 1.25;
   const DELAY_LOTTIE = 1.4;
   useEffect(() => {
-    // Démarrer l'animation Lottie après un timeout
     const visibilityTimerFrance = setTimeout(
       () => {
         if (animationRefFrance.current) {

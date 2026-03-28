@@ -86,7 +86,7 @@ export async function updateCandidature(
   }
 }
 
-// Step 3 — Upload bulletin + send emails
+// Step 3 — Upload bulletins + send emails
 export async function finalizeCandidature(
   id: string,
   formData: FormData,
@@ -96,12 +96,14 @@ export async function finalizeCandidature(
     return { success: false, error: COPY.errors.notFound };
   }
 
-  // Handle optional bulletin upload
-  let bulletinUrl: string | undefined;
-  const bulletin = formData.get("bulletin") as File | null;
-  if (bulletin && bulletin.size > 0) {
+  // Handle optional multi-bulletin upload
+  const bulletinUrls: string[] = [];
+  const bulletins = formData.getAll("bulletins") as File[];
+
+  for (const bulletin of bulletins) {
+    if (!bulletin || bulletin.size === 0) continue;
     const ext = bulletin.name.split(".").pop();
-    const path = `${Date.now()}-${candidature.prenom}-${candidature.nom}.${ext}`;
+    const path = `${Date.now()}-${candidature.prenom}-${candidature.nom}-${bulletinUrls.length + 1}.${ext}`;
 
     const { error: uploadError } = await supabase.storage
       .from("bulletins")
@@ -117,14 +119,19 @@ export async function finalizeCandidature(
         error: COPY.errors.uploadFailed,
       };
     }
-    bulletinUrl = path;
+
+    const { data: urlData } = supabase.storage
+      .from("bulletins")
+      .getPublicUrl(path);
+
+    bulletinUrls.push(urlData.publicUrl);
   }
 
   try {
     await prisma.candidature.update({
       where: { id },
       data: {
-        bulletinUrl: bulletinUrl ?? null,
+        bulletinUrls,
         status: "submitted",
       },
     });
@@ -136,37 +143,41 @@ export async function finalizeCandidature(
     };
   }
 
+  // Parse stored filières and langues
+  let filieres: string[] = [];
+  let langues: string[] = [];
+  try {
+    if (candidature.filiere) filieres = JSON.parse(candidature.filiere);
+  } catch {
+    if (candidature.filiere) filieres = [candidature.filiere];
+  }
+  try {
+    if (candidature.langue) langues = JSON.parse(candidature.langue);
+  } catch {
+    if (candidature.langue) langues = [candidature.langue];
+  }
+
   // Send confirmation emails (non-blocking)
   try {
-    if (candidature.filiere) {
-      // filiere is stored as JSON array string, use first one for email
-      let filiereForEmail = candidature.filiere;
-      try {
-        const parsed = JSON.parse(candidature.filiere);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          filiereForEmail = parsed[0];
-        }
-      } catch {
-        // Legacy single string format, use as-is
-      }
-
-      await Promise.all([
-        sendStudentConfirmation(
-          candidature.email,
-          candidature.prenom,
-          filiereForEmail,
-        ),
-        sendTeamNotification({
-          prenom: candidature.prenom,
-          nom: candidature.nom,
-          email: candidature.email,
-          telephone: candidature.telephone,
-          filiere: filiereForEmail,
-          message: candidature.message,
-          bulletinUrl,
-        }),
-      ]);
-    }
+    await Promise.all([
+      sendStudentConfirmation({
+        to: candidature.email,
+        prenom: candidature.prenom,
+        filieres,
+        langues,
+      }),
+      sendTeamNotification({
+        prenom: candidature.prenom,
+        nom: candidature.nom,
+        email: candidature.email,
+        telephone: candidature.telephone,
+        filieres,
+        langues,
+        statut: candidature.statut,
+        message: candidature.message,
+        bulletinUrls,
+      }),
+    ]);
   } catch {
     console.error("Email sending failed, candidature saved successfully");
   }

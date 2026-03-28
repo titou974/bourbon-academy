@@ -25,9 +25,6 @@ export function NavBar() {
       <nav className="w-full max-w-5xl border border-border border-1 rounded-[var(--radius-pill)] h-[51px] md:h-[71px] px-8 flex items-center justify-between backdrop-blur-sm">
         {/* Logo */}
         <div className="flex items-center gap-px">
-          <span className="font-semibold text-text-primary text-base tracking-[-0.64px] hidden md:block">
-            {COPY.brand.name}
-          </span>
           <Image
             src={IMAGES.logo.src}
             alt={IMAGES.logo.alt}

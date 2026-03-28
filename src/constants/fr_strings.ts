@@ -3,7 +3,8 @@
 
 export const COPY = {
   brand: {
-    name: "Bourbon Academy",
+    namePartOne: "Bourbon",
+    namePartTwo: "Academy",
     tagline: "Étudier en Espagne",
     description: "Accédez aux meilleurs écoles d'Espagne",
     contact: "Des questions ou un problème ?",
@@ -23,7 +24,8 @@ export const COPY = {
   },
 
   hero: {
-    title: "Bourbon Academy",
+    titlePartOne: "Bourbon",
+    titlePartTwo: "Academy",
     subtitle: "Accédez aux meilleurs écoles d'Espagne",
     ctaPrimary: "Commencer mon projet d'étude",
     ctaSecondary: "En savoir plus",
@@ -42,6 +44,12 @@ export const COPY = {
     { value: 100, suffix: "+", label: "Filières d'études accessibles" },
   ] as const,
   sections: {
+    about: {
+      title: "Qui sommes-nous ?",
+      subtitle: "Bourbon Academy, votre passerelle vers l'Espagne",
+      description:
+        "Bourbon Academy accompagne les étudiants français et ultramarins dans leur projet d'études en Espagne. De la Réunion à Madrid, nous construisons des ponts vers les meilleures universités espagnoles, avec un accompagnement personnalisé à chaque étape.",
+    },
     filieres: {
       title: "Les filières les plus demandées",
       subtitle: "Explorez l'ensemble des formations disponibles",
@@ -101,6 +109,7 @@ export const COPY = {
       domaines: "Autres domaines d'études",
       statut: "Votre situation actuelle",
       langue: "Langue(s) d'enseignement",
+      langueHint: "Dans quelle langue voulez-vous étudier ?",
       message: "Parle-nous de ton projet (optionnel)",
     },
     placeholders: {
@@ -144,16 +153,31 @@ export const COPY = {
   ] as const,
 
   domaineOptions: [
-    { value: "pharmacie", label: "Pharmacie" },
-    { value: "psychologie", label: "Psychologie" },
+    // Sport
+    { value: "sport", label: "Activité physique et sciences du sport" },
+    // Sciences sociales et communication
+    { value: "communication", label: "Communication" },
+    { value: "marketing", label: "Marketing" },
+    { value: "business_analytics", label: "Business Analytics" },
+    { value: "economie", label: "Économie" },
+    { value: "entrepreneuriat", label: "Entrepreneuriat" },
+    { value: "relations_internationales", label: "Relations internationales" },
+    { value: "criminologie", label: "Criminologie" },
+    { value: "etudes_droit", label: "Études de Droit" },
+    {
+      value: "negociations_internationales",
+      label: "Négociations internationales",
+    },
+    { value: "education", label: "Éducation" },
+    // Architecture, Ingénierie et Conception
     { value: "architecture", label: "Architecture" },
-    { value: "nutrition", label: "Nutrition & Diététique" },
-    { value: "podologie", label: "Podologie" },
-    { value: "ergotherapie", label: "Ergothérapie" },
-    { value: "biologie", label: "Biologie" },
-    { value: "sciences_infirmieres", label: "Sciences Infirmières" },
-    { value: "sport", label: "Sciences du Sport (STAPS)" },
-    { value: "ingenierie_biomedicale", label: "Ingénierie Biomédicale" },
+    { value: "ingenieurs", label: "Ingénieurs" },
+    { value: "sciences", label: "Sciences" },
+    // Santé
+    { value: "psychologie", label: "Psychologie" },
+    { value: "pharmacie", label: "Pharmacie" },
+    { value: "infirmier_infirmiere", label: "Infirmier / infirmière" },
+    { value: "biosciences", label: "Biosciences" },
   ] as const,
 
   statutOptions: [
@@ -188,12 +212,13 @@ export const COPY = {
   fileUpload: {
     invalidFormat: "Format non accepté. Utilisez PDF, JPG ou PNG.",
     description:
-      "Ajoutez vos bulletins scolaires (optionnel — PDF, JPG ou PNG)",
-    ariaLabel: "Zone d'upload de fichier",
-    dragText: "Glissez votre fichier ici ou",
+      "Ajoutez vos bulletins scolaires (optionnel — PDF, JPG ou PNG, 6 max)",
+    ariaLabel: "Zone d'upload de fichiers",
+    dragText: "Glissez vos fichiers ici ou",
     browse: "parcourir",
-    acceptedFormats: "PDF, JPG, PNG acceptés",
-    removeFile: "Supprimer le fichier",
+    acceptedFormats: "PDF, JPG, PNG acceptés — 6 fichiers max",
+    removeFile: "Supprimer",
+    maxReached: "Nombre maximum de fichiers atteint (6)",
   },
 
   filiereModal: {
@@ -209,6 +234,16 @@ export const COPY = {
     contenuDesc: "Les grandes matières enseignées tout au long du cursus.",
     europeFlagAlt: "Drapeau européen",
     creditsEcts: "crédits ECTS",
+  },
+
+  cityModal: {
+    badge: "Destination étudiante",
+    anecdotesLabel: "Anecdotes & pépites",
+    anecdotesTitrePre: "Ce que vous ne saviez pas sur",
+    budgetLabel: "Pour les parents",
+    budgetTitre: "Un budget maîtrisé, une expérience inestimable",
+    rassuranceLabel: "Rassurance parents",
+    rassuranceTitre: "Ce qui compte pour vous",
   },
 
   filiereCard: {
@@ -300,34 +335,5 @@ export const COPY = {
 
   emails: {
     studentSubject: "Votre candidature a bien été reçue — Bourbon Academy",
-    studentBody: (prenom: string, filiereLabel: string) => `
-      <h2>Bonjour ${prenom},</h2>
-      <p>Nous avons bien reçu votre candidature pour la filière <strong>${filiereLabel}</strong>.</p>
-      <p>Notre équipe vous contactera sous <strong>24h</strong> pour la suite de votre dossier.</p>
-      <br />
-      <p>À très bientôt,<br />L'équipe Bourbon Academy</p>
-    `,
-    teamSubject: (prenom: string, nom: string, filiereLabel: string) =>
-      `Nouvelle candidature — ${prenom} ${nom} — ${filiereLabel}`,
-    teamBody: (candidature: {
-      prenom: string;
-      nom: string;
-      email: string;
-      telephone: string;
-      filiereLabel: string;
-      message?: string | null;
-      bulletinUrl?: string | null;
-    }) => `
-      <h2>Nouvelle candidature reçue</h2>
-      <ul>
-        <li><strong>Prénom :</strong> ${candidature.prenom}</li>
-        <li><strong>Nom :</strong> ${candidature.nom}</li>
-        <li><strong>Email :</strong> ${candidature.email}</li>
-        <li><strong>Téléphone :</strong> ${candidature.telephone}</li>
-        <li><strong>Filière :</strong> ${candidature.filiereLabel}</li>
-        <li><strong>Message :</strong> ${candidature.message ?? "Aucun"}</li>
-        <li><strong>Bulletin :</strong> ${candidature.bulletinUrl ? "Fourni" : "Non fourni"}</li>
-      </ul>
-    `,
   },
 } as const;

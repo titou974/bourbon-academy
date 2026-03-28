@@ -8,11 +8,13 @@ import type { Localisation } from "@/types";
 interface MapContainerProps {
   localisations?: Localisation[];
   filierePhoto?: string;
+  onCityClick?: (cityName: string) => void;
 }
 
 export default function MapContainer({
   localisations = [],
   filierePhoto,
+  onCityClick,
 }: MapContainerProps) {
   const [activeCity, setActiveCity] = useState<string | null>(null);
 
@@ -44,9 +46,13 @@ export default function MapContainer({
             transition={{ duration: 0.3, delay: i * 0.2 }}
             onHoverStart={() => setActiveCity(loc.city)}
             onHoverEnd={() => setActiveCity(null)}
-            onClick={() =>
-              setActiveCity(activeCity === loc.city ? null : loc.city)
-            }
+            onClick={() => {
+              if (onCityClick) {
+                onCityClick(loc.city);
+              } else {
+                setActiveCity(activeCity === loc.city ? null : loc.city);
+              }
+            }}
           >
             <AnimatePresence>
               {activeCity === loc.city && (

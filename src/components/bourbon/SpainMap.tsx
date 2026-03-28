@@ -5,7 +5,9 @@ import { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import citiesData from "@/data/schools.json";
 import { StatsCounter } from "./StatsCounter";
-import type { City } from "@/types";
+import { CityModal } from "./CityModal";
+import { getCityGuide } from "@/data/cities-guide";
+import type { City, CityGuide } from "@/types";
 import { COPY } from "@/constants/fr_strings";
 
 const cities = citiesData as City[];
@@ -14,6 +16,7 @@ const tooltipTransition = { duration: 0.2, ease: [0.16, 1, 0.3, 1] } as const;
 
 export function SpainMap() {
   const [activeCity, setActiveCity] = useState<City | null>(null);
+  const [selectedCityGuide, setSelectedCityGuide] = useState<CityGuide | null>(null);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const inView = useInView(mapRef, { once: true, margin: "-10% 0px" });
@@ -68,11 +71,17 @@ export function SpainMap() {
             >
               <button
                 className="w-11 h-11 flex items-center justify-center relative group"
-                onClick={() =>
-                  setActiveCity((prev) =>
-                    prev?.ville === city.ville ? null : city,
-                  )
-                }
+                onClick={() => {
+                  const guide = getCityGuide(city.ville);
+                  if (guide) {
+                    setSelectedCityGuide(guide);
+                    setActiveCity(null);
+                  } else {
+                    setActiveCity((prev) =>
+                      prev?.ville === city.ville ? null : city,
+                    );
+                  }
+                }}
                 aria-label={COPY.spainMap.ariaLabel(city.ville)}
                 aria-expanded={activeCity?.ville === city.ville}
               >
@@ -169,8 +178,7 @@ export function SpainMap() {
                       <p className="text-xs text-text-muted">
                         <span className="font-semibold text-secondary">
                           {activeCity.etudiantsPlaces}+
-                        </span>{" "}
-                        {COPY.spainMap.studentsLabel}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -184,6 +192,13 @@ export function SpainMap() {
       </div>
 
       <StatsCounter />
+      <CityModal
+        city={selectedCityGuide}
+        open={!!selectedCityGuide}
+        onOpenChange={(isOpen) => {
+          if (!isOpen) setSelectedCityGuide(null);
+        }}
+      />
     </div>
   );
 }

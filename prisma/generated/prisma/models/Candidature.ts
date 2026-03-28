@@ -35,7 +35,6 @@ export type CandidatureMinAggregateOutputType = {
   langue: string | null
   statut: string | null
   message: string | null
-  bulletinUrl: string | null
   status: string | null
 }
 
@@ -50,7 +49,6 @@ export type CandidatureMaxAggregateOutputType = {
   langue: string | null
   statut: string | null
   message: string | null
-  bulletinUrl: string | null
   status: string | null
 }
 
@@ -65,7 +63,7 @@ export type CandidatureCountAggregateOutputType = {
   langue: number
   statut: number
   message: number
-  bulletinUrl: number
+  bulletinUrls: number
   status: number
   _all: number
 }
@@ -82,7 +80,6 @@ export type CandidatureMinAggregateInputType = {
   langue?: true
   statut?: true
   message?: true
-  bulletinUrl?: true
   status?: true
 }
 
@@ -97,7 +94,6 @@ export type CandidatureMaxAggregateInputType = {
   langue?: true
   statut?: true
   message?: true
-  bulletinUrl?: true
   status?: true
 }
 
@@ -112,7 +108,7 @@ export type CandidatureCountAggregateInputType = {
   langue?: true
   statut?: true
   message?: true
-  bulletinUrl?: true
+  bulletinUrls?: true
   status?: true
   _all?: true
 }
@@ -200,7 +196,7 @@ export type CandidatureGroupByOutputType = {
   langue: string | null
   statut: string | null
   message: string | null
-  bulletinUrl: string | null
+  bulletinUrls: string[]
   status: string
   _count: CandidatureCountAggregateOutputType | null
   _min: CandidatureMinAggregateOutputType | null
@@ -236,7 +232,7 @@ export type CandidatureWhereInput = {
   langue?: Prisma.StringNullableFilter<"Candidature"> | string | null
   statut?: Prisma.StringNullableFilter<"Candidature"> | string | null
   message?: Prisma.StringNullableFilter<"Candidature"> | string | null
-  bulletinUrl?: Prisma.StringNullableFilter<"Candidature"> | string | null
+  bulletinUrls?: Prisma.StringNullableListFilter<"Candidature">
   status?: Prisma.StringFilter<"Candidature"> | string
 }
 
@@ -251,7 +247,7 @@ export type CandidatureOrderByWithRelationInput = {
   langue?: Prisma.SortOrderInput | Prisma.SortOrder
   statut?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
-  bulletinUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  bulletinUrls?: Prisma.SortOrder
   status?: Prisma.SortOrder
 }
 
@@ -269,7 +265,7 @@ export type CandidatureWhereUniqueInput = Prisma.AtLeast<{
   langue?: Prisma.StringNullableFilter<"Candidature"> | string | null
   statut?: Prisma.StringNullableFilter<"Candidature"> | string | null
   message?: Prisma.StringNullableFilter<"Candidature"> | string | null
-  bulletinUrl?: Prisma.StringNullableFilter<"Candidature"> | string | null
+  bulletinUrls?: Prisma.StringNullableListFilter<"Candidature">
   status?: Prisma.StringFilter<"Candidature"> | string
 }, "id">
 
@@ -284,7 +280,7 @@ export type CandidatureOrderByWithAggregationInput = {
   langue?: Prisma.SortOrderInput | Prisma.SortOrder
   statut?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
-  bulletinUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  bulletinUrls?: Prisma.SortOrder
   status?: Prisma.SortOrder
   _count?: Prisma.CandidatureCountOrderByAggregateInput
   _max?: Prisma.CandidatureMaxOrderByAggregateInput
@@ -305,7 +301,7 @@ export type CandidatureScalarWhereWithAggregatesInput = {
   langue?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
   statut?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
   message?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
-  bulletinUrl?: Prisma.StringNullableWithAggregatesFilter<"Candidature"> | string | null
+  bulletinUrls?: Prisma.StringNullableListFilter<"Candidature">
   status?: Prisma.StringWithAggregatesFilter<"Candidature"> | string
 }
 
@@ -320,7 +316,7 @@ export type CandidatureCreateInput = {
   langue?: string | null
   statut?: string | null
   message?: string | null
-  bulletinUrl?: string | null
+  bulletinUrls?: Prisma.CandidatureCreatebulletinUrlsInput | string[]
   status?: string
 }
 
@@ -335,7 +331,7 @@ export type CandidatureUncheckedCreateInput = {
   langue?: string | null
   statut?: string | null
   message?: string | null
-  bulletinUrl?: string | null
+  bulletinUrls?: Prisma.CandidatureCreatebulletinUrlsInput | string[]
   status?: string
 }
 
@@ -350,7 +346,7 @@ export type CandidatureUpdateInput = {
   langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statut?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bulletinUrls?: Prisma.CandidatureUpdatebulletinUrlsInput | string[]
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -365,7 +361,7 @@ export type CandidatureUncheckedUpdateInput = {
   langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statut?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bulletinUrls?: Prisma.CandidatureUpdatebulletinUrlsInput | string[]
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -380,7 +376,7 @@ export type CandidatureCreateManyInput = {
   langue?: string | null
   statut?: string | null
   message?: string | null
-  bulletinUrl?: string | null
+  bulletinUrls?: Prisma.CandidatureCreatebulletinUrlsInput | string[]
   status?: string
 }
 
@@ -395,7 +391,7 @@ export type CandidatureUpdateManyMutationInput = {
   langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statut?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bulletinUrls?: Prisma.CandidatureUpdatebulletinUrlsInput | string[]
   status?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -410,8 +406,16 @@ export type CandidatureUncheckedUpdateManyInput = {
   langue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statut?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bulletinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bulletinUrls?: Prisma.CandidatureUpdatebulletinUrlsInput | string[]
   status?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type CandidatureCountOrderByAggregateInput = {
@@ -425,7 +429,7 @@ export type CandidatureCountOrderByAggregateInput = {
   langue?: Prisma.SortOrder
   statut?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  bulletinUrl?: Prisma.SortOrder
+  bulletinUrls?: Prisma.SortOrder
   status?: Prisma.SortOrder
 }
 
@@ -440,7 +444,6 @@ export type CandidatureMaxOrderByAggregateInput = {
   langue?: Prisma.SortOrder
   statut?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  bulletinUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
 }
 
@@ -455,8 +458,11 @@ export type CandidatureMinOrderByAggregateInput = {
   langue?: Prisma.SortOrder
   statut?: Prisma.SortOrder
   message?: Prisma.SortOrder
-  bulletinUrl?: Prisma.SortOrder
   status?: Prisma.SortOrder
+}
+
+export type CandidatureCreatebulletinUrlsInput = {
+  set: string[]
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -469,6 +475,11 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type CandidatureUpdatebulletinUrlsInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 
@@ -484,7 +495,7 @@ export type CandidatureSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   langue?: boolean
   statut?: boolean
   message?: boolean
-  bulletinUrl?: boolean
+  bulletinUrls?: boolean
   status?: boolean
 }, ExtArgs["result"]["candidature"]>
 
@@ -499,7 +510,7 @@ export type CandidatureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   langue?: boolean
   statut?: boolean
   message?: boolean
-  bulletinUrl?: boolean
+  bulletinUrls?: boolean
   status?: boolean
 }, ExtArgs["result"]["candidature"]>
 
@@ -514,7 +525,7 @@ export type CandidatureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   langue?: boolean
   statut?: boolean
   message?: boolean
-  bulletinUrl?: boolean
+  bulletinUrls?: boolean
   status?: boolean
 }, ExtArgs["result"]["candidature"]>
 
@@ -529,11 +540,11 @@ export type CandidatureSelectScalar = {
   langue?: boolean
   statut?: boolean
   message?: boolean
-  bulletinUrl?: boolean
+  bulletinUrls?: boolean
   status?: boolean
 }
 
-export type CandidatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "prenom" | "nom" | "email" | "telephone" | "filiere" | "langue" | "statut" | "message" | "bulletinUrl" | "status", ExtArgs["result"]["candidature"]>
+export type CandidatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "createdAt" | "prenom" | "nom" | "email" | "telephone" | "filiere" | "langue" | "statut" | "message" | "bulletinUrls" | "status", ExtArgs["result"]["candidature"]>
 
 export type $CandidaturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Candidature"
@@ -549,7 +560,7 @@ export type $CandidaturePayload<ExtArgs extends runtime.Types.Extensions.Interna
     langue: string | null
     statut: string | null
     message: string | null
-    bulletinUrl: string | null
+    bulletinUrls: string[]
     status: string
   }, ExtArgs["result"]["candidature"]>
   composites: {}
@@ -984,7 +995,7 @@ export interface CandidatureFieldRefs {
   readonly langue: Prisma.FieldRef<"Candidature", 'String'>
   readonly statut: Prisma.FieldRef<"Candidature", 'String'>
   readonly message: Prisma.FieldRef<"Candidature", 'String'>
-  readonly bulletinUrl: Prisma.FieldRef<"Candidature", 'String'>
+  readonly bulletinUrls: Prisma.FieldRef<"Candidature", 'String[]'>
   readonly status: Prisma.FieldRef<"Candidature", 'String'>
 }
     

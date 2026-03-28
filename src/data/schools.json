@@ -6,7 +6,7 @@
     "coordinates": { "x": 49, "y": 43 },
     "mobileCoordinates": { "x": 49, "y": 45 },
     "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
-    "photo": "/images/localisations/madrid.webp",
+    "photo": "/images/localisations/madrid.jpg",
     "etudiantsPlaces": 150
   },
   {
@@ -16,7 +16,7 @@
     "coordinates": { "x": 60, "y": 47 },
     "mobileCoordinates": { "x": 75, "y": 52 },
     "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
-    "photo": "/images/localisations/valence.webp",
+    "photo": "/images/localisations/valence.jpg",
     "etudiantsPlaces": 120
   },
   {
@@ -26,7 +26,7 @@
     "coordinates": { "x": 45, "y": 72 },
     "mobileCoordinates": { "x": 43, "y": 72 },
     "filieres": ["kine", "dentaire", "veterinaire"],
-    "photo": "/images/localisations/malaga.webp",
+    "photo": "/images/localisations/malaga.jpg",
     "etudiantsPlaces": 80
   },
   {
@@ -36,17 +36,17 @@
     "coordinates": { "x": 59, "y": 60 },
     "mobileCoordinates": { "x": 63, "y": 60 },
     "filieres": ["kine", "dentaire", "infirmier"],
-    "photo": "/images/localisations/alicante.webp",
+    "photo": "/images/localisations/alicante.jpeg",
     "etudiantsPlaces": 60
   },
   {
-    "ville": "Iles Canaries",
+    "ville": "Les Iles Canaries",
     "surnom": "Las Islas del Sol",
     "region": "Iles Canaries",
     "coordinates": { "x": 30, "y": 90 },
     "mobileCoordinates": { "x": 16, "y": 90 },
     "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
-    "photo": "/images/localisations/iles_canaries.webp",
+    "photo": "/images/localisations/iles_canaries.jpg",
     "etudiantsPlaces": 40
   }
 ]
