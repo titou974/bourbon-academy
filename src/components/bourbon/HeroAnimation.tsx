@@ -9,6 +9,7 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 import maplineAnimation from "../../../public/lottie/map-line.json";
 import { useEffect, useRef } from "react";
+import { COPY } from "@/constants/fr_strings";
 
 export function HeroAnimation() {
   const animationRefFrance = useRef<LottieRefCurrentProps>(null);
@@ -65,7 +66,7 @@ export function HeroAnimation() {
           className="md:hidden w-[50px] absolute md:top-[-1em] top-[3em] right-[-1em]"
         />
         <p className="text-muted-foreground text-center text-sm z-20">
-          France et DROM-COM
+          {COPY.heroAnimation.franceDromLabel}
         </p>
       </motion.div>
       <Lottie
@@ -92,7 +93,7 @@ export function HeroAnimation() {
           alt="Espagne"
           className="md:w-[250px] w-[130px]"
         />
-        <p className="text-muted-foreground text-center text-sm">Espagne</p>
+        <p className="text-muted-foreground text-center text-sm">{COPY.heroAnimation.espagneLabel}</p>
       </motion.div>
     </div>
   );

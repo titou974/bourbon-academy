@@ -92,7 +92,7 @@ export function StatsCounter() {
   return (
     <div
       ref={ref}
-      className="grid grid-cols-3 gap-4 border-t border-border px-4 py-6 md:px-10 md:py-8 mt-6"
+      className="grid grid-cols-3 gap-4 border-t border-border px-4 py-4 md:px-4 mt-4 md:mt-6"
     >
       {stats.map((stat) => (
         <StatItem key={stat.label} stat={stat} shouldAnimate={shouldAnimate} />

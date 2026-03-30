@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { COPY } from "@/constants/fr_strings";
 
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 
@@ -168,12 +169,15 @@ export function ModalRassuranceSection({
     <div className="bg-primary px-5 md:px-8 py-8 md:py-10">
       <div className="text-center mb-8 max-w-lg mx-auto">
         <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-          Rassurance parents
+          {COPY.cityModal.rassuranceLabel}
         </p>
         <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight mb-3">
-          Ce qui compte
+          {COPY.cityModal.rassuranceTitreBold}
           <br />
-          pour <span className="italic text-secondary font-serif">vous</span>
+          {COPY.cityModal.rassuranceTitrePreposition}{" "}
+          <span className="italic text-secondary font-serif">
+            {COPY.cityModal.rassuranceTitreItalic}
+          </span>
         </h3>
         <p className="text-sm text-white/60 leading-relaxed">{description}</p>
       </div>
@@ -223,8 +227,8 @@ export function ModalCTASection({
 
       <div className="relative z-10 max-w-md mx-auto space-y-4">
         <h3 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight leading-tight">
-          Votre aventure commence{" "}
-          <span className="italic text-secondary font-serif">ici</span>
+          {COPY.modalSections.ctaTitreBold}{" "}
+          <span className="italic text-secondary font-serif">{COPY.modalSections.ctaTitreItalic}</span>
         </h3>
         <p className="text-sm text-text-muted leading-relaxed">{description}</p>
         <Button onClick={onCTA} className="min-h-[48px] px-8 text-sm">

@@ -292,11 +292,7 @@ function SimpleCheckbox({
 }
 
 /* ─── Phone input with country code selector ─── */
-const PHONE_PRESETS = [
-  { code: "+262", label: "🇷🇪 Réunion (+262)" },
-  { code: "+33", label: "🇫🇷 France (+33)" },
-  { code: "+34", label: "🇪🇸 Espagne (+34)" },
-] as const;
+const PHONE_PRESETS = COPY.phonePresets;
 
 function PhoneInput({
   value,

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import type { Localisation } from "@/types";
+import { COPY } from "@/constants/fr_strings";
 
 interface MapContainerProps {
   localisations?: Localisation[];
@@ -23,7 +24,7 @@ export default function MapContainer({
       <div className="relative h-full w-full md:h-auto md:w-[60%] flex items-center justify-center">
         <Image
           src="/spain-map.png"
-          alt="Carte interactive"
+          alt={COPY.mapContainer.alt}
           width={600}
           height={600}
           className="object-cover h-full w-full md:h-auto"

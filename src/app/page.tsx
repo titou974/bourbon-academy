@@ -15,11 +15,7 @@ export default function Home() {
     <main className="bg-[var(--background-center)]">
       <MobileBottomBar />
       <HeroSection />
-      <SectionWrapper
-        id="about"
-        title={COPY.sections.about.title}
-        subtitle={COPY.sections.about.subtitle}
-      >
+      <SectionWrapper id="about">
         <AboutSection />
       </SectionWrapper>
       <SectionWrapper

@@ -57,8 +57,8 @@ export function FiliereModal({
             <ModalHero
               photo={filiere.photo}
               alt={filiere.nom}
-              badge="Formation santé"
-              subtitleLine={`Espagne · Diplôme européen · ${filiere.dureEtudesAnnees} ans`}
+              badge={COPY.filiereModal.badge}
+              subtitleLine={COPY.filiereModal.subtitleLine(filiere.dureEtudesAnnees)}
               titleBold={guide?.nomBold ?? filiere.nom}
               titleItalic={guide?.nomItalic ?? ""}
               tagline={guide?.tagline ?? filiere.description}
@@ -87,11 +87,11 @@ export function FiliereModal({
           <ScrollFadeIn className="px-5 md:px-8 py-6 md:py-8 border-y border-border">
             <div className="flex flex-col md:flex-row gap-6 md:gap-10">
               <div className="md:w-[40%]">
-                <ModalSectionTitle label="Prérequis">
+                <ModalSectionTitle label={COPY.filiereModal.prerequis}>
                   <h3 className="text-xl md:text-2xl font-bold text-foreground tracking-tight leading-tight">
-                    Conditions{" "}
+                    {COPY.filiereModal.conditionsBold}{" "}
                     <span className="italic text-secondary font-serif">
-                      d&apos;entrée
+                      {COPY.filiereModal.conditionsItalic}
                     </span>
                   </h3>
                 </ModalSectionTitle>
@@ -116,10 +116,10 @@ export function FiliereModal({
           <ScrollFadeIn className="bg-primary px-5 md:px-8 py-8 md:py-10">
             <div className="text-center mb-8">
               <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-                Le parcours en détail
+                {COPY.filiereModal.parcours}
               </p>
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
-                {filiere.dureEtudesAnnees} ans pour devenir{" "}
+                {COPY.filiereModal.ansPourDevenir(filiere.dureEtudesAnnees)}{" "}
                 <span className="italic text-secondary font-serif">
                   {filiere.nom.toLowerCase() === "médecine"
                     ? "professionnel de santé"
@@ -161,12 +161,12 @@ export function FiliereModal({
             <ScrollFadeIn className="px-5 md:px-8 py-8 md:py-10">
               <div className="text-center mb-8">
                 <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-                  Pourquoi choisir cette filière
+                  {COPY.filiereModal.pourquoiChoisir}
                 </p>
                 <h3 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight leading-tight">
-                  Ce qui fait la{" "}
+                  {COPY.filiereModal.ceFaitDifference}{" "}
                   <span className="italic text-secondary font-serif">
-                    différence
+                    {COPY.filiereModal.difference}
                   </span>
                 </h3>
               </div>
@@ -181,13 +181,13 @@ export function FiliereModal({
           {/* ── CARTE — OÙ ÉTUDIER ──────────────────────────────── */}
           <ScrollFadeIn className="px-5 md:px-8 py-6 md:py-8 border-y border-border">
             <div className="space-y-5">
-              <ModalSectionTitle label="Localisation">
+              <ModalSectionTitle label={COPY.filiereModal.localisation}>
                 <h3 className="text-xl md:text-2xl font-bold text-foreground tracking-tight leading-tight">
-                  Où étudier la{" "}
+                  {COPY.filiereModal.ouEtudierPrefix}{" "}
                   <span className="italic text-secondary font-serif">
                     {filiere.nom.toLowerCase()}
                   </span>{" "}
-                  ?
+                  {COPY.filiereModal.ouEtudierSuffix}
                 </h3>
                 <p className="text-sm text-text-secondary">
                   {COPY.filiereModal.localisationDesc}{" "}
@@ -208,11 +208,11 @@ export function FiliereModal({
           <ScrollFadeIn className="px-5 md:px-8 py-8 md:py-10">
             <div className="flex flex-col md:flex-row gap-6 md:gap-10">
               <div className="md:w-[40%]">
-                <ModalSectionTitle label="Après vos études">
+                <ModalSectionTitle label={COPY.filiereModal.apresEtudes}>
                   <h3 className="text-xl md:text-2xl font-bold text-foreground tracking-tight leading-tight">
-                    Vos{" "}
+                    {COPY.filiereModal.vosDebouches}{" "}
                     <span className="italic text-secondary font-serif">
-                      débouchés
+                      {COPY.filiereModal.debouchesItalic}
                     </span>
                   </h3>
                   <p className="text-sm text-text-secondary leading-relaxed">
@@ -244,7 +244,7 @@ export function FiliereModal({
               watermark={filiere.nom}
               description={
                 guide?.cta.description ??
-                `La ${filiere.nom.toLowerCase()} en Espagne vous attend. Lancez votre candidature dès maintenant.`
+                COPY.filiereModal.ctaFallback(filiere.nom.toLowerCase())
               }
               buttonLabel={filiere.ctaLabel}
               onCTA={handleCTA}

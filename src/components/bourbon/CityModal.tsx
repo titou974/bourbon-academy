@@ -43,8 +43,8 @@ export function CityModal({ city, open, onOpenChange }: CityModalProps) {
             <ModalHero
               photo={city.photo}
               alt={city.ville}
-              badge="Destination étudiante"
-              subtitleLine={`Espagne · ${city.region} · ${city.stats[1]?.value} jours de soleil`}
+              badge={COPY.cityModal.badge}
+              subtitleLine={COPY.cityModal.subtitleLine(city.region, city.stats[1]?.value ?? "")}
               titleBold={city.villeBold}
               titleItalic={city.villeItalic}
               tagline={city.tagline}
@@ -77,7 +77,7 @@ export function CityModal({ city, open, onOpenChange }: CityModalProps) {
           <ScrollFadeIn className="bg-primary px-5 md:px-8 py-8 md:py-10">
             <div className="text-center mb-8">
               <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-                Anecdotes & pépites
+                {COPY.cityModal.anecdotesLabel}
               </p>
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 Ce que vous ne
@@ -95,13 +95,13 @@ export function CityModal({ city, open, onOpenChange }: CityModalProps) {
           <ScrollFadeIn className="px-5 md:px-8 py-8 md:py-10">
             <div className="flex flex-col md:flex-row gap-6 md:gap-10 md:items-start">
               <div className="md:w-[45%] space-y-3">
-                <ModalSectionTitle label="Pour les parents">
+                <ModalSectionTitle label={COPY.cityModal.budgetLabel}>
                   <h3 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight leading-tight">
-                    Un budget{" "}
+                    {COPY.cityModal.budgetTitreBold}{" "}
                     <span className="italic text-secondary font-serif">
-                      maîtrisé
+                      {COPY.cityModal.budgetTitreItalic}
                     </span>
-                    , une expérience inestimable
+                    {COPY.cityModal.budgetTitreSuffix}
                   </h3>
                 </ModalSectionTitle>
                 <p className="text-sm text-text-secondary leading-relaxed">

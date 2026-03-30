@@ -48,6 +48,21 @@ export const COPY = {
       subtitle: "Bourbon Academy, votre passerelle vers l'Espagne",
       description:
         "Bourbon Academy accompagne les étudiants français et ultramarins dans leur projet d'études en Espagne. De la Réunion à Madrid, nous construisons des ponts vers les meilleures universités espagnoles, avec un accompagnement personnalisé à chaque étape.",
+      cta: "Découvir les filières",
+      inlineText:
+        "étudiants français vers plus de villes en Espagne, pour toutes les filières. De la Réunion à Madrid, des formations d'excellence dans des universités reconnues pour créer",
+      inlineHighlight:
+        "l'environnement idéal pour réussir vos études et construire votre avenir",
+      founderName: "Ilyes Magoutier",
+      founderRole: "Fondateur de Bourbon Academy",
+      communityText:
+        "Rejoignez une communauté grandissante d'étudiants qui ont concrétisé leur projet d'études en Espagne.",
+      communityHighlight: "étudiants",
+      joinLabel: "Rejoindre",
+      scrollDown: "Scroll Down",
+      sectionLabel: "About",
+      sectionNumber: "01",
+      learnMore: "En savoir plus",
     },
     filieres: {
       title: "Les filières les plus demandées",
@@ -225,8 +240,27 @@ export const COPY = {
     localisation: "Localisation",
     localisationDesc: "Nous avons des écoles présente sur",
     conditions: "Conditions d'entrée",
+    conditionsBold: "Conditions",
+    conditionsItalic: "d'entrée",
+    prerequis: "Prérequis",
     duree: "Durée des études",
     anneesFormation: "ans de formation",
+    parcours: "Le parcours en détail",
+    ansPourDevenir: (annees: number) => `${annees} ans pour devenir`,
+    professionnelSante: "professionnel de santé",
+    pourquoiChoisir: "Pourquoi choisir cette filière",
+    ceFaitDifference: "Ce qui fait la",
+    difference: "différence",
+    ouEtudierPrefix: "Où étudier la",
+    ouEtudierSuffix: "?",
+    apresEtudes: "Après vos études",
+    vosDebouches: "Vos",
+    debouchesItalic: "débouchés",
+    badge: "Formation santé",
+    subtitleLine: (annees: number) =>
+      `Espagne · Diplôme européen · ${annees} ans`,
+    ctaFallback: (filiere: string) =>
+      `La ${filiere} en Espagne vous attend. Lancez votre candidature dès maintenant.`,
     debouches: "Débouchés professionnels",
     debouchesDesc:
       "Les métiers accessibles après l'obtention de votre diplôme.",
@@ -238,12 +272,20 @@ export const COPY = {
 
   cityModal: {
     badge: "Destination étudiante",
+    subtitleLine: (region: string, jours: string) =>
+      `Espagne · ${region} · ${jours} jours de soleil`,
     anecdotesLabel: "Anecdotes & pépites",
     anecdotesTitrePre: "Ce que vous ne saviez pas sur",
     budgetLabel: "Pour les parents",
     budgetTitre: "Un budget maîtrisé, une expérience inestimable",
+    budgetTitreBold: "Un budget",
+    budgetTitreItalic: "maîtrisé",
+    budgetTitreSuffix: ", une expérience inestimable",
     rassuranceLabel: "Rassurance parents",
     rassuranceTitre: "Ce qui compte pour vous",
+    rassuranceTitreBold: "Ce qui compte",
+    rassuranceTitreItalic: "vous",
+    rassuranceTitrePreposition: "pour",
   },
 
   filiereCard: {
@@ -293,6 +335,26 @@ export const COPY = {
     twitterDescription:
       "Accédez aux meilleurs écoles d'Espagne. +50 universités partenaires.",
   },
+
+  heroAnimation: {
+    franceDromLabel: "France et DROM-COM",
+    espagneLabel: "Espagne",
+  },
+
+  mapContainer: {
+    alt: "Carte interactive",
+  },
+
+  modalSections: {
+    ctaTitreBold: "Votre aventure commence",
+    ctaTitreItalic: "ici",
+  },
+
+  phonePresets: [
+    { code: "+262", label: "🇷🇪 Réunion (+262)" },
+    { code: "+33", label: "🇫🇷 France (+33)" },
+    { code: "+34", label: "🇪🇸 Espagne (+34)" },
+  ] as const,
 
   images: {
     logo: "Logo Bourbon Academy",
