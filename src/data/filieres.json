@@ -5,9 +5,9 @@
     "couleur": "var(--color-filiere-kine)",
     "description": "Formation en kinésithérapie reconnue dans les meilleures universités espagnoles.",
     "conditions": [
-      "Baccalauréat S ou équivalent",
-      "Niveau B1 en espagnol recommandé",
-      "Dossier académique solide"
+      "Admission sur dossier scolaire",
+      "Baccalauréat (toutes filières)",
+      "Bulletin de première suffisant pour candidater"
     ],
     "ctaLabel": "Candidater en Kinésithérapie",
     "photo": "/images/filieres/kine.jpg",
@@ -59,7 +59,7 @@
         "mobile-ping-position-x": 49,
         "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
-        "photo": "/images/localisations/madrid.jpg"
+        "photo": "/images/localisations/madrid.jpeg"
       },
       {
         "city": "Valence",
@@ -68,7 +68,7 @@
         "mobile-ping-position-x": 75,
         "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
-        "photo": "/images/localisations/valence.jpg"
+        "photo": "/images/localisations/valence.jpeg"
       },
       {
         "city": "Malaga",
@@ -77,7 +77,7 @@
         "mobile-ping-position-x": 43,
         "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
-        "photo": "/images/localisations/malaga.jpg"
+        "photo": "/images/localisations/malaga.jpeg"
       },
       {
         "city": "Alicante",
@@ -105,9 +105,10 @@
     "couleur": "var(--color-filiere-dentaire)",
     "description": "Intégrez les facultés de médecine dentaire espagnoles reconnues en Europe.",
     "conditions": [
-      "Baccalauréat S",
-      "Résultats académiques solides",
-      "Lettre de motivation requise"
+      "Admission sur dossier scolaire, sans concours ni PASS",
+      "Baccalauréat (toutes filières)",
+      "Bulletin de première suffisant pour candidater",
+      "Entretien selon les universités"
     ],
     "ctaLabel": "Candidater en Dentaire",
     "photo": "/images/filieres/dentaire.jpg",
@@ -171,7 +172,7 @@
         "mobile-ping-position-x": 49,
         "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
-        "photo": "/images/localisations/madrid.jpg"
+        "photo": "/images/localisations/madrid.jpeg"
       },
       {
         "city": "Valence",
@@ -180,7 +181,7 @@
         "mobile-ping-position-x": 75,
         "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
-        "photo": "/images/localisations/valence.jpg"
+        "photo": "/images/localisations/valence.jpeg"
       },
       {
         "city": "Malaga",
@@ -189,7 +190,7 @@
         "mobile-ping-position-x": 43,
         "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
-        "photo": "/images/localisations/malaga.jpg"
+        "photo": "/images/localisations/malaga.jpeg"
       },
       {
         "city": "Alicante",
@@ -217,9 +218,9 @@
     "couleur": "var(--color-filiere-veterinaire)",
     "description": "Les écoles vétérinaires espagnoles sont parmi les meilleures d'Europe.",
     "conditions": [
-      "Baccalauréat S",
-      "Passion pour les animaux",
-      "Entretien de motivation"
+      "Admission sur dossier scolaire",
+      "Baccalauréat (toutes filières)",
+      "Intégration directe après le bac"
     ],
     "ctaLabel": "Candidater en Vétérinaire",
     "photo": "/images/filieres/veterinaire.jpg",
@@ -281,7 +282,7 @@
         "mobile-ping-position-x": 49,
         "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
-        "photo": "/images/localisations/madrid.jpg"
+        "photo": "/images/localisations/madrid.jpeg"
       },
       {
         "city": "Valence",
@@ -290,7 +291,7 @@
         "mobile-ping-position-x": 75,
         "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
-        "photo": "/images/localisations/valence.jpg"
+        "photo": "/images/localisations/valence.jpeg"
       },
       {
         "city": "Malaga",
@@ -299,7 +300,7 @@
         "mobile-ping-position-x": 43,
         "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
-        "photo": "/images/localisations/malaga.jpg"
+        "photo": "/images/localisations/malaga.jpeg"
       },
       {
         "city": "Alicante",
@@ -327,25 +328,25 @@
     "couleur": "var(--color-filiere-infirmier)",
     "description": "Formation infirmière espagnole reconnue dans toute l'Union Européenne.",
     "conditions": [
-      "Baccalauréat S ou ST2S",
-      "Casier judiciaire vierge",
-      "Lettre de motivation"
+      "Admission sur dossier scolaire",
+      "Baccalauréat (toutes filières)",
+      "Intégration directe après le bac"
     ],
     "ctaLabel": "Candidater en Médecine",
     "photo": "/images/filieres/infirmier.jpg",
-    "dureEtudesAnnees": 4,
-    "dureEtudesDetail": "240 crédits ECTS · Diplôme reconnu dans toute l'UE 🇪🇺",
+    "dureEtudesAnnees": 6,
+    "dureEtudesDetail": "360 crédits ECTS · Diplôme reconnu dans toute l'UE 🇪🇺",
     "details": [
       { "type": "diplome", "label": "Diplôme reconnu dans toute l'Europe" },
-      { "type": "credits", "value": 240 }
+      { "type": "credits", "value": 360 }
     ],
     "debouches": [
-      "Infirmier hospitalier",
-      "Infirmier libéral",
-      "IBODE (bloc opératoire)",
-      "IADE (anesthésie)",
-      "Puériculteur",
-      "Cadre de santé"
+      "Médecin généraliste",
+      "Médecin hospitalier",
+      "Chirurgien",
+      "Pédiatre",
+      "Médecine interne",
+      "Recherche & enseignement"
     ],
     "programme": [
       {
@@ -381,7 +382,7 @@
         "mobile-ping-position-x": 49,
         "mobile-ping-position-y": 45,
         "surnom": "La Villa y Corte",
-        "photo": "/images/localisations/madrid.jpg"
+        "photo": "/images/localisations/madrid.jpeg"
       },
       {
         "city": "Valence",
@@ -390,7 +391,7 @@
         "mobile-ping-position-x": 75,
         "mobile-ping-position-y": 52,
         "surnom": "La Ciudad del Turia",
-        "photo": "/images/localisations/valence.jpg"
+        "photo": "/images/localisations/valence.jpeg"
       },
       {
         "city": "Malaga",
@@ -399,7 +400,7 @@
         "mobile-ping-position-x": 43,
         "mobile-ping-position-y": 72,
         "surnom": "La Costa del Sol",
-        "photo": "/images/localisations/malaga.jpg"
+        "photo": "/images/localisations/malaga.jpeg"
       },
       {
         "city": "Alicante",

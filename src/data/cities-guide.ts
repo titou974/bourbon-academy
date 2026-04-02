@@ -8,7 +8,7 @@ export const citiesGuide: CityGuide[] = [
     villeItalic: "rid",
     surnom: "La Villa y Corte",
     region: "Communauté de Madrid",
-    photo: "/images/localisations/madrid.jpg",
+    photo: "/images/localisations/madrid.jpeg",
     tagline:
       "Cosmopolite, ensoleillée et résolument tournée vers l'avenir — Madrid n'est pas juste une ville. C'est une expérience de vie.",
     stats: [
@@ -146,7 +146,7 @@ export const citiesGuide: CityGuide[] = [
     villeItalic: "ence",
     surnom: "La Ciudad del Turia",
     region: "Communauté valencienne",
-    photo: "/images/localisations/valence.jpg",
+    photo: "/images/localisations/valence.jpeg",
     tagline:
       "Entre plage et futurisme, Valence est la ville où l'on étudie les pieds dans le sable et le regard tourné vers demain.",
     stats: [
@@ -284,7 +284,7 @@ export const citiesGuide: CityGuide[] = [
     villeItalic: "aga",
     surnom: "La Costa del Sol",
     region: "Andalousie",
-    photo: "/images/localisations/malaga.jpg",
+    photo: "/images/localisations/malaga.jpeg",
     tagline:
       "Berceau de Picasso, hub tech en plein essor — Malaga est la surprise andalouse qui séduit les étudiants du monde entier.",
     stats: [

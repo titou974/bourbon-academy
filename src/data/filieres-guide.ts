@@ -27,49 +27,49 @@ const guides: Record<string, FiliereGuide> = {
       {
         emoji: "🎓",
         categorie: "Admission",
-        titre: "Pas de concours d'entrée",
+        titre: "Admission sur dossier",
         description:
-          "L'admission en kinésithérapie en Espagne se fait sur dossier scolaire. Fini les années de PACES ou de prépa — vous commencez votre formation dès la première année.",
+          "Pas de concours d'entrée. L'accès aux études de kinésithérapie en Espagne se fait sur dossier académique, sans PASS ni concours comme en France.",
         accroche: "Accès direct sur dossier",
       },
       {
         emoji: "🏥",
         categorie: "Pratique",
-        titre: "1 500+ heures de stages",
+        titre: "Formation très pratique",
         description:
-          "Les universités espagnoles misent sur la pratique clinique. Dès la 2e année, vous êtes en contact avec de vrais patients dans des centres de rééducation partenaires.",
-        accroche: "Pratique dès l'année 2",
+          "Stages en clinique tout au long du cursus. Plus de 1 200 heures de stage, réalisées dans différents environnements de pratique, pour une vision concrète du métier.",
+        accroche: "Pratique dès l'année 1",
+      },
+      {
+        emoji: "🤲",
+        categorie: "Immersion",
+        titre: "Cours de pratique dès la première année",
+        description:
+          "Une immersion concrète dès le début du cursus. Dès la première année, les étudiants suivent des cours de pratique et découvrent les réalités du métier pour mieux se projeter.",
+        accroche: "Pratique dès le jour 1",
       },
       {
         emoji: "🇪🇺",
         categorie: "Reconnaissance",
-        titre: "Diplôme reconnu dans toute l'UE",
+        titre: "Diplôme reconnu en France",
         description:
-          "Le Grado en Fisioterapia est automatiquement reconnu en France et dans les 27 pays de l'UE. Vous pourrez exercer où vous le souhaitez dès l'obtention du diplôme.",
-        accroche: "Exercer en France ou ailleurs",
+          "Diplôme conforme aux normes européennes. Le Grado en Fisioterapia (4 ans, 240 ECTS) permet une reconnaissance en France via la directive européenne, avec possibilité d'exercice après démarches.",
+        accroche: "Exercer en France",
       },
       {
         emoji: "💪",
         categorie: "Spécialisation",
-        titre: "Sport, neuro, pédiatrie…",
+        titre: "Découverte des spécialités",
         description:
-          "Le cursus espagnol offre des modules de spécialisation variés : kinésithérapie du sport, neurologie, pédiatrie, respiratoire. De quoi trouver votre voie.",
+          "Une vision complète de la kinésithérapie. Sport, neurologie, cardio-respiratoire, pédiatrie, uro-gynécologie : les principaux domaines sont abordés au cours du cursus.",
         accroche: "Trouvez votre spécialité",
-      },
-      {
-        emoji: "🌍",
-        categorie: "International",
-        titre: "Un profil bilingue recherché",
-        description:
-          "Étudier en Espagne, c'est maîtriser l'espagnol en plus du français. Un atout considérable sur le marché du travail, avec 500 millions de locuteurs dans le monde.",
-        accroche: "Espagnol + Français",
       },
       {
         emoji: "📈",
         categorie: "Emploi",
-        titre: "100 % d'insertion professionnelle",
+        titre: "Débouchés solides",
         description:
-          "La kinésithérapie est l'un des métiers de santé les plus demandés en France. Le taux d'insertion professionnelle frôle les 100 % dans les 6 mois après le diplôme.",
+          "Une profession très demandée. La kinésithérapie offre de nombreuses opportunités d'exercice en libéral, en hôpital, en centre de rééducation ou dans le sport.",
         accroche: "Emploi quasi garanti",
       },
     ],
@@ -133,51 +133,51 @@ const guides: Record<string, FiliereGuide> = {
     },
     atouts: [
       {
-        emoji: "🦷",
-        categorie: "Pratique",
-        titre: "De vrais patients dès l'année 3",
-        description:
-          "Les facultés espagnoles disposent de cliniques universitaires intégrées. Dès la 3e année, vous pratiquez des soins réels sous supervision — amalgames, détartrages, extractions.",
-        accroche: "Clinique universitaire intégrée",
-      },
-      {
         emoji: "🎓",
         categorie: "Admission",
-        titre: "Admission sur dossier",
+        titre: "Admission simplifiée",
         description:
-          "Pas de PACES, pas de concours. L'admission se fait sur votre dossier scolaire et une lettre de motivation. Un bac S solide suffit pour candidater.",
-        accroche: "Fini les concours",
-      },
-      {
-        emoji: "🔬",
-        categorie: "Équipements",
-        titre: "Labo de simulation haute-fidélité",
-        description:
-          "Avant de toucher un vrai patient, vous vous entraînez sur des simulateurs de dernière génération. Fantômes dentaires, imagerie 3D, scanners intra-oraux — la technologie au service de l'apprentissage.",
-        accroche: "Technologie de pointe",
+          "Admission sur dossier, sans concours ni PASS. La sélection se fait à partir de votre dossier scolaire et, selon les universités, d'un entretien. La soumission du bulletin de première est suffisante pour candidater.",
+        accroche: "Accès direct sur dossier",
       },
       {
         emoji: "🇪🇺",
         categorie: "Reconnaissance",
-        titre: "Diplôme reconnu dans 27 pays",
+        titre: "Diplôme reconnu en France",
         description:
-          "Le Grado en Odontología est automatiquement reconnu en France. Vous pourrez vous inscrire à l'Ordre des chirurgiens-dentistes et exercer dès votre retour.",
+          "Diplôme conforme aux normes européennes. Le Grado en Odontología (5 ans, 300 ECTS) permet une reconnaissance en France via la directive européenne, avec inscription à l'Ordre sans reprise d'études.",
         accroche: "Inscription à l'Ordre garantie",
       },
       {
-        emoji: "💰",
-        categorie: "Revenus",
-        titre: "L'un des métiers les mieux rémunérés",
+        emoji: "🦷",
+        categorie: "Pratique",
+        titre: "Pratique dès la 3e année",
         description:
-          "Un chirurgien-dentiste libéral gagne en moyenne 6 000 à 12 000 € nets par mois en France. Un investissement dans vos études qui se rentabilise rapidement.",
-        accroche: "6 000–12 000 €/mois",
+          "Premiers soins sur patients en clinique universitaire. À partir de la 3e année, les étudiants réalisent des actes encadrés (détartrage, soins conservateurs...), sous supervision de praticiens expérimentés.",
+        accroche: "Clinique universitaire intégrée",
+      },
+      {
+        emoji: "🔬",
+        categorie: "Équipements",
+        titre: "Équipements de pointe",
+        description:
+          "Apprentissage sur technologies modernes. Avant la pratique réelle, les étudiants s'entraînent sur simulateurs (fantômes dentaires), imagerie 3D et scanners intra-oraux utilisés en cabinet.",
+        accroche: "Technologie de pointe",
+      },
+      {
+        emoji: "📈",
+        categorie: "Emploi",
+        titre: "Débouchés assurés",
+        description:
+          "Forte demande de dentistes en France. Le nombre important de départs à la retraite et le manque de praticiens facilitent l'installation ou l'emploi dès l'obtention du diplôme.",
+        accroche: "Emploi quasi garanti",
       },
       {
         emoji: "🌐",
         categorie: "Réseau",
-        titre: "Un réseau alumni en pleine croissance",
+        titre: "Réseau professionnel",
         description:
-          "Des centaines de dentistes formés en Espagne exercent aujourd'hui en France. Ce réseau grandissant est une ressource précieuse pour les stages, l'installation et les conseils.",
+          "Des étudiants déjà formés et installés. De nombreux diplômés exercent aujourd'hui en France, facilitant les stages, les premiers contacts professionnels et l'installation.",
         accroche: "Communauté francophone",
       },
     ],
@@ -241,51 +241,51 @@ const guides: Record<string, FiliereGuide> = {
     },
     atouts: [
       {
-        emoji: "🐾",
-        categorie: "Pratique",
-        titre: "Hôpital vétérinaire sur campus",
-        description:
-          "Les universités espagnoles disposent d'hôpitaux vétérinaires intégrés. Chiens, chats, chevaux, animaux de ferme — vous pratiquez sur tous les types d'espèces dès la 3e année.",
-        accroche: "Toutes les espèces",
-      },
-      {
         emoji: "🎓",
         categorie: "Admission",
-        titre: "Sur dossier et motivation",
+        titre: "Admission sur dossier",
         description:
-          "Pas de concours post-prépa. L'admission se fait sur votre dossier scolaire, un entretien de motivation et votre passion pour les animaux. Un bac S solide ouvre les portes.",
-        accroche: "Votre passion compte",
+          "Sur dossier académique. L'admission aux études vétérinaires en Espagne se fait sur dossier scolaire. Les étudiants peuvent intégrer directement après le bac.",
+        accroche: "Accès direct après le bac",
+      },
+      {
+        emoji: "🐾",
+        categorie: "Pratique",
+        titre: "Formation clinique encadrée",
+        description:
+          "Une immersion progressive en pratique. Les études incluent une formation pratique avec mise en situation sur des cas réels, sous la supervision de professionnels.",
+        accroche: "Pratique sur cas réels",
       },
       {
         emoji: "🔬",
-        categorie: "Recherche",
-        titre: "Laboratoires de pointe",
+        categorie: "Équipements",
+        titre: "Équipements à la pointe de la technologie",
         description:
-          "Imagerie médicale, chirurgie mini-invasive, analyse génétique — les universités partenaires investissent massivement dans des équipements de dernière génération.",
+          "Formation sur matériel professionnel. Les étudiants sont formés avec des équipements modernes utilisés en pratique vétérinaire : imagerie médicale, blocs de soins, laboratoires d'analyse et outils de diagnostic.",
         accroche: "Équipements dernière génération",
       },
       {
         emoji: "🇪🇺",
         categorie: "Reconnaissance",
-        titre: "Diplôme reconnu dans toute l'UE",
+        titre: "Diplôme reconnu en Europe",
         description:
-          "Le Grado en Veterinaria (5 ans, 300 ECTS) est automatiquement reconnu en France. Vous pourrez vous inscrire à l'Ordre des vétérinaires et exercer partout en Europe.",
+          "Diplôme conforme aux normes européennes. Le diplôme vétérinaire espagnol (5 ans, 300 ECTS) est reconnu dans l'Union européenne via la directive 2005/36/CE.",
         accroche: "Inscription à l'Ordre garantie",
       },
       {
         emoji: "🌿",
-        categorie: "Diversité",
-        titre: "Animaux domestiques, ruraux ou exotiques",
+        categorie: "Formation",
+        titre: "Formation complète",
         description:
-          "Le cursus espagnol couvre un large spectre : médecine des carnivores, équine, bovine, faune sauvage, et même santé publique vétérinaire. Vous trouverez votre spécialité.",
+          "Tous les domaines abordés. Le cursus couvre l'ensemble des champs de la médecine vétérinaire : animaux domestiques, ruraux, équins, santé publique et prévention.",
         accroche: "Du chat au cheval",
       },
       {
-        emoji: "🏡",
+        emoji: "📈",
         categorie: "Emploi",
-        titre: "Un métier en tension",
+        titre: "Débouchés solides",
         description:
-          "La France manque de vétérinaires, particulièrement en zones rurales. L'insertion professionnelle est excellente, avec des postes à pourvoir dans tout le territoire.",
+          "Un secteur avec des besoins réels. La profession vétérinaire offre de nombreuses opportunités d'exercice en clinique, en industrie, en recherche ou en santé publique.",
         accroche: "Forte demande en France",
       },
     ],
@@ -333,15 +333,15 @@ const guides: Record<string, FiliereGuide> = {
     tagline:
       "Intégrez les formations médicales espagnoles reconnues dans toute l'Europe — un parcours d'excellence accessible et concret.",
     stats: [
-      { value: "4 ans", label: "de formation" },
-      { value: "240", label: "crédits ECTS" },
+      { value: "6 ans", label: "de formation" },
+      { value: "360", label: "crédits ECTS" },
       { value: "5", label: "villes" },
     ],
     sousTitre: "Au cœur du soin",
     introTitreBold: "Soigner, accompagner, ",
     introTitreItalic: "transformer des vies",
     introDescription:
-      "Les études médicales en Espagne offrent un accès direct sur dossier, sans les barrières du système français. En 4 ans, vous obtenez un diplôme reconnu dans toute l'UE, avec plus de 2 100 heures de stages cliniques. Les universités espagnoles forment des professionnels de santé complets, humains et compétents.",
+      "Les études de médecine en Espagne offrent un accès direct sur dossier, sans les barrières du système français. En 6 ans, vous obtenez un diplôme reconnu dans toute l'UE (360 ECTS), avec plus de 1 800 heures de stages cliniques. Les universités espagnoles forment des médecins complets, humains et compétents.",
     temoignage: {
       quote:
         "J'ai choisi l'Espagne pour éviter la sélection en IFSI. Aujourd'hui, je fais mes stages dans les meilleurs hôpitaux de Valence. Mon diplôme sera reconnu en France dès mon retour.",
@@ -349,51 +349,51 @@ const guides: Record<string, FiliereGuide> = {
     },
     atouts: [
       {
-        emoji: "🏥",
-        categorie: "Stages",
-        titre: "2 100+ heures de pratique clinique",
-        description:
-          "Le cursus espagnol impose un minimum de 2 100 heures de stages en milieu hospitalier. Urgences, chirurgie, maternité, pédiatrie — vous touchez à toutes les spécialités.",
-        accroche: "La pratique avant tout",
-      },
-      {
         emoji: "🎓",
         categorie: "Admission",
-        titre: "Accès direct sur dossier",
+        titre: "Admission sur dossier",
         description:
-          "Pas de sélection Parcoursup, pas de concours IFSI. L'admission se fait sur votre dossier scolaire et votre lettre de motivation. Un bac S ou ST2S suffit pour candidater.",
+          "Accès sur dossier académique. L'admission en médecine en Espagne se fait sur dossier scolaire. Les étudiants peuvent intégrer directement après le bac.",
         accroche: "Sans concours",
+      },
+      {
+        emoji: "🏥",
+        categorie: "Stages",
+        titre: "Stages hospitaliers",
+        description:
+          "Plus de 1 800 heures de stages. Le cursus inclut une formation clinique progressive dès la 3e année, avec immersion dans différents services : urgences, chirurgie, médecine interne, pédiatrie.",
+        accroche: "La pratique avant tout",
       },
       {
         emoji: "🫀",
         categorie: "Formation",
-        titre: "Un cursus complet et progressif",
+        titre: "Formation",
         description:
-          "Des sciences fondamentales aux soins intensifs, le cursus construit vos compétences étape par étape. Chaque année apporte de nouvelles responsabilités et de nouveaux défis.",
+          "Un cursus structuré et progressif. De la théorie aux pratiques hospitalières, la formation médicale se construit étape par étape avec une montée en responsabilité.",
         accroche: "De la théorie au bloc",
       },
       {
         emoji: "🇪🇺",
         categorie: "Reconnaissance",
-        titre: "Diplôme reconnu dans 27 pays",
+        titre: "Reconnaissance",
         description:
-          "Le diplôme espagnol en sciences de la santé est reconnu dans toute l'UE. Vous pourrez exercer en France, en Belgique, en Suisse ou n'importe où en Europe.",
+          "Diplôme reconnu en Europe. Le diplôme de médecine espagnol (6 ans, 360 ECTS) est reconnu dans l'Union européenne via la directive 2005/36/CE.",
         accroche: "Carrière européenne",
       },
       {
         emoji: "💛",
         categorie: "Humain",
-        titre: "La relation patient au cœur",
+        titre: "Approche humaine",
         description:
-          "Le modèle espagnol accorde une place centrale à la relation d'aide, la communication et l'éthique. Vous ne serez pas juste un technicien, mais un soignant complet.",
+          "La relation patient au cœur de la formation. La formation met l'accent sur la communication, l'éthique et la prise en charge globale du patient.",
         accroche: "Soigner, pas juste traiter",
       },
       {
         emoji: "📊",
         categorie: "Emploi",
-        titre: "Le métier le plus demandé en France",
+        titre: "Débouchés",
         description:
-          "Les professions de santé sont en tension critique en France. Les hôpitaux recrutent activement, avec des salaires en hausse et des conditions d'exercice qui s'améliorent.",
+          "Un secteur en forte demande. Les besoins en médecins restent élevés, offrant de nombreuses opportunités de carrière en milieu hospitalier ou libéral.",
         accroche: "Emploi immédiat",
       },
     ],
@@ -405,7 +405,7 @@ const guides: Record<string, FiliereGuide> = {
           emoji: "🇪🇺",
           titre: "Reconnaissance automatique",
           description:
-            "Le diplôme espagnol (4 ans, 240 ECTS) est reconnu en France via la directive européenne. Votre enfant pourra exercer dans tout hôpital français dès son retour.",
+            "Le diplôme de médecine espagnol (6 ans, 360 ECTS) est reconnu en France via la directive européenne 2005/36/CE. Votre enfant pourra exercer en France après les démarches de reconnaissance.",
         },
         {
           emoji: "🏥",

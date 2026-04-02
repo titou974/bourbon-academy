@@ -34,7 +34,7 @@ export function AboutSection() {
             {/* Bottom title + CTA */}
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
               <div>
-                <h2 className="text-2xl md:text-5xl font-semibold text-white drop-shadow-lg leading-tight tracking-[-0.64px] md:tracking-[-1.8px]">
+                <h2 className="text-2xl md:text-5xl font-medium text-white drop-shadow-lg leading-tight tracking-[-0.64px] md:tracking-[-1.8px]">
                   {COPY.sections.about.title}
                 </h2>
                 <p className="text-sm md:text-lg text-white/80 mt-1 drop-shadow-md">
@@ -74,16 +74,10 @@ export function AboutSection() {
           </div>
           <div className="flex flex-col items-center gap-6 text-center px-4 md:px-16 lg:px-24 mt-6 md:mt-8">
             <p className="text-base md:text-xl lg:text-2xl tracking-[-0.5px] leading-relaxed text-balance text-foreground font-light">
-              {COPY.sections.about.description}
-            </p>
-
-            {/* Founder quote */}
-            <p className="text-sm italic font-serif text-balance text-muted-foreground">
-              <span className="font-semibold text-foreground">
-                {COPY.sections.about.founderName}
+              {COPY.sections.about.description}{" "}
+              <span className="text-secondary font-light">
+                {COPY.sections.about.descriptionAccent}
               </span>
-              , <br />
-              {COPY.sections.about.founderRole}
             </p>
 
             {/* Decorative separator with logo ovals */}

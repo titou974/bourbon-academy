@@ -6,7 +6,7 @@
     "coordinates": { "x": 49, "y": 43 },
     "mobileCoordinates": { "x": 49, "y": 45 },
     "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
-    "photo": "/images/localisations/madrid.jpg",
+    "photo": "/images/localisations/madrid.jpeg",
     "etudiantsPlaces": 150
   },
   {
@@ -16,7 +16,7 @@
     "coordinates": { "x": 60, "y": 47 },
     "mobileCoordinates": { "x": 75, "y": 52 },
     "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],
-    "photo": "/images/localisations/valence.jpg",
+    "photo": "/images/localisations/valence.jpeg",
     "etudiantsPlaces": 120
   },
   {
@@ -26,7 +26,7 @@
     "coordinates": { "x": 45, "y": 72 },
     "mobileCoordinates": { "x": 43, "y": 72 },
     "filieres": ["kine", "dentaire", "veterinaire"],
-    "photo": "/images/localisations/malaga.jpg",
+    "photo": "/images/localisations/malaga.jpeg",
     "etudiantsPlaces": 80
   },
   {
