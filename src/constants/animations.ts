@@ -52,6 +52,11 @@ export const cardReveal: Variants = {
   },
 };
 
+export const tooltipReveal = {
+  duration: 0.4,
+  ease: [0.23, 1, 0.32, 1],
+} as const;
+
 /** Props par defaut pour whileInView sur les sections */
 export const scrollViewport = {
   once: true,

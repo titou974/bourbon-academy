@@ -4,16 +4,15 @@ import Image from "next/image";
 import { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import citiesData from "@/data/schools.json";
-import { StatsCounter } from "./StatsCounter";
 import { CityModal } from "./CityModal";
 import { getCityGuide } from "@/data/cities-guide";
 import type { City, CityGuide } from "@/types";
 import { COPY } from "@/constants/fr_strings";
+import { tooltipReveal } from "@/constants/animations";
 import { ArrowUpRight } from "lucide-react";
 
 const cities = citiesData as City[];
 
-const tooltipTransition = { duration: 0.2, ease: [0.16, 1, 0.3, 1] } as const;
 
 const MARQUEE_DURATION = 25;
 
@@ -92,7 +91,7 @@ export function SpainMap() {
   }, []);
 
   const scheduleClose = useCallback(() => {
-    closeTimeoutRef.current = setTimeout(() => setActiveCity(null), 200);
+    closeTimeoutRef.current = setTimeout(() => setActiveCity(null), 400);
   }, []);
 
   return (
@@ -160,7 +159,7 @@ export function SpainMap() {
                       initial={{ opacity: 0, y: 4, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 3, scale: 0.95 }}
-                      transition={tooltipTransition}
+                      transition={tooltipReveal}
                     >
                       <div className="bg-card border border-border rounded-md px-2.5 py-1 whitespace-nowrap shadow-md">
                         <p className="text-xs font-semibold leading-tight">
@@ -172,7 +171,9 @@ export function SpainMap() {
                   )}
                 </AnimatePresence>
 
-                <div className="z-20 relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-border group-hover:ring-secondary shadow-md transition-all duration-300 group-hover:scale-125 group-hover:-translate-y-1">
+                <div
+                  className={`z-20 relative w-8 h-8 rounded-full overflow-hidden ring-2 shadow-md transition-all duration-300 cursor-pointer group-hover:scale-125 group-hover:-translate-y-1 ${activeCity?.ville === city.ville ? "ring-primary scale-125 -translate-y-1" : "ring-border group-hover:ring-primary"}`}
+                >
                   <Image
                     src={city.photo}
                     alt={city.ville}
@@ -181,7 +182,9 @@ export function SpainMap() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <div className="rounded-full bg-border w-2 h-2 absolute bottom-1 left-1/2 -translate-x-1/2 shadow-sm z-10 group-hover:bg-secondary group-hover:-translate-y-1 transition-all duration-300" />
+                <div
+                  className={`rounded-full w-2 h-2 absolute bottom-1 left-1/2 -translate-x-1/2 shadow-sm z-10 transition-all duration-300 ${activeCity?.ville === city.ville ? "bg-secondary -translate-y-1" : "bg-border group-hover:bg-secondary group-hover:-translate-y-1"}`}
+                />
               </button>
             </motion.div>
           ))}
@@ -200,7 +203,7 @@ export function SpainMap() {
                 initial={{ opacity: 0, y: 6, scale: 0.94 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 4, scale: 0.96 }}
-                transition={tooltipTransition}
+                transition={tooltipReveal}
                 onPointerEnter={(e) =>
                   e.pointerType === "mouse" && cancelClose()
                 }
@@ -208,8 +211,17 @@ export function SpainMap() {
                   e.pointerType === "mouse" && scheduleClose()
                 }
               >
-                <div className="relative w-52">
-                  <div className="bg-card border border-border rounded-[var(--radius-card)] shadow-lg overflow-hidden">
+                <div
+                  className="relative w-52 cursor-pointer"
+                  onClick={() => {
+                    const guide = getCityGuide(activeCity.ville);
+                    if (guide) {
+                      setSelectedCityGuide(guide);
+                      setActiveCity(null);
+                    }
+                  }}
+                >
+                  <div className="bg-card border-3 border-primary rounded-[var(--radius-card)] shadow-lg overflow-hidden transition-colors duration-200">
                     <div className="relative h-24 w-full">
                       <Image
                         src={activeCity.photo}
