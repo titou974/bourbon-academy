@@ -1,4 +1,9 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { sectionReveal } from "@/constants/animations";
 
 export default function SectionWrapper({
   children,
@@ -13,10 +18,17 @@ export default function SectionWrapper({
   subtitle?: string;
   centered?: boolean;
 }) {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.15 });
+
   return (
-    <section
+    <motion.section
+      ref={ref}
       id={id}
       className="px-4 pb-4 md:px-6 md:pb-6 relative mt-8 md:mt-10"
+      variants={sectionReveal}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
     >
       <div className="max-w-5xl mx-auto rounded-[var(--radius-pill)] border-border border-1 relative z-20">
         <Image
@@ -55,6 +67,6 @@ export default function SectionWrapper({
         )}
         {children}
       </div>
-    </section>
+    </motion.section>
   );
 }

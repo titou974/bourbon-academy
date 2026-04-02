@@ -1,5 +1,10 @@
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { COPY } from "@/constants/fr_strings";
 import { ProcessStep } from "./ProcessStep";
+import { cardReveal } from "@/constants/animations";
 
 const stepsData = [
   {
@@ -19,18 +24,39 @@ const stepsData = [
   },
 ];
 
+function AnimatedStep({
+  step,
+  index,
+}: {
+  step: (typeof COPY.steps)[number];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={cardReveal}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+    >
+      <ProcessStep
+        stepLabel={step.step}
+        title={step.title}
+        description={step.description}
+        {...stepsData[index]}
+      />
+    </motion.div>
+  );
+}
+
 export function ProcessSection() {
   return (
     <div className="px-4 py-8 md:px-10 md:py-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {COPY.steps.map((step, index) => (
-          <ProcessStep
-            key={step.step}
-            stepLabel={step.step}
-            title={step.title}
-            description={step.description}
-            {...stepsData[index]}
-          />
+          <AnimatedStep key={step.step} step={step} index={index} />
         ))}
       </div>
     </div>
