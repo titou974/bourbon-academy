@@ -46,8 +46,12 @@ export const COPY = {
     about: {
       title: "Qui sommes-nous ?",
       subtitle: "Bourbon Academy, votre passerelle vers l'Espagne",
-      description:
-        "Bourbon Academy accompagne les étudiants réunionnais dans leur projet d'études en Espagne.\n\nUne passerelle gratuite vers des universités reconnues, avec un accompagnement personnalisé à chaque étape.\n\nDe La Réunion à l'Espagne, avancez avec clarté, simplicité et exigence dans vos démarches.\n\nStructurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre engagement.",
+      descriptionBefore: "Bourbon Academy accompagne les",
+      descriptionReunionnais: "étudiants réunionnais",
+      descriptionMiddle: "dans leur projet d'études en",
+      descriptionEspagne: "Espagne.",
+      descriptionSuite:
+        "Une passerelle gratuite vers des universités reconnues, avec un accompagnement personnalisé à chaque étape. De La Réunion à l'Espagne, avancez avec clarté, simplicité et exigence dans vos démarches. Structurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre engagement.",
       descriptionAccent:
         "Bénéficiez de l'expérience et de l'accompagnement de Réunionnais ayant étudié ou étudiant en Espagne.",
       cta: "Découvir les filières",

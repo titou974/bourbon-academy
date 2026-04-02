@@ -74,8 +74,30 @@ export function AboutSection() {
           </div>
           <div className="flex flex-col items-center gap-6 text-center px-4 md:px-16 lg:px-24 mt-6 md:mt-8">
             <p className="text-base md:text-xl lg:text-2xl tracking-[-0.5px] leading-relaxed text-balance text-foreground font-light">
-              {COPY.sections.about.description}{" "}
-              <span className="text-secondary font-light">
+              {COPY.sections.about.descriptionBefore}{" "}
+              <span className="inline-flex items-center justify-center size-5 md:size-6 rounded-full bg-muted align-middle mx-0.5">
+                <Image
+                  src="/images/icons/reunionflag.webp"
+                  alt="Drapeau Réunion"
+                  width={14}
+                  height={14}
+                  className="rounded-full"
+                />
+              </span>{" "}
+              {COPY.sections.about.descriptionReunionnais}{" "}
+              {COPY.sections.about.descriptionMiddle}{" "}
+              <span className="inline-flex items-center justify-center size-5 md:size-6 rounded-full bg-muted align-middle mx-0.5">
+                <Image
+                  src="/images/icons/spain-flag.webp"
+                  alt="Drapeau Espagne"
+                  width={14}
+                  height={14}
+                  className="rounded-full"
+                />
+              </span>{" "}
+              {COPY.sections.about.descriptionEspagne}{" "}
+              {COPY.sections.about.descriptionSuite}{" "}
+              <span className="text-secondary">
                 {COPY.sections.about.descriptionAccent}
               </span>
             </p>
