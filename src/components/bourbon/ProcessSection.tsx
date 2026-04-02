@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { COPY } from "@/constants/fr_strings";
 import { ProcessStep } from "./ProcessStep";
-import { cardReveal } from "@/constants/animations";
+import { cardRevealWithDelay } from "@/constants/animations";
 
 const stepsData = [
   {
@@ -37,7 +37,7 @@ function AnimatedStep({
   return (
     <motion.div
       ref={ref}
-      variants={cardReveal}
+      variants={cardRevealWithDelay(index)}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
     >

@@ -39,13 +39,13 @@ export function FiliereCard({ filiere }: FiliereCardProps) {
           <div className="user-select-none pointer-events-none absolute inset-0 z-10 bg-gradient-to-bl from-foreground/40 group-hover:from-primary/40 via-transparent to-transparent transition-colors duration-300 ease-in-out opacity-100"></div>
           {/* Bouton découvrir — centré, mobile uniquement */}
           <span className="md:hidden absolute inset-0 z-20 flex items-center justify-center">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/90 px-4 py-1.5 text-xs font-medium text-primary shadow-sm backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground shadow-sm">
               {COPY.filiereCard.discover} <ArrowUpRight className="size-3.5" />
             </span>
           </span>
           {/* Icône expand — coin haut-droite, desktop */}
-          <div className="hidden md:flex absolute top-2 right-2 size-8 rounded-full items-center justify-center border border-white group-hover:bg-white transition-colors z-20 group-hover:translate-y-1 group-hover:translate-x-[-1px] transition-transform duration-300 ease-in-out">
-            <ArrowUpRight className="size-5 text-white group-hover:text-primary transition-colors" />
+          <div className="hidden md:flex absolute top-2 right-2 size-8 rounded-full items-center justify-center border border-white group-hover:bg-primary group-hover:border-primary transition-colors z-20 group-hover:translate-y-1 group-hover:translate-x-[-1px] transition-transform duration-300 ease-in-out">
+            <ArrowUpRight className="size-5 text-white transition-colors" />
           </div>
         </div>
 
