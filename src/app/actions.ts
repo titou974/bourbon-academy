@@ -35,7 +35,6 @@ export async function createCandidature(
     const candidature = await prisma.candidature.create({
       data: parsed.data,
     });
-    console.log("dandiature", candidature);
     return { success: true, id: candidature.id };
   } catch (error) {
     console.log("error", error);

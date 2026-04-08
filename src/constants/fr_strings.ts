@@ -167,7 +167,7 @@ export const COPY = {
     {
       value: "infirmier",
       label: "Médecine",
-      image: "/images/filieres/infirmier.jpg",
+      image: "/images/filieres/medecine.jpeg",
       color: "var(--color-primary)",
     },
   ] as const,
