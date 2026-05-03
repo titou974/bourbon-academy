@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import statsData from "@/data/stats.json";
+import statsData from "@/constants/stats.json";
 import type { Stat } from "@/types";
 
 const stats = statsData as Stat[];

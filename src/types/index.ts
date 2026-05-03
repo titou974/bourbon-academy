@@ -12,24 +12,40 @@ export type FiliereDetail =
   | { type: "diplome"; label: string }
   | { type: "credits"; value: number };
 
+export interface Condition {
+  etape: number;
+  titre: string;
+  description: string;
+}
+
 export interface Filiere {
   id: string;
   nom: string;
   couleur: string;
+  // Carte
+  nomBold: string;
+  nomItalic: string;
   description: string;
-  conditions: string[];
-  ctaLabel: string;
   photo: string;
-  localisations: Localisation[];
+  ctaLabel: string;
   dureEtudesAnnees: number;
   dureEtudesDetail: string;
-  debouches: string[];
-  programme: {
-    phase: string;
-    label: string;
-    matieres: string[];
-  }[];
   details?: FiliereDetail[];
+  // Hero modal
+  tagline: string;
+  stats: { value: string; label: string }[];
+  // Section intro
+  sousTitre: string;
+  introTitreBold: string;
+  introTitreItalic: string;
+  introDescription: string;
+  // Données
+  conditions: Condition[];
+  debouches: string[];
+  programme: { phase: string; label: string; matieres: string[] }[];
+  localisations: Localisation[];
+  // CTA
+  cta: { description: string };
 }
 
 export interface School {
@@ -67,30 +83,6 @@ export interface Stat {
   duration: number;
 }
 
-export interface FiliereGuide {
-  id: string;
-  nomBold: string;
-  nomItalic: string;
-  tagline: string;
-  stats: { value: string; label: string }[];
-  sousTitre: string;
-  introTitreBold: string;
-  introTitreItalic: string;
-  introDescription: string;
-  temoignage: { quote: string; auteur: string };
-  atouts: {
-    emoji: string;
-    categorie: string;
-    titre: string;
-    description: string;
-    accroche: string;
-  }[];
-  rassuranceParents: {
-    description: string;
-    items: { emoji: string; titre: string; description: string }[];
-  };
-  cta: { description: string };
-}
 
 export interface CityGuide {
   ville: string;

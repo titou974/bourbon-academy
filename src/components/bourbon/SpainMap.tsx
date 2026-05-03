@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import citiesData from "@/data/schools.json";
+import citiesData from "@/constants/schools.json";
 import { CityModal } from "./CityModal";
-import { getCityGuide } from "@/data/cities-guide";
+import { getCityGuide } from "@/constants/cities-guide";
 import type { City, CityGuide } from "@/types";
 import { COPY } from "@/constants/fr_strings";
 import { tooltipReveal } from "@/constants/animations";

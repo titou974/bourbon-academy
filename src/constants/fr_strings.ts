@@ -244,7 +244,8 @@ export const COPY = {
 
   filiereModal: {
     localisation: "Localisation",
-    localisationDesc: "Nous avons des écoles présente sur",
+    localisationDesc:
+      "Des villes reconnues pour la qualité de leurs établissements d’enseignement supérieur.",
     conditions: "Conditions d'entrée",
     conditionsBold: "Conditions",
     conditionsItalic: "d'entrée",

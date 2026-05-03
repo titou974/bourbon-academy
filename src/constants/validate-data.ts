@@ -6,7 +6,7 @@
  */
 
 import type { Filiere, City } from "@/types/index"
-import filieres from "./filieres.json"
+import filieres from "./filieres"
 import schools from "./schools.json"
 
 // ── Validation filieres.json ──────────────────────────────────────────────────

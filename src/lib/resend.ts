@@ -4,7 +4,7 @@ import { COPY } from "@/constants/fr_strings";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const TEAM_EMAIL = "bourbonacademy974@gmail.com";
-const FROM_EMAIL = "onboarding@resend.dev";
+const FROM_EMAIL = "admissions@bourbon-academy.com";
 
 function resolveLabels(keys: string[]): string[] {
   return keys.map(
@@ -73,10 +73,7 @@ export async function sendTeamNotification(candidature: {
   const bulletinsHtml =
     candidature.bulletinUrls.length > 0
       ? candidature.bulletinUrls
-          .map(
-            (url, i) =>
-              `<li><a href="${url}">Bulletin ${i + 1}</a></li>`,
-          )
+          .map((url, i) => `<li><a href="${url}">Bulletin ${i + 1}</a></li>`)
           .join("")
       : "<li>Aucun bulletin fourni</li>";
 

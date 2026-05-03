@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { FiliereCard } from "./FiliereCard";
-import filieres from "@/data/filieres.json";
+import filieres from "@/constants/filieres";
 import type { Filiere } from "@/types";
 import { cardRevealWithDelay } from "@/constants/animations";
 
@@ -24,7 +24,7 @@ function AnimatedCard({ filiere, index }: { filiere: Filiere; index: number }) {
 }
 
 export function FiliereSection() {
-  const data = filieres as Filiere[];
+  const data: Filiere[] = filieres;
 
   return (
     <div className="px-4 md:px-20 py-8">
