@@ -246,9 +246,9 @@ export const COPY = {
     localisation: "Localisation",
     localisationDesc:
       "Des villes reconnues pour la qualité de leurs établissements d’enseignement supérieur.",
-    conditions: "Conditions d'entrée",
+    conditions: "Conditions d'admission",
     conditionsBold: "Conditions",
-    conditionsItalic: "d'entrée",
+    conditionsItalic: "d'admission",
     prerequis: "Prérequis",
     duree: "Durée des études",
     anneesFormation: "ans de formation",

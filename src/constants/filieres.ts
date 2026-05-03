@@ -282,7 +282,8 @@ const filieres: Filiere[] = [
     nomItalic: "naire",
     tagline:
       "Soigner les animaux est une vocation. Les universités espagnoles vous offrent une formation d'excellence pour en faire votre métier.",
-    description: "Les écoles vétérinaires espagnoles sont parmi les meilleures d'Europe.",
+    description:
+      "Les écoles vétérinaires espagnoles sont parmi les meilleures d'Europe.",
     photo: "/images/filieres/veterinaire.jpg",
     ctaLabel: "Candidater en Vétérinaire",
     dureEtudesAnnees: 5,

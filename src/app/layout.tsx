@@ -76,6 +76,13 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: COPY.brand.name,
+  url: SITE_URL,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -87,6 +94,12 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className="bg-background-side"
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background-center`}
       >
