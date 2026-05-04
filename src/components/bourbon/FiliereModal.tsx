@@ -12,9 +12,11 @@ import {
   ModalSectionTitle,
   ModalCTASection,
   ModalPillBadges,
+  ModalFeatureGrid,
 } from "./modal-sections";
 import { ScrollFadeIn } from "./ScrollFadeIn";
 import { fadeIn } from "@/constants/animations";
+import { getFiliereGuide } from "@/constants/filieres";
 
 interface FiliereModalProps {
   filiere: Filiere;
@@ -28,7 +30,7 @@ export function FiliereModal({
   onOpenChange,
 }: FiliereModalProps) {
   const [selectedCity, setSelectedCity] = useState<CityGuide | null>(null);
-
+  const guide = getFiliereGuide(filiere.id);
   const handleCityClick = (cityName: string) => {
     const g = getCityGuide(cityName);
     if (g) setSelectedCity(g);
@@ -153,6 +155,27 @@ export function FiliereModal({
               </div>
             </div>
           </ScrollFadeIn>
+
+          {guide && (
+            <ScrollFadeIn className="px-5 md:px-8 py-8 md:py-10">
+              <div className="text-center mb-8">
+                <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-secondary font-medium mb-3">
+                  {COPY.filiereModal.pourquoiChoisir}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight leading-tight">
+                  {COPY.filiereModal.ceFaitDifference}{" "}
+                  <span className="italic text-secondary font-serif">
+                    {COPY.filiereModal.difference}
+                  </span>
+                </h3>
+              </div>
+              <ModalFeatureGrid
+                items={guide.atouts}
+                variant="light"
+                columns={3}
+              />
+            </ScrollFadeIn>
+          )}
 
           <ScrollFadeIn>
             <ModalCTASection

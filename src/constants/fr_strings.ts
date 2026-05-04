@@ -262,7 +262,7 @@ export const COPY = {
     ouEtudierSuffix: "?",
     apresEtudes: "Après vos études",
     vosDebouches: "Vos",
-    debouchesItalic: "débouchés",
+    debouchesItalic: "débouchés et spécialisations",
     badge: "Formation santé",
     subtitleLine: (annees: number) =>
       `Espagne · Diplôme européen · ${annees} ans`,

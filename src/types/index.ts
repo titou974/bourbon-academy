@@ -83,7 +83,6 @@ export interface Stat {
   duration: number;
 }
 
-
 export interface CityGuide {
   ville: string;
   villeBold: string;
@@ -125,4 +124,29 @@ export interface CandidatureFormData {
   filiere: string;
   message?: string;
   bulletinUrl?: string;
+}
+
+export interface FiliereGuide {
+  id: string;
+  nomBold: string;
+  nomItalic: string;
+  tagline: string;
+  stats: { value: string; label: string }[];
+  sousTitre: string;
+  introTitreBold: string;
+  introTitreItalic: string;
+  introDescription: string;
+  temoignage: { quote: string; auteur: string };
+  atouts: {
+    emoji: string;
+    categorie: string;
+    titre: string;
+    description: string;
+    accroche: string;
+  }[];
+  rassuranceParents: {
+    description: string;
+    items: { emoji: string; titre: string; description: string }[];
+  };
+  cta: { description: string };
 }
