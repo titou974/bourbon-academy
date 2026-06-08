@@ -47,13 +47,13 @@ export const COPY = {
       title: "Qui sommes-nous ?",
       subtitle: "Bourbon Academy, votre passerelle vers l'Espagne",
       descriptionBefore: "Bourbon Academy accompagne les",
-      descriptionReunionnais: "étudiants réunionnais",
+      descriptionReunionnais: "étudiants",
       descriptionMiddle: "dans leur projet d'études en",
       descriptionEspagne: "Espagne.",
       descriptionSuite:
         "Une passerelle gratuite vers des universités reconnues, avec un accompagnement personnalisé à chaque étape. De La Réunion à l'Espagne, avancez avec clarté, simplicité et exigence dans vos démarches. Structurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre engagement.",
       descriptionAccent:
-        "Bénéficiez de l'expérience et de l'accompagnement de Réunionnais ayant étudié ou étudiant en Espagne.",
+        "Bénéficiez de l'expérience et de l'accompagnement d'élèves ayant étudié ou étudiant en Espagne.",
       cta: "Découvir les filières",
       inlineText:
         "étudiants français vers plus de villes en Espagne, pour toutes les filières. De la Réunion à Madrid, des formations d'excellence dans des universités reconnues pour créer",
@@ -358,9 +358,9 @@ export const COPY = {
   },
 
   phonePresets: [
-    { code: "+262", label: "🇷🇪 Réunion (+262)" },
-    { code: "+33", label: "🇫🇷 France (+33)" },
-    { code: "+34", label: "🇪🇸 Espagne (+34)" },
+    { code: "+262", label: "Réunion (+262)" },
+    { code: "+33", label: "France (+33)" },
+    { code: "+34", label: "Espagne (+34)" },
   ] as const,
 
   images: {
