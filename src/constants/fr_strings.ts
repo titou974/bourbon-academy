@@ -51,7 +51,7 @@ export const COPY = {
       descriptionMiddle: "dans leur projet d'études en",
       descriptionEspagne: "Espagne.",
       descriptionSuite:
-        "Une passerelle gratuite vers des universités reconnues, avec un accompagnement personnalisé à chaque étape. De La Réunion à l'Espagne, avancez avec clarté, simplicité et exigence dans vos démarches. Structurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre engagement.",
+        "Une passerelle gratuite vers des universités reconnues, avec un accompagnement personnalisé à chaque étape. Jusqu'à votre candidature en Espagne, avancez avec clarté, simplicité et exigence dans vos démarches. Structurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre engagement.",
       descriptionAccent:
         "Bénéficiez de l'expérience et de l'accompagnement d'élèves ayant étudié ou étudiant en Espagne.",
       cta: "Découvir les filières",
