@@ -44,7 +44,7 @@ export function CityModal({ city, open, onOpenChange }: CityModalProps) {
               photo={city.photo}
               alt={city.ville}
               badge={COPY.cityModal.badge}
-              subtitleLine={COPY.cityModal.subtitleLine(city.region, city.stats[1]?.value ?? "")}
+              subtitleLine={COPY.cityModal.subtitleLine(city.region)}
               titleBold={city.villeBold}
               titleItalic={city.villeItalic}
               tagline={city.tagline}

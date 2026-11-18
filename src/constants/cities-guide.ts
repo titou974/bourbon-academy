@@ -13,7 +13,7 @@ export const citiesGuide: CityGuide[] = [
       "Cosmopolite, ensoleillée et résolument tournée vers l'avenir — Madrid n'est pas juste une ville. C'est une expérience de vie.",
     stats: [
       { value: "300K", label: "Étudiants" },
-      { value: "Top 3", label: "des villes étudiantes d'UE" },
+      { value: "10€", label: "Transport illimité /mois (-26 ans)" },
     ],
     sousTitre: "La ville qui ne dort jamais",
     introTitreBold: "Là où chaque jour ",
@@ -39,8 +39,8 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Vie sociale",
         titre: "La tapa, c'est offert",
         description:
-          "Dans de nombreux bars de Madrid, commander une bière vous vaut une assiette de tapas gratuite. Pour 5 euros, on mange très bien. Le meilleur rapport qualité-vie d'Europe, sans discussion.",
-        accroche: "5€ le repas complet",
+          "Dans beaucoup de bars traditionnels de Madrid, une petite tapa accompagne encore la boisson. Entre amis, on dîne de tapas pour quelques euros — un art de vivre bien madrilène.",
+        accroche: "Tapa souvent offerte",
       },
       {
         emoji: "🏛️",
@@ -82,20 +82,20 @@ export const citiesGuide: CityGuide[] = [
         {
           emoji: "🏠",
           label: "Colocation",
-          prix: "200–400€",
+          prix: "450–650€",
           unite: "/mois",
         },
         {
           emoji: "🥘",
           label: "Alimentation",
-          prix: "~150€",
+          prix: "~220€",
           unite: "/mois",
         },
-        { emoji: "🚇", label: "Transport", prix: "46€", unite: "/mois" },
+        { emoji: "🚇", label: "Transport", prix: "10€", unite: "/mois" },
         {
           emoji: "✈️",
           label: "Vol Paris–Madrid",
-          prix: "~200€",
+          prix: "80–200€",
           unite: "A/R",
         },
       ],
@@ -108,7 +108,7 @@ export const citiesGuide: CityGuide[] = [
           emoji: "🏥",
           titre: "Santé couverte",
           description:
-            "La carte d'assurance maladie européenne donne accès aux soins publics d'urgence. Le système de santé madrilène fonctionne bien et est accessible.",
+            "La carte européenne d'assurance maladie donne accès aux soins du système public espagnol, comme pour un assuré local. Le système de santé madrilène est réputé et accessible.",
         },
         {
           emoji: "🎓",
@@ -126,7 +126,7 @@ export const citiesGuide: CityGuide[] = [
           emoji: "🌐",
           titre: "Une langue, un atout",
           description:
-            "Maîtriser l'espagnol après un séjour à Madrid, c'est ouvrir des portes sur 500 millions de locuteurs à travers le monde. Un vrai avantage carrière.",
+            "Maîtriser l'espagnol après un séjour à Madrid, c'est ouvrir des portes sur près de 600 millions de locuteurs à travers le monde. Un vrai avantage carrière.",
         },
       ],
     },
@@ -151,13 +151,13 @@ export const citiesGuide: CityGuide[] = [
       "Entre plage et futurisme, Valence est la ville où l'on étudie les pieds dans le sable et le regard tourné vers demain.",
     stats: [
       { value: "100K", label: "Étudiants" },
-      { value: "N°1", label: "Qualité de vie" },
+      { value: "N°1", label: "Ville pour expatriés (InterNations 2024)" },
     ],
     sousTitre: "La Méditerranée au quotidien",
     introTitreBold: "Là où les études ",
     introTitreItalic: "ont un goût de sel",
     introDescription:
-      "Troisième ville d'Espagne, Valence séduit par son cadre de vie exceptionnel. Sa Cité des Arts et des Sciences côtoie les plages de sable fin. Le tout avec un coût de la vie 30 % inférieur à Madrid ou Barcelone. Pour les étudiants, c'est le compromis parfait.",
+      "Troisième ville d'Espagne, Valence séduit par son cadre de vie exceptionnel. Sa Cité des Arts et des Sciences côtoie les plages de sable fin. Le tout avec un coût de la vie nettement inférieur à Madrid ou Barcelone. Pour les étudiants, c'est le compromis parfait.",
     temoignage: {
       quote:
         "Valence, c'est se réveiller avec le bruit de la mer et finir la journée sur une terrasse. Le rythme de vie ici te transforme.",
@@ -169,7 +169,7 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Gastronomie",
         titre: "Le berceau de la paella",
         description:
-          "La vraie paella est née ici. Chaque dimanche, les familles valenciennes perpétuent la tradition. Et non, la paella aux fruits de mer n'est pas l'originale — c'est celle au poulet et haricots verts.",
+          "La vraie paella est née ici. Chaque dimanche, les familles valenciennes perpétuent la tradition. Et non, la paella aux fruits de mer n'est pas l'originale — c'est celle au poulet, au lapin et aux haricots verts.",
         accroche: "La vraie recette",
       },
       {
@@ -185,8 +185,8 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Mobilité",
         titre: "La ville du vélo",
         description:
-          "Valence dispose de plus de 160 km de pistes cyclables et du Jardín del Turia, un ancien lit de fleuve transformé en parc traversant toute la ville. Ici, on pédale plus qu'on ne conduit.",
-        accroche: "160 km de pistes",
+          "Valence est plate, dotée d'un vaste réseau de pistes cyclables et du Jardín del Turia : un ancien lit de fleuve transformé en parc de 9 km qui traverse toute la ville. Ici, on se déplace à vélo.",
+        accroche: "9 km de parc en ville",
       },
       {
         emoji: "🏗️",
@@ -199,9 +199,9 @@ export const citiesGuide: CityGuide[] = [
       {
         emoji: "🏖️",
         categorie: "Plages",
-        titre: "La Malvarrosa, à 20 min",
+        titre: "La Malvarrosa, la plage en ville",
         description:
-          "La plage de la Malvarrosa est accessible en 20 minutes de bus depuis n'importe quel campus. Après les cours, le sable fin vous attend. Toute l'année.",
+          "La plage de la Malvarrosa se rejoint en tram ou en bus depuis le centre, et elle est toute proche des campus de Blasco Ibáñez et de la Politècnica. Après les cours, le sable fin vous attend.",
         accroche: "Plage toute l'année",
       },
       {
@@ -220,20 +220,20 @@ export const citiesGuide: CityGuide[] = [
         {
           emoji: "🏠",
           label: "Colocation",
-          prix: "200–350€",
+          prix: "350–500€",
           unite: "/mois",
         },
         {
           emoji: "🥘",
           label: "Alimentation",
-          prix: "~140€",
+          prix: "~200€",
           unite: "/mois",
         },
-        { emoji: "🚇", label: "Transport", prix: "40€", unite: "/mois" },
+        { emoji: "🚇", label: "Transport", prix: "~15€", unite: "/mois" },
         {
           emoji: "✈️",
           label: "Vol Paris–Valence",
-          prix: "~150€",
+          prix: "80–180€",
           unite: "A/R",
         },
       ],
@@ -246,7 +246,7 @@ export const citiesGuide: CityGuide[] = [
           emoji: "🏥",
           titre: "Santé accessible",
           description:
-            "Le système de santé valencien est de qualité. La carte européenne d'assurance maladie couvre les urgences et les soins de base.",
+            "Le système de santé valencien est de qualité. La carte européenne d'assurance maladie donne accès aux soins du système public.",
         },
         {
           emoji: "🎓",
@@ -289,7 +289,7 @@ export const citiesGuide: CityGuide[] = [
       "Berceau de Picasso, hub tech en plein essor — Malaga est la surprise andalouse qui séduit les étudiants du monde entier.",
     stats: [
       { value: "40K", label: "Étudiants" },
-      { value: "N°1", label: "Climat d'Espagne" },
+      { value: "N°1", label: "Ville pour expatriés (InterNations 2025)" },
     ],
     sousTitre: "L'Andalousie qui regarde vers l'avenir",
     introTitreBold: "Là où le soleil ",
@@ -307,8 +307,8 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Culture",
         titre: "Picasso est né ici",
         description:
-          "Pablo Picasso a vu le jour au 36 Plaza de la Merced. Sa maison natale est aujourd'hui un musée, et la ville entière respire l'art à chaque coin de rue.",
-        accroche: "Plaza de la Merced, 36",
+          "Pablo Picasso a vu le jour Plaza de la Merced, dans la maison qui porte aujourd'hui le n°15. Elle est devenue un musée, et la ville entière respire l'art à chaque coin de rue.",
+        accroche: "Plaza de la Merced, 15",
       },
       {
         emoji: "🍷",
@@ -323,7 +323,7 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Innovation",
         titre: "Le Silicon Valley andalou",
         description:
-          "Le Málaga Tech Park accueille plus de 600 entreprises tech. Google, Vodafone et Oracle y ont des bureaux. Les stages et opportunités pleuvent pour les étudiants.",
+          "Le Málaga TechPark réunit plus de 600 entreprises, et Google a ouvert en centre-ville son centre européen de cybersécurité. Un vivier d'opportunités pour les étudiants.",
         accroche: "600+ entreprises tech",
       },
       {
@@ -347,7 +347,7 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Fêtes",
         titre: "La Feria de Agosto",
         description:
-          "Une semaine entière de fête en août — flamenco dans les rues, casetas, musique live. Malaga se transforme en la plus grande fête d'Andalousie.",
+          "Une semaine entière de fête en août — flamenco dans les rues, casetas, musique live. Malaga vit alors l'une des plus grandes fêtes d'Andalousie.",
         accroche: "1 semaine de fiesta",
       },
     ],
@@ -358,20 +358,20 @@ export const citiesGuide: CityGuide[] = [
         {
           emoji: "🏠",
           label: "Colocation",
-          prix: "200–350€",
+          prix: "380–520€",
           unite: "/mois",
         },
         {
           emoji: "🥘",
           label: "Alimentation",
-          prix: "~130€",
+          prix: "~200€",
           unite: "/mois",
         },
-        { emoji: "🚇", label: "Transport", prix: "35€", unite: "/mois" },
+        { emoji: "🚇", label: "Transport", prix: "13,50€", unite: "/mois" },
         {
           emoji: "✈️",
           label: "Vol Paris–Malaga",
-          prix: "~120€",
+          prix: "100–220€",
           unite: "A/R",
         },
       ],
@@ -384,7 +384,7 @@ export const citiesGuide: CityGuide[] = [
           emoji: "🏥",
           titre: "Santé accessible",
           description:
-            "L'hôpital régional Carlos Haya est l'un des mieux équipés d'Andalousie. La couverture santé européenne fonctionne parfaitement.",
+            "L'Hôpital régional universitaire de Malaga (ex-Carlos Haya) est l'un des mieux équipés d'Andalousie. La carte européenne d'assurance maladie donne accès aux soins publics.",
         },
         {
           emoji: "🎓",
@@ -396,7 +396,7 @@ export const citiesGuide: CityGuide[] = [
           emoji: "☀️",
           titre: "Climat et bien-être",
           description:
-            "Le meilleur climat d'Europe continentale. Le soleil et la douceur de vivre andalouse favorisent l'équilibre et le bien-être des étudiants.",
+            "L'un des climats les plus doux d'Europe, avec environ 300 jours de soleil par an. La douceur de vivre andalouse favorise l'équilibre et le bien-être des étudiants.",
         },
         {
           emoji: "✈️",
@@ -427,7 +427,7 @@ export const citiesGuide: CityGuide[] = [
       "Perle de la Costa Blanca, Alicante est la ville où chaque étudiant trouve son rythme — entre mer, soleil et convivialité.",
     stats: [
       { value: "30K", label: "Étudiants" },
-      { value: "N°1", label: "Sécurité" },
+      { value: "Top 3", label: "Ville pour expatriés (InterNations 2024)" },
     ],
     sousTitre: "La douceur de la Costa Blanca",
     introTitreBold: "Là où étudier rime avec ",
@@ -445,7 +445,7 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Panorama",
         titre: "Le château Santa Bárbara",
         description:
-          "Perché à 166 mètres sur le mont Benacantil, ce château offre la plus belle vue de la côte. L'ascenseur creusé dans la roche y mène gratuitement. Spot de révision ultime.",
+          "Perché à 166 mètres sur le mont Benacantil, ce château à l'entrée gratuite offre une vue imprenable sur la côte. On y monte à pied ou par un ascenseur creusé dans la roche (environ 2,70 €).",
         accroche: "166 m au-dessus de la mer",
       },
       {
@@ -477,16 +477,16 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Traditions",
         titre: "Les Hogueras de San Juan",
         description:
-          "Chaque 24 juin, Alicante s'embrase. Sculptures géantes, feux d'artifice et fête jusqu'à l'aube — la nuit de la Saint-Jean est un spectacle inoubliable.",
+          "Du 20 au 24 juin, Alicante s'embrase. Sculptures géantes, feux d'artifice et fête jusqu'à l'aube — la nuit de la Saint-Jean est un spectacle inoubliable.",
         accroche: "La nuit la plus courte",
       },
       {
         emoji: "🚂",
         categorie: "Escapades",
-        titre: "Valence à 1h30 en train",
+        titre: "Valence à moins de 2h en train",
         description:
-          "Le train côtier relie Alicante à Valence en longeant la Méditerranée. Week-ends d'évasion à prix doux, avec l'une des plus belles lignes ferroviaires d'Espagne.",
-        accroche: "Vue mer garantie",
+          "Des trains directs relient Alicante à Valence en 1h30 à 2h, et Madrid est à environ 2h20 en grande vitesse. Idéal pour des week-ends d'évasion.",
+        accroche: "Week-ends faciles",
       },
     ],
     budget: {
@@ -496,33 +496,33 @@ export const citiesGuide: CityGuide[] = [
         {
           emoji: "🏠",
           label: "Colocation",
-          prix: "180–320€",
+          prix: "300–450€",
           unite: "/mois",
         },
         {
           emoji: "🥘",
           label: "Alimentation",
-          prix: "~130€",
+          prix: "~190€",
           unite: "/mois",
         },
-        { emoji: "🚇", label: "Transport", prix: "30€", unite: "/mois" },
+        { emoji: "🚇", label: "Transport", prix: "10,60€", unite: "/30 trajets" },
         {
           emoji: "✈️",
           label: "Vol Paris–Alicante",
-          prix: "~100€",
+          prix: "80–180€",
           unite: "A/R",
         },
       ],
     },
     rassuranceParents: {
       description:
-        "Alicante est l'une des villes les plus sûres d'Espagne. Un environnement idéal pour des études sereines.",
+        "Alicante est une ville à taille humaine, calme et accueillante. Un environnement idéal pour des études sereines.",
       items: [
         {
           emoji: "🛡️",
-          titre: "Ville très sûre",
+          titre: "Ville calme et sûre",
           description:
-            "Alicante affiche l'un des taux de criminalité les plus bas d'Espagne. Les étudiants s'y sentent en sécurité, de jour comme de nuit.",
+            "L'Espagne est l'un des pays les plus sûrs d'Europe, et Alicante est réputée pour son calme. Les étudiants s'y sentent en sécurité au quotidien.",
         },
         {
           emoji: "🎓",
@@ -564,7 +564,7 @@ export const citiesGuide: CityGuide[] = [
     tagline:
       "Un printemps éternel au milieu de l'Atlantique — les Canaries offrent un cadre d'études unique, entre volcans et océan.",
     stats: [
-      { value: "50K", label: "Étudiants" },
+      { value: "40K", label: "Étudiants" },
       { value: "365", label: "Jours doux" },
       { value: "7%", label: "TVA réduite" },
     ],
@@ -584,8 +584,8 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Nature",
         titre: "Le Teide, toit de l'Espagne",
         description:
-          "Avec ses 3 718 mètres, le volcan Teide à Tenerife est le point culminant de l'Espagne. Classé UNESCO, c'est l'un des sites les plus visités au monde. Et il est à 1h de votre campus.",
-        accroche: "3 718 m d'altitude",
+          "Avec ses 3 715 mètres, le volcan Teide à Tenerife est le point culminant de l'Espagne. Classé UNESCO, c'est le parc national le plus visité d'Espagne. Et il est à environ 1h de La Laguna.",
+        accroche: "3 715 m d'altitude",
       },
       {
         emoji: "💰",
@@ -608,7 +608,7 @@ export const citiesGuide: CityGuide[] = [
         categorie: "Sports",
         titre: "Surf toute l'année",
         description:
-          "Les Canaries sont un spot de surf mondial. Les vagues de Fuerteventura et Tenerife attirent les surfeurs du monde entier. Cours à 15 €, le week-end est assuré.",
+          "Les Canaries sont un spot de surf mondial. Les vagues de Fuerteventura et Tenerife attirent les surfeurs du monde entier, et les écoles de surf sont nombreuses.",
         accroche: "Spot mondial de surf",
       },
       {
@@ -635,20 +635,20 @@ export const citiesGuide: CityGuide[] = [
         {
           emoji: "🏠",
           label: "Colocation",
-          prix: "200–350€",
+          prix: "320–450€",
           unite: "/mois",
         },
         {
           emoji: "🥘",
           label: "Alimentation",
-          prix: "~140€",
+          prix: "~190€",
           unite: "/mois",
         },
-        { emoji: "🚌", label: "Transport", prix: "40€", unite: "/mois" },
+        { emoji: "🚌", label: "Transport", prix: "~15€", unite: "/mois" },
         {
           emoji: "✈️",
           label: "Vol Paris–Tenerife",
-          prix: "~180€",
+          prix: "150–350€",
           unite: "A/R",
         },
       ],
@@ -661,7 +661,7 @@ export const citiesGuide: CityGuide[] = [
           emoji: "🏥",
           titre: "Santé de qualité",
           description:
-            "Les hôpitaux canarienes sont bien équipés. La carte européenne d'assurance maladie couvre les soins d'urgence sans difficulté.",
+            "Les hôpitaux canariens sont bien équipés. La carte européenne d'assurance maladie donne accès aux soins du système public.",
         },
         {
           emoji: "🎓",
@@ -673,13 +673,13 @@ export const citiesGuide: CityGuide[] = [
           emoji: "🌡️",
           titre: "Climat idéal",
           description:
-            "20-25 °C toute l'année. Pas d'hiver rude, pas de canicule. Un climat qui favorise la concentration et le bien-être au quotidien.",
+            "Entre 18 et 26 °C toute l'année. Pas d'hiver rude, pas de canicule. Un climat qui favorise la concentration et le bien-être au quotidien.",
         },
         {
           emoji: "✈️",
           titre: "Bien relié",
           description:
-            "Vols directs quotidiens vers Madrid et fréquents vers la France. Les connexions aériennes permettent de rentrer facilement.",
+            "Vols directs quotidiens vers Madrid et liaisons directes vers la France. Les connexions aériennes permettent de rentrer facilement.",
         },
       ],
     },

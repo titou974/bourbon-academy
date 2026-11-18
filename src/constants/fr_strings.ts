@@ -279,8 +279,7 @@ export const COPY = {
 
   cityModal: {
     badge: "Destination étudiante",
-    subtitleLine: (region: string, jours: string) =>
-      `Espagne · ${region} · ${jours} jours de soleil`,
+    subtitleLine: (region: string) => `Espagne · ${region}`,
     anecdotesLabel: "Anecdotes & pépites",
     anecdotesTitrePre: "Ce que vous ne saviez pas sur",
     budgetLabel: "Pour les parents",
