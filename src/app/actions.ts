@@ -6,6 +6,18 @@ import { supabase } from "@/lib/supabase";
 import { sendStudentConfirmation, sendTeamNotification } from "@/lib/resend";
 import { COPY } from "@/constants/fr_strings";
 
+// Signed links in the team email stay valid for one year
+const BULLETIN_LINK_EXPIRY_SECONDS = 60 * 60 * 24 * 365;
+
+function slugify(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .toLowerCase();
+}
+
 export type ActionResult = {
   success: boolean;
   id?: string;
@@ -96,17 +108,24 @@ export async function finalizeCandidature(
   }
 
   // Handle optional multi-bulletin upload
+  // The "bulletins" bucket is private: store the file path and share
+  // signed links (plus the files as email attachments) with the team.
+  const bulletinPaths: string[] = [];
   const bulletinUrls: string[] = [];
+  const bulletinAttachments: { filename: string; content: Buffer }[] = [];
   const bulletins = formData.getAll("bulletins") as File[];
 
   for (const bulletin of bulletins) {
     if (!bulletin || bulletin.size === 0) continue;
-    const ext = bulletin.name.split(".").pop();
-    const path = `${Date.now()}-${candidature.prenom}-${candidature.nom}-${bulletinUrls.length + 1}.${ext}`;
+    const ext = (bulletin.name.split(".").pop() ?? "pdf").toLowerCase();
+    const index = bulletinPaths.length + 1;
+    // Storage keys reject accents and spaces, so keep the path ASCII-only
+    const path = `${id}/${Date.now()}-bulletin-${index}.${ext}`;
+    const content = Buffer.from(await bulletin.arrayBuffer());
 
     const { error: uploadError } = await supabase.storage
       .from("bulletins")
-      .upload(path, bulletin, {
+      .upload(path, content, {
         contentType: bulletin.type,
         upsert: false,
       });
@@ -119,18 +138,25 @@ export async function finalizeCandidature(
       };
     }
 
-    const { data: urlData } = supabase.storage
+    const { data: signedData, error: signedError } = await supabase.storage
       .from("bulletins")
-      .getPublicUrl(path);
+      .createSignedUrl(path, BULLETIN_LINK_EXPIRY_SECONDS);
 
-    bulletinUrls.push(urlData.publicUrl);
+    if (signedError) console.log("signedUrlError", signedError);
+
+    bulletinPaths.push(path);
+    if (signedData?.signedUrl) bulletinUrls.push(signedData.signedUrl);
+    bulletinAttachments.push({
+      filename: `${slugify(`${candidature.prenom}-${candidature.nom}`)}-bulletin-${index}.${ext}`,
+      content,
+    });
   }
 
   try {
     await prisma.candidature.update({
       where: { id },
       data: {
-        bulletinUrls,
+        bulletinUrls: bulletinPaths,
         status: "submitted",
       },
     });
@@ -175,6 +201,7 @@ export async function finalizeCandidature(
         statut: candidature.statut,
         message: candidature.message,
         bulletinUrls,
+        bulletinAttachments,
       }),
     ]);
   } catch {

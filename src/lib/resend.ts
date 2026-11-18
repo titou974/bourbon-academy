@@ -65,6 +65,7 @@ export async function sendTeamNotification(candidature: {
   statut?: string | null;
   message?: string | null;
   bulletinUrls: string[];
+  bulletinAttachments: { filename: string; content: Buffer }[];
 }): Promise<void> {
   const filiereLabels = resolveLabels(candidature.filieres);
   const langueLabels = resolveLangueLabels(candidature.langues);
@@ -75,11 +76,14 @@ export async function sendTeamNotification(candidature: {
       ? candidature.bulletinUrls
           .map((url, i) => `<li><a href="${url}">Bulletin ${i + 1}</a></li>`)
           .join("")
-      : "<li>Aucun bulletin fourni</li>";
+      : candidature.bulletinAttachments.length > 0
+        ? "<li>Voir les pièces jointes</li>"
+        : "<li>Aucun bulletin fourni</li>";
 
   await resend.emails.send({
     from: FROM_EMAIL,
     to: TEAM_EMAIL,
+    attachments: candidature.bulletinAttachments,
     subject: `Nouvelle candidature — ${candidature.prenom} ${candidature.nom} — ${filiereLabels.join(", ")}`,
     html: `
       <h2>Nouvelle candidature reçue</h2>
@@ -101,6 +105,7 @@ export async function sendTeamNotification(candidature: {
       </ul>
 
       <h3>📄 Bulletins scolaires</h3>
+      ${candidature.bulletinAttachments.length > 0 ? "<p>Les bulletins sont aussi en pièces jointes de cet email.</p>" : ""}
       <ul>
         ${bulletinsHtml}
       </ul>
