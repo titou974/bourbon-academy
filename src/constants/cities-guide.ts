@@ -555,11 +555,11 @@ export const citiesGuide: CityGuide[] = [
 
   // ─── ILES CANARIES ────────────────────────────────────────────────────
   {
-    ville: "Les Iles Canaries",
-    villeBold: "Iles ",
+    ville: "Les Îles Canaries",
+    villeBold: "Îles ",
     villeItalic: "Canaries",
     surnom: "Las Islas del Sol",
-    region: "Iles Canaries",
+    region: "Îles Canaries",
     photo: "/images/localisations/iles_canaries.jpg",
     tagline:
       "Un printemps éternel au milieu de l'Atlantique — les Canaries offrent un cadre d'études unique, entre volcans et océan.",

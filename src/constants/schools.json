@@ -40,9 +40,9 @@
     "etudiantsPlaces": 60
   },
   {
-    "ville": "Les Iles Canaries",
+    "ville": "Les Îles Canaries",
     "surnom": "Las Islas del Sol",
-    "region": "Iles Canaries",
+    "region": "Îles Canaries",
     "coordinates": { "x": 30, "y": 90 },
     "mobileCoordinates": { "x": 16, "y": 90 },
     "filieres": ["kine", "dentaire", "veterinaire", "infirmier"],

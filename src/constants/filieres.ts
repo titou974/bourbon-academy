@@ -565,7 +565,7 @@ const filieres: Filiere[] = [
         photo: "/images/localisations/alicante.jpeg",
       },
       {
-        city: "Iles Canaries",
+        city: "Îles Canaries",
         "ping-position-x": 18,
         "ping-position-y": 92,
         "mobile-ping-position-x": 16,
@@ -696,7 +696,7 @@ const filieres: Filiere[] = [
         photo: "/images/localisations/alicante.jpeg",
       },
       {
-        city: "Iles Canaries",
+        city: "Îles Canaries",
         "ping-position-x": 18,
         "ping-position-y": 92,
         "mobile-ping-position-x": 16,
@@ -825,7 +825,7 @@ const filieres: Filiere[] = [
         photo: "/images/localisations/alicante.jpeg",
       },
       {
-        city: "Iles Canaries",
+        city: "Îles Canaries",
         "ping-position-x": 18,
         "ping-position-y": 92,
         "mobile-ping-position-x": 16,
@@ -945,7 +945,7 @@ const filieres: Filiere[] = [
         photo: "/images/localisations/alicante.jpeg",
       },
       {
-        city: "Iles Canaries",
+        city: "Îles Canaries",
         "ping-position-x": 18,
         "ping-position-y": 92,
         "mobile-ping-position-x": 16,

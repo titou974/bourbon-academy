@@ -5,7 +5,7 @@ export const COPY = {
   brand: {
     name: "Bourbon Academy",
     tagline: "Étudier en Espagne",
-    description: "Accédez aux meilleurs écoles d'Espagne",
+    description: "Accédez aux meilleures écoles d'Espagne",
     contact: "Des questions ou un problème ?",
   },
 
@@ -25,7 +25,7 @@ export const COPY = {
   hero: {
     titlePartOne: "Bourbon",
     titlePartTwo: "Academy",
-    subtitle: "Accédez aux meilleurs écoles d'Espagne",
+    subtitle: "Accédez aux meilleures écoles d'Espagne",
     ctaPrimary: "Commencer mon projet d'étude",
     ctaSecondary: "En savoir plus",
     franceLabel: "DROM et France",
@@ -34,7 +34,7 @@ export const COPY = {
     badgeSpain: "Espagne",
   },
   stats: [
-    { value: 10, suffix: "+", label: "Villes partenaires" },
+    { value: 10, suffix: "+", label: "Villes étudiantes en Espagne" },
     {
       value: 10000,
       suffix: "+",
@@ -54,7 +54,7 @@ export const COPY = {
         "Une passerelle gratuite vers des universités reconnues, pensée par des jeunes qui sont passés par là. Jusqu'à votre candidature en Espagne, avancez avec clarté et simplicité, guidés par notre expérience. Structurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre promesse, d'étudiant à étudiant.",
       descriptionAccent:
         "Échangez directement avec celles et ceux qui vivent, ou ont vécu, leurs études en Espagne.",
-      cta: "Découvir les filières",
+      cta: "Découvrir les filières",
       inlineText:
         "étudiants français vers plus de villes en Espagne, pour toutes les filières. De la Réunion à Madrid, des formations d'excellence dans des universités reconnues pour créer",
       inlineHighlight:
@@ -76,7 +76,7 @@ export const COPY = {
     },
     carte: {
       title: "Dans quelles villes étudier ?",
-      subtitle: "5 grandes villes étudiantes s'offrent à vous",
+      subtitle: "Les 5 villes les plus demandées, et bien d'autres encore",
     },
     process: {
       title: "Votre inscription en 3 étapes",
@@ -321,7 +321,7 @@ export const COPY = {
     title: "Bourbon Academy — Étudier en Espagne",
     titleTemplate: "%s | Bourbon Academy",
     description:
-      "Bourbon Academy accompagne les étudiants français et des DROM-TOM dans leurs études en Espagne : médecine, kinésithérapie, dentaire, vétérinaire et plus. +50 écoles partenaires, +1000 étudiants accompagnés.",
+      "Bourbon Academy accompagne les étudiants de métropole et d'Outre-mer dans leurs études en Espagne : médecine, kinésithérapie, dentaire, vétérinaire et plus. +10 000 étudiants accompagnés dans notre réseau.",
     keywords: [
       "études en Espagne",
       "étudier en Espagne",
@@ -336,10 +336,10 @@ export const COPY = {
       "inscription université Espagne",
     ],
     ogDescription:
-      "Accédez aux meilleurs écoles d'Espagne. +50 universités partenaires, accompagnement personnalisé.",
+      "Accédez aux meilleures écoles d'Espagne, avec un accompagnement personnalisé.",
     ogImageAlt: "Bourbon Academy — Étudier en Espagne",
     twitterDescription:
-      "Accédez aux meilleurs écoles d'Espagne. +50 universités partenaires.",
+      "Accédez aux meilleures écoles d'Espagne, avec un accompagnement personnalisé.",
   },
 
   heroAnimation: {
