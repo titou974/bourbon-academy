@@ -294,6 +294,28 @@ function SimpleCheckbox({
 /* ─── Phone input with country code selector ─── */
 const PHONE_PRESETS = COPY.phonePresets;
 
+// French numbering (metropole + Réunion/Mayotte): local numbers start with a
+// trunk "0" that must be dropped after the country code.
+const FRENCH_PREFIXES = ["+33", "+262"];
+// Local numbers belonging to +262: Réunion mobiles (0692/0693), Mayotte (0639),
+// Réunion landlines (0262/0263).
+const REUNION_LOCAL = /^0(69[23]|639|26[23])/;
+
+function guessDefaultPrefix(): string {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return tz === "Indian/Reunion" || tz === "Indian/Mayotte" ? "+262" : "+33";
+  } catch {
+    return "+262";
+  }
+}
+
+function toInternational(prefix: string, number: string): string {
+  const digits = number.replace(/[\s.\-()]/g, "");
+  if (FRENCH_PREFIXES.includes(prefix)) return prefix + digits.replace(/^0/, "");
+  return prefix + digits;
+}
+
 function PhoneInput({
   value,
   onChange,
@@ -337,7 +359,29 @@ function PhoneInput({
   }, []);
 
   const sync = (p: string, n: string) => {
-    onChange(p + n);
+    onChange(toInternational(p, n));
+  };
+
+  // Default to the visitor's likely country (Réunion or metropole)
+  useEffect(() => {
+    if (number === "" && !customMode) {
+      const guess = guessDefaultPrefix();
+      setPrefix(guess);
+      onChange(guess);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Typing a local number picks the matching French code automatically
+  const handleNumberChange = (n: string) => {
+    let p = prefix;
+    const digits = n.replace(/\s/g, "");
+    if (!customMode && FRENCH_PREFIXES.includes(prefix) && digits.length >= 4) {
+      p = REUNION_LOCAL.test(digits) ? "+262" : digits.startsWith("0") ? "+33" : prefix;
+    }
+    setPrefix(p);
+    setNumber(n);
+    sync(p, n);
   };
 
   const selectPreset = (code: string) => {
@@ -424,13 +468,10 @@ function PhoneInput({
       <input
         type="tel"
         value={number}
-        onChange={(e) => {
-          setNumber(e.target.value);
-          sync(prefix, e.target.value);
-        }}
+        onChange={(e) => handleNumberChange(e.target.value)}
         required
         className="min-h-[44px] flex-1 border border-input rounded-r-[var(--radius-button)] px-3 text-sm bg-transparent focus:outline-none focus:ring-2 focus:ring-primary/20"
-        placeholder="6 92 00 00 00"
+        placeholder={prefix === "+262" ? "0692 00 00 00" : "06 12 34 56 78"}
       />
     </div>
   );
@@ -594,50 +635,49 @@ export function CandidatureForm() {
     setStep(next);
   };
 
+  // Step 1 — filières are only validated client-side; nothing is saved yet
   const handleNextStep1 = async () => {
+    const valid = await form.trigger(["filieres", "statut", "langues"]);
+    if (!valid) return;
+    goTo(2);
+  };
+
+  // Step 2 — create the candidature with coordonnées, then attach the filières
+  const handleNextStep2 = async () => {
     const valid = await form.trigger(["prenom", "nom", "email", "telephone"]);
     if (!valid) return;
 
     setIsSubmitting(true);
     setServerError(null);
     try {
-      const fd = new FormData();
-      fd.append("prenom", form.getValues("prenom").trim());
-      fd.append("nom", form.getValues("nom").trim());
-      fd.append("email", form.getValues("email").trim());
-      fd.append("telephone", form.getValues("telephone").replace(/\s/g, ""));
+      const coords = new FormData();
+      coords.append("prenom", form.getValues("prenom").trim());
+      coords.append("nom", form.getValues("nom").trim());
+      coords.append("email", form.getValues("email").trim());
+      coords.append(
+        "telephone",
+        form.getValues("telephone").replace(/\s/g, ""),
+      );
 
-      const result = await createCandidature(fd);
-      if (result.success && result.id) {
-        setCandidatureId(result.id);
-        goTo(2);
-      } else {
-        setServerError(result.error ?? COPY.form.defaultError);
+      const created = await createCandidature(coords);
+      if (!created.success || !created.id) {
+        setServerError(created.error ?? COPY.form.defaultError);
+        return;
       }
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
-  const handleNextStep2 = async () => {
-    const valid = await form.trigger(["filieres", "statut", "langues"]);
-    if (!valid || !candidatureId) return;
-
-    setIsSubmitting(true);
-    setServerError(null);
-    try {
-      const fd = new FormData();
-      fd.append("filieres", JSON.stringify(form.getValues("filieres")));
-      fd.append("statut", form.getValues("statut"));
-      fd.append("langues", JSON.stringify(form.getValues("langues")));
+      const choices = new FormData();
+      choices.append("filieres", JSON.stringify(form.getValues("filieres")));
+      choices.append("statut", form.getValues("statut"));
+      choices.append("langues", JSON.stringify(form.getValues("langues")));
       const message = form.getValues("message");
-      if (message) fd.append("message", message);
+      if (message) choices.append("message", message);
 
-      const result = await updateCandidature(candidatureId, fd);
-      if (result.success) {
+      const updated = await updateCandidature(created.id, choices);
+      if (updated.success) {
+        setCandidatureId(created.id);
         goTo(3);
       } else {
-        setServerError(result.error ?? COPY.form.defaultError);
+        setServerError(updated.error ?? COPY.form.defaultError);
       }
     } finally {
       setIsSubmitting(false);
@@ -776,101 +816,10 @@ export function CandidatureForm() {
           className="relative"
         >
           <AnimatePresence mode="wait" custom={direction}>
-            {/* STEP 1 — Coordonnées */}
+            {/* STEP 1 — Filières */}
             {step === 1 && (
               <motion.div
                 key="step-1"
-                custom={direction}
-                variants={stepVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="space-y-4"
-              >
-                <FormField
-                  control={form.control}
-                  name="prenom"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{COPY.form.labels.prenom}</FormLabel>
-                      <FormControl>
-                        <Input {...field} required className="min-h-[44px]" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="nom"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{COPY.form.labels.nom}</FormLabel>
-                      <FormControl>
-                        <Input required {...field} className="min-h-[44px]" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{COPY.form.labels.email}</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          required
-                          {...field}
-                          className="min-h-[44px]"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="telephone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{COPY.form.labels.telephone}</FormLabel>
-                      <FormControl>
-                        <PhoneInput
-                          value={field.value}
-                          onChange={field.onChange}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                {serverError && (
-                  <p className="text-sm text-destructive">{serverError}</p>
-                )}
-
-                <Button
-                  type="button"
-                  onClick={handleNextStep1}
-                  disabled={isSubmitting}
-                  className="w-full min-h-[44px] mt-6"
-                >
-                  {isSubmitting ? COPY.form.saving : COPY.form.submitStep1}
-                  <ArrowRight className="size-4" />
-                </Button>
-              </motion.div>
-            )}
-
-            {step === 2 && (
-              <motion.div
-                key="step-2"
                 custom={direction}
                 variants={stepVariants}
                 initial="enter"
@@ -1034,9 +983,101 @@ export function CandidatureForm() {
 
                 <Button
                   type="button"
-                  onClick={handleNextStep2}
+                  onClick={handleNextStep1}
                   disabled={isSubmitting}
                   className="w-full min-h-[44px]"
+                >
+                  {isSubmitting ? COPY.form.saving : COPY.form.submitStep1}
+                  <ArrowRight className="size-4" />
+                </Button>
+              </motion.div>
+            )}
+
+            {/* STEP 2 — Coordonnées */}
+            {step === 2 && (
+              <motion.div
+                key="step-2"
+                custom={direction}
+                variants={stepVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="space-y-4"
+              >
+                <FormField
+                  control={form.control}
+                  name="prenom"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{COPY.form.labels.prenom}</FormLabel>
+                      <FormControl>
+                        <Input {...field} required className="min-h-[44px]" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="nom"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{COPY.form.labels.nom}</FormLabel>
+                      <FormControl>
+                        <Input required {...field} className="min-h-[44px]" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{COPY.form.labels.email}</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          required
+                          {...field}
+                          className="min-h-[44px]"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="telephone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{COPY.form.labels.telephone}</FormLabel>
+                      <FormControl>
+                        <PhoneInput
+                          value={field.value}
+                          onChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {serverError && (
+                  <p className="text-sm text-destructive">{serverError}</p>
+                )}
+
+                <Button
+                  type="button"
+                  onClick={handleNextStep2}
+                  disabled={isSubmitting}
+                  className="w-full min-h-[44px] mt-6"
                 >
                   {isSubmitting ? COPY.form.saving : COPY.form.submitStep2}
                   <ArrowRight className="size-4" />

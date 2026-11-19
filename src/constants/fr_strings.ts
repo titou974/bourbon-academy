@@ -92,15 +92,15 @@ export const COPY = {
   steps: [
     {
       step: "Etape 1",
-      title: "Renseignez vos coordonnées",
-      description:
-        "Transmettez vos informations afin que nous puissions vous recontacter rapidement.",
-    },
-    {
-      step: "Etape 2",
       title: "Choisissez votre filière",
       description:
         "Sélectionnez la formation qui correspond à votre projet d'études",
+    },
+    {
+      step: "Etape 2",
+      title: "Renseignez vos coordonnées",
+      description:
+        "Transmettez vos informations afin que nous puissions vous recontacter rapidement.",
     },
     {
       step: "Etape 3",
@@ -111,9 +111,9 @@ export const COPY = {
   ] as const,
 
   form: {
-    steps: ["Coordonnées", "Filière", "Bulletin"] as const,
-    submitStep1: "Continuer",
-    submitStep2: "Valider mes choix",
+    steps: ["Filière", "Coordonnées", "Bulletin"] as const,
+    submitStep1: "Valider mes choix",
+    submitStep2: "Continuer",
     submitStep3: "Lancer ma candidature",
     submitStep3Hint: "Réponse sous 24h — Accompagnement gratuit",
     saving: "Enregistrement...",
