@@ -45,15 +45,15 @@ export const COPY = {
   sections: {
     about: {
       title: "Qui sommes-nous ?",
-      subtitle: "Bourbon Academy, votre passerelle vers l'Espagne",
-      descriptionBefore: "Bourbon Academy accompagne les",
-      descriptionReunionnais: "étudiants",
-      descriptionMiddle: "dans leur projet d'études en",
+      subtitle: "Par des étudiants, pour les futurs étudiants",
+      descriptionBefore: "Bourbon Academy, c'est une",
+      descriptionReunionnais: "équipe d'étudiants",
+      descriptionMiddle: "qui vous accompagne dans votre projet d'études en",
       descriptionEspagne: "Espagne.",
       descriptionSuite:
-        "Une passerelle gratuite vers des universités reconnues, avec un accompagnement personnalisé à chaque étape. Jusqu'à votre candidature en Espagne, avancez avec clarté, simplicité et exigence dans vos démarches. Structurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre engagement.",
+        "Une passerelle gratuite vers des universités reconnues, pensée par des jeunes qui sont passés par là. Jusqu'à votre candidature en Espagne, avancez avec clarté et simplicité, guidés par notre expérience. Structurer votre dossier et vous ouvrir les bonnes portes, au bon moment : c'est notre promesse, d'étudiant à étudiant.",
       descriptionAccent:
-        "Bénéficiez de l'expérience et de l'accompagnement d'élèves ayant étudié ou étudiant en Espagne.",
+        "Échangez directement avec celles et ceux qui vivent, ou ont vécu, leurs études en Espagne.",
       cta: "Découvir les filières",
       inlineText:
         "étudiants français vers plus de villes en Espagne, pour toutes les filières. De la Réunion à Madrid, des formations d'excellence dans des universités reconnues pour créer",
