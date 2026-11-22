@@ -51,6 +51,26 @@ export default function Home() {
       </SectionWrapper>
       <footer className="bg-black mt-6 px-6 py-10">
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-6">
+          <nav
+            aria-label="Pages du site"
+            className="flex flex-wrap justify-center gap-x-12 gap-y-6 w-full"
+          >
+            <div>
+              <p className="text-white font-semibold mb-2">
+                Études dentaires Espagne
+              </p>
+              <ul className="list-none m-0 p-0">
+                <li className="my-1">
+                  <a
+                    href="https://bourbon-academy.com/etudes-dentaires-en-espagne"
+                    className="text-white/60 hover:text-white transition-colors"
+                  >
+                    Études dentaires en Espagne
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <p className="text-white/60 text-sm">{COPY.brand.contact}</p>
             <Button variant="default" size="sm" asChild className="text-sm">
