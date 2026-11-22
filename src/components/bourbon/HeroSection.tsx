@@ -63,6 +63,7 @@ export function HeroSection() {
               <span className="text-transparent min-w-fit bg-clip-text bg-gradient-to-r from-primary to-secondary font-serif italic pe-1 -mb-2 inline-block">
                 {COPY.hero.titlePartTwo}
               </span>
+              {COPY.hero.titleSuffix}
             </motion.h1>
 
             <motion.p
