@@ -1,0 +1,10 @@
+# Bourbon Academy
+
+> Bourbon Academy accompagne les étudiants de métropole et d'Outre-mer dans leurs études en Espagne : médecine, kinésithérapie, dentaire, vétérinaire et plus. +10 000 étudiants accompagnés dans notre réseau.
+
+## À propos
+- Site : https://bourbon-academy.com
+- Activité : Accompagnement études à l'étranger
+
+## Pages
+- [Accueil](https://bourbon-academy.com) : Bourbon Academy — Étudier en Espagne
