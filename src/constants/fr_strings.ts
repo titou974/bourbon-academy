@@ -29,7 +29,7 @@ export const COPY = {
   hero: {
     titlePartOne: "Bourbon",
     titlePartTwo: "Academy",
-    titleSuffix: ", études de kinésithérapie en Espagne",
+    titleSuffix: ", études supérieures en Espagne",
     subtitle: "Accédez aux meilleures écoles d'Espagne",
     ctaPrimary: "Commencer mon projet d'étude",
     ctaSecondary: "En savoir plus",
@@ -51,7 +51,7 @@ export const COPY = {
     about: {
       title: "Qui sommes-nous ?",
       subtitle:
-        "Bourbon Academy accompagne les études de kinésithérapie en Espagne en ligne. L'équipe est composée d'étudiants qui guident la candidature, du choix de la filière aux bulletins scolaires. Le réseau compte plus de 10 000 étudiants accompagnés et plus de 100 filières accessibles.",
+        "Bourbon Academy accompagne les études supérieures en Espagne en ligne. L'équipe est composée d'étudiants qui guident la candidature, du choix de la filière aux bulletins scolaires. Le réseau compte plus de 10 000 étudiants accompagnés et plus de 100 filières accessibles.",
       descriptionBefore: "Bourbon Academy, c'est une",
       descriptionReunionnais: "équipe d'étudiants",
       descriptionMiddle: "qui vous accompagne dans votre projet d'études en",
@@ -324,10 +324,10 @@ export const COPY = {
   },
 
   metadata: {
-    title: "Bourbon Academy | Études de kinésithérapie en Espagne",
+    title: "Bourbon Academy | Études supérieures en Espagne",
     titleTemplate: "%s | Bourbon Academy",
     description:
-      "Bourbon Academy accompagne les études de kinésithérapie en Espagne. L'équipe guide la candidature, du choix de la filière aux bulletins scolaires.",
+      "Bourbon Academy accompagne les étudiants en études supérieures en Espagne, du choix de la filière à la candidature. L'équipe guide aussi les bulletins scolaires.",
     keywords: [
       "études en Espagne",
       "étudier en Espagne",
@@ -352,7 +352,8 @@ export const COPY = {
     path: "/etudes-dentaires-en-espagne",
     title: "Études dentaires en Espagne | Bourbon Academy",
     description:
-      "Bourbon Academy accompagne les études dentaires en Espagne avec un dossier en trois étapes : filière, coordonnées, bulletins scolaires. Candidature gratuite pour démarrer.",
+      "Études dentaires en Espagne, Bourbon Academy accompagne le dossier avec une passerelle gratuite vers des universités reconnues et un échange direct avec des étudiants.",
+    offerTitle: "Études dentaires en Espagne accompagnées",
     breadcrumbHome: "Accueil",
     breadcrumbLabel: "études dentaires en espagne",
     h1: "Études dentaires en Espagne",

@@ -76,6 +76,19 @@ export default function EtudesDentairesEnEspagne() {
             </Link>
             {D.hero.after}
           </p>
+          <aside
+            className="gtr-offer"
+            style={{
+              margin: "24px 0",
+              padding: "20px 24px",
+              border: "1px solid rgba(0,0,0,.12)",
+              borderRadius: "16px",
+            }}
+          >
+            <p style={{ margin: "0 0 8px", fontWeight: 600, fontSize: "1.15em" }}>
+              {D.offerTitle}
+            </p>
+          </aside>
         </section>
 
         <section className="space-y-4">
